@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 
 const projects = [
   { number: "01", title: "Дома лучше", text: "Учебное сопровождаемое проживание: взрослые с нарушениями развития учатся самостоятельной жизни в тренировочной квартире.", clear: "Мы учимся жить самостоятельно: готовить, убирать, делать покупки и планировать свой день.", tone: "coral" },
@@ -24,6 +24,36 @@ export default function Home() {
   const [clear, setClear] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [sent, setSent] = useState(false);
+
+  useEffect(() => {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (reducedMotion.matches) return;
+
+    const elements = document.querySelectorAll(
+      ".section, .project-card, .news-featured, .news-small, .documents a, .report-links a, .links-list a"
+    );
+
+    document.documentElement.classList.add("motion-ready");
+    elements.forEach((element) => element.classList.add("reveal"));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -6% 0px" }
+    );
+
+    elements.forEach((element) => observer.observe(element));
+    return () => {
+      observer.disconnect();
+      document.documentElement.classList.remove("motion-ready");
+    };
+  }, []);
   const submit = (event: FormEvent<HTMLFormElement>) => { event.preventDefault(); setSent(true); };
   const closeMenu = () => setMenuOpen(false);
 
