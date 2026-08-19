@@ -3,12 +3,12 @@
 import { FormEvent, useEffect, useState } from "react";
 
 const projects = [
-  { number: "01", title: "Дома лучше", text: "Учебное сопровождаемое проживание: взрослые с нарушениями развития учатся самостоятельной жизни в тренировочной квартире.", clear: "Мы учимся жить самостоятельно: готовить, убирать, делать покупки и планировать свой день.", tone: "coral" },
-  { number: "02", title: "Туризм — я с вами", text: "Инклюзивные походы, знакомство с природой родного края и развитие навыков самостоятельности и работы в команде.", clear: "Мы ходим в походы. Учимся помогать друг другу и беречь природу.", tone: "mint" },
-  { number: "03", title: "Смелое решение", text: "Знакомство детей и взрослых с ограниченными возможностями с доступными техническими видами спорта.", clear: "Дети и взрослые пробуют технические виды спорта. Специалисты помогают каждому участнику.", tone: "yellow" },
-  { number: "04", title: "Творческая студия «ОСС»", text: "Место для свободного творчества: рисунок, керамика, панно и предметы интерьера из разных материалов.", clear: "В студии мы рисуем, лепим и делаем красивые вещи своими руками.", tone: "blue" },
-  { number: "05", title: "RACE WHEELS", text: "Тренировки и гонки для детей, которые постоянно используют инвалидную коляску.", clear: "Дети на колясках тренируются и участвуют в гонках.", tone: "lavender" },
-  { number: "06", title: "БуитПушка", text: "Тренировки по гонкам с препятствиями для детей и взрослых.", clear: "Мы тренируемся и проходим полосы препятствий.", tone: "orange" },
+  { number: "01", title: "Дома лучше", text: "Учебное сопровождаемое проживание: взрослые с нарушениями развития учатся самостоятельной жизни в тренировочной квартире.", description: "Программа сопровождаемого проживания в тренировочных квартирах, где взрослые с нарушениями развития при поддержке социальных работников учатся самостоятельной жизни. Сопровождаемое проживание направлено на социальную адаптацию и является альтернативой государственным закрытым учреждениям социальной защиты.", clear: "Мы учимся жить самостоятельно: готовить, убирать, делать покупки и планировать свой день.", clearDescription: "Взрослые люди живут в тренировочной квартире. Рядом есть специалисты. Они помогают учиться готовить, убирать, делать покупки и планировать дела.", points: ["Взрослые с нарушениями развития", "Тренировочная квартира", "Поддержка социальных работников"], tone: "coral" },
+  { number: "02", title: "Туризм — я с вами", text: "Инклюзивные походы, знакомство с природой родного края и развитие навыков самостоятельности и работы в команде.", description: "Инклюзивные занятия по туризму включают походы выходного дня, знакомство с природой родного края и уроки экологии. Проект помогает развивать самостоятельность, коммуникацию и умение работать в команде, отдыхать и вести активный образ жизни.", clear: "Мы ходим в походы. Учимся помогать друг другу и беречь природу.", clearDescription: "Мы ходим в походы выходного дня, знакомимся с природой и изучаем экологию. В походе мы учимся быть самостоятельными и действовать вместе.", points: ["Походы выходного дня", "Уроки экологии", "Самостоятельность и работа в команде"], tone: "mint" },
+  { number: "03", title: "Смелое решение", text: "Знакомство детей и взрослых с ограниченными возможностями с доступными техническими видами спорта.", description: "Проект знакомит детей и взрослых с ограниченными возможностями, в том числе с ментальными нарушениями, с техническими видами спорта. Программа состоит из нескольких ступеней и доступна для всех слушателей.", clear: "Дети и взрослые пробуют технические виды спорта. Специалисты помогают каждому участнику.", clearDescription: "Дети и взрослые знакомятся с техническими видами спорта. Программа состоит из нескольких ступеней.", points: ["Дети и взрослые", "Технические виды спорта", "Несколько ступеней программы"], tone: "yellow" },
+  { number: "04", title: "Творческая студия «ОСС»", text: "Место для свободного творчества: рисунок, керамика, панно и предметы интерьера из разных материалов.", description: "Клуб для развития и реализации творческих способностей и свободного самовыражения. Участники работают с разными материалами, создают предметы интерьера, рисунки и картины, керамические скульптуры и панно.", clear: "В студии мы рисуем, лепим и делаем красивые вещи своими руками.", clearDescription: "В студии можно рисовать, лепить и работать с разными материалами. Участники делают картины, керамику, панно и предметы для интерьера.", points: ["Свободное творчество", "Разные материалы", "Картины, керамика и панно"], tone: "blue" },
+  { number: "05", title: "RACE WHEELS", text: "Тренировки и гонки для детей, которые постоянно используют инвалидную коляску.", description: "Проект для детей, которые постоянно используют инвалидную коляску. В программу входят организация тренировок и проведение гонок на колясках различного типа.", clear: "Дети на колясках тренируются и участвуют в гонках.", clearDescription: "Дети, которые постоянно пользуются коляской, тренируются и участвуют в гонках на разных колясках.", points: ["Дети, использующие инвалидную коляску", "Тренировки", "Гонки на колясках разных типов"], tone: "lavender" },
+  { number: "06", title: "БуитПушка", text: "Тренировки по гонкам с препятствиями для детей и взрослых.", description: "Тренировки по гонкам с препятствиями для детей и взрослых.", clear: "Мы тренируемся и проходим полосы препятствий.", clearDescription: "Дети и взрослые тренируются и учатся проходить препятствия.", points: ["Дети и взрослые", "Гонки с препятствиями", "Тренировки"], tone: "orange" },
 ];
 
 const registryDocs = [
@@ -28,6 +28,21 @@ const team = [
 ];
 
 type TeamMember = (typeof team)[number];
+type Project = (typeof projects)[number];
+
+function ProjectProfile({ project, clear, onClose }: { project: Project; clear: boolean; onClose: () => void }) {
+  return (
+    <div className="project-dialog-backdrop" role="presentation" onClick={onClose}>
+      <section className={`project-dialog ${project.tone}`} role="dialog" aria-modal="true" aria-labelledby="project-dialog-title" onClick={(event) => event.stopPropagation()}>
+        <div className="project-dialog-top"><span>{project.number}/ проект</span><button type="button" onClick={onClose}>Закрыть <span aria-hidden="true">×</span></button></div>
+        <div className="project-dialog-grid">
+          <div className="project-dialog-title"><span>{clear ? "Проект клуба" : "Подробнее о проекте"}</span><h3 id="project-dialog-title">{project.title}</h3></div>
+          <div className="project-dialog-copy"><p>{clear ? project.clearDescription : project.description}</p><ul>{project.points.map((point) => <li key={point}>{point}</li>)}</ul><a className="button button-dark" href="#feedback" onClick={onClose}>{clear ? "Спросить об участии" : "Узнать об участии"} <Arrow /></a></div>
+        </div>
+      </section>
+    </div>
+  );
+}
 
 function TeamProfile({ person, index, clear, onClose, variant }: { person: TeamMember; index: number; clear: boolean; onClose: () => void; variant: "desktop" | "mobile" }) {
   return (
@@ -51,6 +66,7 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [sent, setSent] = useState(false);
   const [activePerson, setActivePerson] = useState<number | null>(null);
+  const [activeProject, setActiveProject] = useState<number | null>(null);
 
   useEffect(() => {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -82,16 +98,17 @@ export default function Home() {
     };
   }, []);
   useEffect(() => {
-    const closeProfile = (event: KeyboardEvent) => { if (event.key === "Escape") setActivePerson(null); };
+    const closeProfile = (event: KeyboardEvent) => { if (event.key === "Escape") { setActivePerson(null); setActiveProject(null); } };
     window.addEventListener("keydown", closeProfile);
     return () => window.removeEventListener("keydown", closeProfile);
   }, []);
   useEffect(() => {
-    if (activePerson === null || !window.matchMedia("(max-width: 720px)").matches) return;
+    const mobileTeamProfileOpen = activePerson !== null && window.matchMedia("(max-width: 720px)").matches;
+    if (activeProject === null && !mobileTeamProfileOpen) return;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => { document.body.style.overflow = previousOverflow; };
-  }, [activePerson]);
+  }, [activePerson, activeProject]);
   const submit = (event: FormEvent<HTMLFormElement>) => { event.preventDefault(); setSent(true); };
   const closeMenu = () => setMenuOpen(false);
 
@@ -139,8 +156,9 @@ export default function Home() {
 
       <section className="section projects-section" id="projects">
         <div className="section-heading"><div className="section-label"><span>01</span> Проекты</div><h2>{clear ? "Что мы делаем" : <>Разные маршруты к самостоятель&shy;ности</>}</h2></div>
-        <div className="projects-grid">{projects.map((project) => <article className={`project-card ${project.tone}`} key={project.title}><span className="project-number">{project.number}</span><div><h3>{project.title}</h3><p>{clear ? project.clear : project.text}</p></div><a href="#feedback" aria-label={`Узнать подробнее о проекте ${project.title}`}>Подробнее <Arrow /></a></article>)}</div>
+        <div className="projects-grid">{projects.map((project, index) => <article className={`project-card ${project.tone}`} key={project.title}><span className="project-number">{project.number}</span><div><h3>{project.title}</h3><p>{clear ? project.clear : project.text}</p></div><button type="button" onClick={() => setActiveProject(index)} aria-label={`Узнать подробнее о проекте ${project.title}`}>Подробнее <Arrow /></button></article>)}</div>
       </section>
+      {activeProject !== null && <ProjectProfile project={projects[activeProject]} clear={clear} onClose={() => setActiveProject(null)} />}
 
       <section className="section team-section" id="team">
         <div className="section-heading"><div className="section-label"><span>02</span> Команда</div><h2>{clear ? "Люди, которые работают в клубе" : "Люди, которые идут рядом"}</h2></div>
