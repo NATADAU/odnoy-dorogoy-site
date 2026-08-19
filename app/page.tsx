@@ -113,10 +113,16 @@ export default function Home() {
     const root = document.querySelector("main");
     if (!root) return;
     const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
-    const shortWords = /(^|[\s\u00a0])(в|во|на|по|за|из|к|ко|с|со|о|об|от|до|для|при|без|под|над|у|про|и|а|но)\s+(?=[А-Яа-яЁёA-Za-z«“])/gi;
+    const shortWords = /(^|[\s\u00a0])([А-Яа-яЁё]{1,3})\s+(?=[А-Яа-яЁёA-Za-z«“])/g;
     let node = walker.nextNode();
     while (node) {
-      if (node.nodeValue) node.nodeValue = node.nodeValue.replace(shortWords, "$1$2\u00a0");
+      if (node.nodeValue) {
+        let previous = "";
+        while (previous !== node.nodeValue) {
+          previous = node.nodeValue;
+          node.nodeValue = node.nodeValue.replace(shortWords, "$1$2\u00a0");
+        }
+      }
       node = walker.nextNode();
     }
   }, [clear, activePerson, activeProject, sent, menuOpen]);
