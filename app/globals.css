@@ -55,3 +55,34 @@
 @media(max-width:1100px){.header{grid-template-columns:1fr auto}.nav{position:absolute;top:80px;right:0;left:0;display:none;flex-direction:column;align-items:start;padding:28px;background:var(--paper);border-bottom:1px solid rgba(23,23,21,.15)}.nav-open{display:flex}.menu-button{display:block}.hero{grid-template-columns:1fr}.hero-copy{min-height:720px}.hero-photo{min-height:76vw;margin:0 22px 22px}.intro,.reports-section{grid-template-columns:1fr 1.5fr}.intro .fact-card,.reports-section .report-links{grid-column:2}.team-grid,.projects-grid{grid-template-columns:repeat(2,1fr)}.registry-section{grid-template-columns:1fr}.registry-intro{position:static}.footer-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:720px){.header{min-height:70px;padding:10px 16px}.brand>span:last-child{display:none}.brand-mark{width:38px;height:38px}.language-switch button{padding:7px 9px;font-size:11px}.nav{top:70px}.hero-copy{min-height:670px;padding:70px 22px}.hero h1{font-size:clamp(50px,16vw,76px)}.hero-lead{margin-top:28px;font-size:17px}.hero-buttons{margin-top:30px}.button{width:100%}.hero-photo{min-height:120vw;margin:0 10px 10px;border-radius:22px}.photo-note{flex-direction:column;align-items:start}.photo-note strong{font-size:36px}.section{padding:78px 22px}.intro,.section-heading,.news-grid,.news-featured,.reports-section,.reviews-section,.feedback-section,.links-section{grid-template-columns:1fr}.intro-main,.reports-copy{margin-top:32px}.intro .fact-card,.reports-section .report-links{grid-column:auto}.team-grid,.projects-grid{grid-template-columns:1fr}.team-card,.project-card{min-height:370px}.team-section:before{width:60vw;right:-25vw}.inline-heading .text-link{justify-self:start;margin-top:25px}.news-featured{grid-row:auto}.news-image{min-height:85vw}.registry-stats{grid-template-columns:1fr}.registry-stats div{min-height:150px}.documents a{grid-template-columns:32px 1fr auto;min-height:86px}.review-stage{margin-top:45px}.quote-mark{left:-10px}.footer-grid{grid-template-columns:1fr}.footer-bottom{flex-direction:column}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.team-card,.project-card,.button,.text-link,.language-switch button,.documents a,.report-links a,.links-list a{transition:none}.ticker-track,.hero .eyebrow,.hero h1,.hero-lead,.hero-buttons,.hero-photo,.visual-words span,.hero-photo:before,.hero-photo:after{animation:none}.motion-ready .reveal{opacity:1;transform:none;transition:none}}
+
+/* Типографическая система: округлый плакатный шрифт, крупные масштабы и короткие акцентные строки. */
+:root{--display:"Arial Rounded MT Bold","Trebuchet MS",Inter,Arial,sans-serif}
+.eyebrow,.news-meta{width:max-content;padding:8px 13px;border:1px solid currentColor;border-radius:999px;font-size:11px}
+.hero h1{max-width:900px;font-family:var(--display);font-size:clamp(48px,6.3vw,108px);font-weight:700;line-height:.9;letter-spacing:-.035em;text-transform:uppercase;text-wrap:balance}
+.hero-line{display:block}.hero-line-accent{color:var(--coral);font-size:1.15em}.hero-line-shift{margin-left:clamp(0px,3vw,70px);font-size:.72em;line-height:1.08}
+.visual-words{font-family:var(--display);font-weight:700;letter-spacing:-.025em;text-transform:uppercase}.visual-words span:nth-child(2),.visual-words span:nth-child(4){color:#fff}
+.photo-note strong{max-width:360px;font-family:var(--display);font-size:clamp(30px,3.5vw,58px);font-weight:700;line-height:.94;letter-spacing:-.025em;text-transform:uppercase}
+.ticker{font-family:var(--display);font-size:clamp(16px,1.5vw,23px);font-weight:700;letter-spacing:.03em}.ticker-group{padding:20px 15px}.ticker i{font-size:1.4em;color:var(--coral)}
+.section-label{gap:10px;font-family:var(--display);font-size:13px;font-weight:700;letter-spacing:.08em}.section-label span{display:inline;width:auto;height:auto;border:0;border-radius:0;color:var(--coral);font-size:22px;line-height:1}.section-label span:after{content:"/";margin-left:3px}
+.section h2{font-family:var(--display);font-size:clamp(46px,6.8vw,108px);font-weight:700;line-height:.9;letter-spacing:-.025em;text-transform:uppercase;text-wrap:balance}
+.intro-main h2{font-size:clamp(52px,7.4vw,118px)}
+.fact-number{font-family:var(--display);font-size:clamp(58px,6vw,98px);font-weight:700;letter-spacing:-.035em;color:transparent;-webkit-text-stroke:2px var(--ink)}
+.section-heading{grid-template-columns:.42fr 1.58fr;margin-bottom:70px}
+.team-card h3,.project-card h3,.news-copy h3,.news-small h3{font-family:var(--display);font-weight:700;line-height:.94;letter-spacing:-.025em;text-transform:uppercase}
+.team-card h3{font-size:clamp(30px,2.8vw,46px)}
+.projects-section .section-heading h2{font-size:clamp(54px,8vw,128px);color:var(--coral)}
+.project-number{font-family:var(--display);font-size:18px;font-weight:700}.project-number:after{content:"/"}
+.project-card h3{font-size:clamp(30px,3vw,52px)}.project-card:nth-child(3n+2) h3{font-size:clamp(36px,3.5vw,60px)}
+.project-card a,.news-small a{text-transform:uppercase;letter-spacing:.06em}
+.news-section .section-heading h2{max-width:980px;font-size:clamp(56px,8.4vw,136px)}
+.news-copy h3,.news-small h3{font-size:clamp(28px,3vw,48px)}
+.registry-intro h2{font-size:clamp(46px,5.4vw,88px);color:var(--yellow)}
+.reports-copy h2{font-size:clamp(48px,5.4vw,88px);color:var(--coral)}
+.review-stage blockquote{font-family:var(--display);font-size:clamp(42px,6.2vw,98px);font-weight:700;line-height:.98;letter-spacing:-.025em;text-transform:uppercase}
+.feedback-copy h2{font-size:clamp(50px,6.2vw,100px)}
+.footer-title h2{font-family:var(--display);font-size:clamp(54px,8.5vw,138px);font-weight:700;line-height:.86;letter-spacing:-.03em;text-transform:uppercase}
+.clear-mode .hero h1,.clear-mode .section h2,.clear-mode .project-card h3,.clear-mode .team-card h3,.clear-mode .news-copy h3,.clear-mode .news-small h3,.clear-mode .review-stage blockquote,.clear-mode .footer-title h2{font-family:Inter,Arial,Helvetica,sans-serif;letter-spacing:-.035em;text-transform:none}.clear-mode .hero-line-shift{margin-left:0;font-size:1em}.clear-mode .hero-line-accent{font-size:1em}
+
+@media(max-width:1100px){.section-heading{grid-template-columns:.48fr 1.52fr}.hero-line-shift{margin-left:0}}
+@media(max-width:720px){.hero h1{font-size:clamp(45px,14vw,70px)}.hero-line-accent{font-size:1.06em}.hero-line-shift{font-size:.64em}.section-heading{grid-template-columns:1fr;margin-bottom:48px}.section h2,.intro-main h2,.projects-section .section-heading h2,.news-section .section-heading h2{font-size:clamp(42px,13vw,68px);line-height:.94}.section-label{margin-bottom:24px}.fact-number{-webkit-text-stroke-width:1.5px}.visual-words{font-size:clamp(24px,8vw,44px)}}
