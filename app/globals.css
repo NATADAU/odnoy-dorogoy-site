@@ -88,7 +88,7 @@
 @media(max-width:720px){.hero h1{font-size:clamp(45px,14vw,70px)}.hero-line-accent{font-size:1.06em}.hero-line-shift{font-size:.64em}.section-heading{grid-template-columns:1fr;margin-bottom:48px}.section h2,.intro-main h2,.projects-section .section-heading h2,.news-section .section-heading h2{font-size:clamp(42px,13vw,68px);line-height:.94}.section-label{margin-bottom:24px}.fact-number{-webkit-text-stroke-width:1.5px}.visual-words{font-size:clamp(24px,8vw,44px)}}
 
 /* Полная адаптивная шкала: ноутбук → планшет → узкий телефон. */
-.hero h1,.section h2,.team-card h3,.project-card h3,.news-copy h3,.news-small h3,.review-stage blockquote,.footer-title h2{max-width:100%;hyphens:auto}
+.hero h1,.section h2,.team-card h3,.project-card h3,.news-copy h3,.news-small h3,.review-stage blockquote,.footer-title h2{max-width:100%}
 @media(max-width:900px){
   .intro,.section-heading,.news-grid,.news-featured,.reports-section,.reviews-section,.feedback-section,.links-section{grid-template-columns:1fr}
   .intro .fact-card,.reports-section .report-links{grid-column:auto}
