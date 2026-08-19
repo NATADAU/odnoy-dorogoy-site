@@ -124,7 +124,7 @@ export default function Home() {
       </section>
 
       <section className="section projects-section" id="projects">
-        <div className="section-heading"><div className="section-label"><span>03</span> Проекты</div><h2>{clear ? "Что мы делаем" : "Разные маршруты к самостоятельности"}</h2></div>
+        <div className="section-heading"><div className="section-label"><span>03</span> Проекты</div><h2>{clear ? "Что мы делаем" : <>Разные маршруты к самостоятель&shy;ности</>}</h2></div>
         <div className="projects-grid">{projects.map((project) => <article className={`project-card ${project.tone}`} key={project.title}><span className="project-number">{project.number}</span><div><h3>{project.title}</h3><p>{clear ? project.clear : project.text}</p></div><a href="#feedback" aria-label={`Узнать подробнее о проекте ${project.title}`}>Подробнее <Arrow /></a></article>)}</div>
       </section>
 
