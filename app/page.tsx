@@ -19,13 +19,30 @@ const registryDocs = [
 ];
 
 const team = [
-  { initials: "СМ", name: "Сергей Матвеев", role: "Генеральный директор", bio: "Педагог физической культуры и детский тренер. Инструктор «Гонки Героев» и OCR-атлет.", clear: "Руководит организацией. Проводит спортивные занятия.", tone: "team-coral" },
-  { initials: "ИС", name: "Ирина Сухарникова", role: "Учредитель, координатор проектов", bio: "Социальный реабилитолог и инструктор по адаптивной физической культуре.", clear: "Придумывает и координирует проекты. Помогает участникам заниматься физкультурой.", tone: "team-yellow" },
-  { initials: "КМ", name: "Ксения Матвеева", role: "Социальный педагог, тренер", bio: "Педагог физической культуры и спорта. Организатор инклюзивных походов и спортивных мероприятий.", clear: "Проводит спортивные занятия и помогает организовывать походы.", tone: "team-mint" },
-  { initials: "ЕК", name: "Егор Кабайлов", role: "Инструктор по труду", bio: "Имеет высшее лингвистическое образование и профессиональную переподготовку по преподаванию английского языка.", clear: "Работает инструктором по труду.", tone: "team-blue" },
-  { initials: "АО", name: "Александра Осипова", role: "Музыкальный педагог", bio: "Логопед-дефектолог, педагог дошкольного образования и артист оркестра.", clear: "Проводит музыкальные и творческие занятия.", tone: "team-lavender" },
-  { initials: "АЗ", name: "Андрей Забавников", role: "Педагог-информатик", bio: "Системный администратор и руководитель клуба настольных игр.", clear: "Помогает работать с компьютером и проводит клуб настольных игр.", tone: "team-orange" },
+  { name: "Сергей Матвеев", role: "Генеральный директор", lead: "Спорт как путь к самостоятельности и уверенности в своих силах.", bio: "Педагог физической культуры и детский тренер. Инструктор «Гонки Героев» и OCR-атлет.", clear: "Руководит организацией. Проводит спортивные занятия.", areas: ["Руководство организацией", "Спортивные занятия", "Тренировки с препятствиями"], tone: "team-coral" },
+  { name: "Ирина Сухарникова", role: "Учредитель, координатор проектов", lead: "Социальная реабилитация, проекты и адаптивная физическая культура.", bio: "Социальный реабилитолог и инструктор по адаптивной физической культуре.", clear: "Придумывает и координирует проекты. Помогает участникам заниматься физкультурой.", areas: ["Координация проектов", "Социальная реабилитация", "Адаптивная физкультура"], tone: "team-yellow" },
+  { name: "Ксения Матвеева", role: "Социальный педагог, тренер", lead: "Спорт, инклюзивные походы и умение действовать вместе.", bio: "Педагог физической культуры и спорта. Организатор инклюзивных походов и спортивных мероприятий.", clear: "Проводит спортивные занятия и помогает организовывать походы.", areas: ["Физическая культура и спорт", "Инклюзивные походы", "Спортивные мероприятия"], tone: "team-mint" },
+  { name: "Егор Кабайлов", role: "Инструктор по труду", lead: "Трудовые занятия и поддержка в освоении новых навыков.", bio: "Имеет высшее лингвистическое образование и профессиональную переподготовку по преподаванию английского языка.", clear: "Работает инструктором по труду.", areas: ["Трудовые занятия", "Обучение новым навыкам", "Педагогическая работа"], tone: "team-blue" },
+  { name: "Александра Осипова", role: "Музыкальный педагог", lead: "Музыка, речь и творчество как пространство для развития.", bio: "Логопед-дефектолог, педагог дошкольного образования и артист оркестра.", clear: "Проводит музыкальные и творческие занятия.", areas: ["Музыкальные занятия", "Дошкольная педагогика", "Логопедическая поддержка"], tone: "team-lavender" },
+  { name: "Андрей Забавников", role: "Педагог-информатик", lead: "Цифровые навыки, общение и настольные игры.", bio: "Системный администратор и руководитель клуба настольных игр.", clear: "Помогает работать с компьютером и проводит клуб настольных игр.", areas: ["Компьютерные занятия", "Цифровые навыки", "Клуб настольных игр"], tone: "team-orange" },
 ];
+
+type TeamMember = (typeof team)[number];
+
+function TeamProfile({ person, index, clear, onClose, variant }: { person: TeamMember; index: number; clear: boolean; onClose: () => void; variant: "desktop" | "mobile" }) {
+  return (
+    <div className={`team-profile team-profile-${variant} ${person.tone}`} id={`team-profile-${index}`}>
+      <div className="team-profile-top"><span>{String(index + 1).padStart(2, "0")}/ профиль</span><button type="button" onClick={onClose}>Свернуть <span aria-hidden="true">×</span></button></div>
+      <div className="team-profile-grid">
+        <div className="team-profile-identity"><p>{person.role}</p><h3>{person.name}</h3><strong>{clear ? person.clear : person.lead}</strong></div>
+        <div className="team-profile-details">
+          {!clear && <div><span>Образование и опыт</span><p>{person.bio}</p></div>}
+          <div><span>{clear ? "Что делает" : "Направления работы"}</span><ul>{person.areas.map((area) => <li key={area}>{area}</li>)}</ul></div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function Arrow() { return <span aria-hidden="true">↗</span>; }
 
@@ -33,6 +50,7 @@ export default function Home() {
   const [clear, setClear] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [sent, setSent] = useState(false);
+  const [activePerson, setActivePerson] = useState<number | null>(null);
 
   useEffect(() => {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -62,6 +80,11 @@ export default function Home() {
       observer.disconnect();
       document.documentElement.classList.remove("motion-ready");
     };
+  }, []);
+  useEffect(() => {
+    const closeProfile = (event: KeyboardEvent) => { if (event.key === "Escape") setActivePerson(null); };
+    window.addEventListener("keydown", closeProfile);
+    return () => window.removeEventListener("keydown", closeProfile);
   }, []);
   const submit = (event: FormEvent<HTMLFormElement>) => { event.preventDefault(); setSent(true); };
   const closeMenu = () => setMenuOpen(false);
@@ -113,13 +136,28 @@ export default function Home() {
           <div className="section-label"><span>02</span> Команда</div>
           <h2>{clear ? "Люди, которые работают в клубе" : "Люди, которые идут рядом"}</h2>
         </div>
-        <div className="team-grid">
-          {team.map((person, index) => (
-            <article className={`team-card ${person.tone}`} key={person.name}>
-              <div className="team-top"><span className="team-index">{String(index + 1).padStart(2, "0")}</span><span className="team-avatar">{person.initials}</span></div>
-              <div><p className="team-role">{person.role}</p><h3>{person.name}</h3><p className="team-bio">{clear ? person.clear : person.bio}</p></div>
-            </article>
-          ))}
+        <div className="team-rows">
+          {Array.from({ length: Math.ceil(team.length / 2) }, (_, rowIndex) => {
+            const start = rowIndex * 2;
+            const pair = team.slice(start, start + 2);
+            const openInRow = activePerson !== null && Math.floor(activePerson / 2) === rowIndex;
+            return (
+              <div className="team-row" key={rowIndex}>
+                {pair.map((person, pairIndex) => {
+                  const index = start + pairIndex;
+                  const isOpen = activePerson === index;
+                  return <div className="team-card-wrap" key={person.name}>
+                    <button className={`team-card ${person.tone} ${isOpen ? "team-card-active" : ""}`} type="button" onClick={() => setActivePerson(isOpen ? null : index)} aria-expanded={isOpen} aria-controls={`team-profile-${index}`}>
+                      <div className="team-card-top"><span className="team-index">{String(index + 1).padStart(2, "0")}/</span><span className="team-card-action">{isOpen ? "Свернуть" : "Подробнее"} <i aria-hidden="true">{isOpen ? "×" : "+"}</i></span></div>
+                      <div><p className="team-role">{person.role}</p><h3>{person.name}</h3><p className="team-lead">{clear ? person.clear : person.lead}</p></div>
+                    </button>
+                    {isOpen && <TeamProfile person={person} index={index} clear={clear} onClose={() => setActivePerson(null)} variant="mobile" />}
+                  </div>;
+                })}
+                {openInRow && activePerson !== null && <TeamProfile person={team[activePerson]} index={activePerson} clear={clear} onClose={() => setActivePerson(null)} variant="desktop" />}
+              </div>
+            );
+          })}
         </div>
       </section>
 
