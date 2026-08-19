@@ -34,7 +34,7 @@ function ProjectProfile({ project, clear, onClose }: { project: Project; clear: 
   return (
     <div className="project-dialog-backdrop" role="presentation" onClick={onClose}>
       <section className={`project-dialog ${project.tone}`} role="dialog" aria-modal="true" aria-labelledby="project-dialog-title" onClick={(event) => event.stopPropagation()}>
-        <div className="project-dialog-top"><span>{project.number}/ проект</span><button type="button" onClick={onClose}>Закрыть <span aria-hidden="true">×</span></button></div>
+        <div className="project-dialog-top"><span>Проект клуба</span><button type="button" onClick={onClose}>Закрыть <span aria-hidden="true">×</span></button></div>
         <div className="project-dialog-grid">
           <div className="project-dialog-title"><span>{clear ? "Проект клуба" : "Подробнее о проекте"}</span><h3 id="project-dialog-title">{project.title}</h3></div>
           <div className="project-dialog-copy"><p>{clear ? project.clearDescription : project.description}</p><ul>{project.points.map((point) => <li key={point}>{point}</li>)}</ul><a className="button button-dark" href="#feedback" onClick={onClose}>{clear ? "Спросить об участии" : "Узнать об участии"} <Arrow /></a></div>
@@ -47,7 +47,7 @@ function ProjectProfile({ project, clear, onClose }: { project: Project; clear: 
 function TeamProfile({ person, index, clear, onClose, variant }: { person: TeamMember; index: number; clear: boolean; onClose: () => void; variant: "desktop" | "mobile" }) {
   return (
     <div className={`team-profile team-profile-${variant} ${person.tone}`} id={`team-profile-${variant}-${index}`} role={variant === "mobile" ? "dialog" : undefined} aria-modal={variant === "mobile" ? true : undefined} aria-label={`Профиль: ${person.name}`}>
-      <div className="team-profile-top"><span>{String(index + 1).padStart(2, "0")}/ профиль</span><button type="button" onClick={onClose}>Свернуть <span aria-hidden="true">×</span></button></div>
+      <div className="team-profile-top"><span>Профиль специалиста</span><button type="button" onClick={onClose}>Закрыть <span aria-hidden="true">×</span></button></div>
       <div className="team-profile-grid">
         <div className="team-profile-identity"><p>{person.role}</p><h3>{person.name}</h3><strong>{clear ? person.clear : person.lead}</strong></div>
         <div className="team-profile-details">
@@ -109,6 +109,17 @@ export default function Home() {
     document.body.style.overflow = "hidden";
     return () => { document.body.style.overflow = previousOverflow; };
   }, [activePerson, activeProject]);
+  useEffect(() => {
+    const root = document.querySelector("main");
+    if (!root) return;
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    const shortWords = /(^|[\s\u00a0])(в|во|на|по|за|из|к|ко|с|со|о|об|от|до|для|при|без|под|над|у|про|и|а|но)\s+(?=[А-Яа-яЁёA-Za-z«“])/gi;
+    let node = walker.nextNode();
+    while (node) {
+      if (node.nodeValue) node.nodeValue = node.nodeValue.replace(shortWords, "$1$2\u00a0");
+      node = walker.nextNode();
+    }
+  }, [clear, activePerson, activeProject, sent, menuOpen]);
   const submit = (event: FormEvent<HTMLFormElement>) => { event.preventDefault(); setSent(true); };
   const closeMenu = () => setMenuOpen(false);
 
@@ -125,7 +136,7 @@ export default function Home() {
             <button className={!clear ? "active" : ""} onClick={() => setClear(false)}>Обычный</button>
             <button className={clear ? "active" : ""} onClick={() => setClear(true)}>Ясный язык</button>
           </div>
-          <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-label="Открыть меню"><span /><span /></button>
+          <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"}><span /><span /></button>
         </div>
       </header>
 
@@ -138,7 +149,7 @@ export default function Home() {
         </div>
         <div className="hero-photo" role="img" aria-label="Цветная композиция о равных возможностях">
           <div className="visual-words"><span>сопровождение</span><span>развитие</span><span>реализация</span><span>равные возможности</span></div>
-          <div className="photo-note"><strong>Нам с вами по пути</strong><span>{clear ? "Мы рядом и готовы помочь" : "С 2019 года в городском округе Коломна"}</span></div>
+          <div className="photo-note"><strong>Нам с вами по пути</strong><span>{clear ? "Мы рядом и готовы помочь" : "Работаем в городском округе Коломна"}</span></div>
         </div>
       </section>
 
@@ -150,13 +161,13 @@ export default function Home() {
 
       <section className="section intro intro-compact" id="about">
         <div className="section-label section-label-muted">О клубе</div>
-        <div className="intro-main"><h2>{clear ? "Клуб, где можно быть собой" : "Обычная жизнь — с нужной поддержкой"}</h2><p>{clear ? "«Одной дорогой» — это социальный клуб в Коломне. Мы работаем с 2019 года. Наши специалисты помогают детям и взрослым с инвалидностью." : "АНО СК «Одной дорогой» создана специалистами по реабилитации и социальной адаптации. Мы помогаем детям и взрослым с инвалидностью учиться новому, находить друзей, раскрывать способности и становиться самостоятельнее."}</p><a className="text-link" href="#projects">Посмотреть проекты <Arrow /></a></div>
+        <div className="intro-main"><h2>{clear ? "Клуб, где можно быть собой" : "Обычная жизнь — с нужной поддержкой"}</h2><p>{clear ? "«Одной дорогой» — это социальный клуб в Коломне. Наши специалисты помогают детям и взрослым с инвалидностью." : "АНО СК «Одной дорогой» создана специалистами по реабилитации и социальной адаптации. Мы помогаем детям и взрослым с инвалидностью учиться новому, находить друзей, раскрывать способности и становиться самостоятельнее."}</p><a className="text-link" href="#projects">Посмотреть проекты <Arrow /></a></div>
         <div className="fact-card"><span className="fact-number">2019</span><span>{clear ? "год открытия клуба" : "год основания организации"}</span></div>
       </section>
 
       <section className="section projects-section" id="projects">
         <div className="section-heading"><div className="section-label"><span>01</span> Проекты</div><h2>{clear ? "Что мы делаем" : <>Разные маршруты к самостоятель&shy;ности</>}</h2></div>
-        <div className="projects-grid">{projects.map((project, index) => <article className={`project-card ${project.tone}`} key={project.title}><span className="project-number">{project.number}</span><div><h3>{project.title}</h3><p>{clear ? project.clear : project.text}</p></div><button type="button" onClick={() => setActiveProject(index)} aria-label={`Узнать подробнее о проекте ${project.title}`}>Подробнее <Arrow /></button></article>)}</div>
+        <div className="projects-grid">{projects.map((project, index) => <article className={`project-card ${project.tone}`} key={project.title}><div><h3>{project.title}</h3><p>{clear ? project.clear : project.text}</p></div><button type="button" onClick={() => setActiveProject(index)} aria-label={`Узнать подробнее о проекте ${project.title}`}>Подробнее <Arrow /></button></article>)}</div>
       </section>
       {activeProject !== null && <ProjectProfile project={projects[activeProject]} clear={clear} onClose={() => setActiveProject(null)} />}
 
@@ -171,7 +182,7 @@ export default function Home() {
               {pair.map((person, pairIndex) => {
                 const index = start + pairIndex;
                 const isOpen = activePerson === index;
-                return <div className="team-card-wrap" key={person.name}><button className={`team-card ${person.tone} ${isOpen ? "team-card-active" : ""}`} type="button" onClick={() => setActivePerson(isOpen ? null : index)} aria-expanded={isOpen} aria-controls={`team-profile-desktop-${index} team-profile-mobile-${index}`}><div className="team-card-top"><span className="team-index">{String(index + 1).padStart(2, "0")}/</span><span className="team-card-action">{isOpen ? "Свернуть" : "Подробнее"} <i aria-hidden="true">{isOpen ? "×" : "+"}</i></span></div><div><p className="team-role">{person.role}</p><h3>{person.name}</h3><p className="team-lead">{clear ? person.clear : person.lead}</p></div></button></div>;
+                return <div className="team-card-wrap" key={person.name}><button className={`team-card ${person.tone} ${isOpen ? "team-card-active" : ""}`} type="button" onClick={() => setActivePerson(isOpen ? null : index)} aria-expanded={isOpen} aria-controls={`team-profile-desktop-${index} team-profile-mobile-${index}`}><div className="team-card-top"><span className="team-card-action">{isOpen ? "Свернуть" : "Подробнее"} <i aria-hidden="true">{isOpen ? "×" : "+"}</i></span></div><div><p className="team-role">{person.role}</p><h3>{person.name}</h3><p className="team-lead">{clear ? person.clear : person.lead}</p></div></button></div>;
               })}
               {openInRow && activePerson !== null && <TeamProfile person={team[activePerson]} index={activePerson} clear={clear} onClose={() => setActivePerson(null)} variant="desktop" />}
             </div>;
