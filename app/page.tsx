@@ -175,7 +175,7 @@ export default function Home() {
         </div>
         <div className="hero-photo" role="img" aria-label="Цветная композиция о равных возможностях">
           <div className="visual-words"><span>сопровождение</span><span>развитие</span><span>реализация</span><span>равные возможности</span></div>
-          <div className="photo-note"><strong>Нам с вами по пути</strong><span>{clear ? "Мы рядом и готовы помочь" : "Работаем в городском округе Коломна"}</span></div>
+          <div className="photo-note"><strong className="accent-script">Нам с вами по пути</strong><span>{clear ? "Мы рядом и готовы помочь" : "Работаем в городском округе Коломна"}</span></div>
         </div>
       </section>
 
