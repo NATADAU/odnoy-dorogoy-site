@@ -60,7 +60,7 @@
 :root{--display:"Arial Rounded MT Bold","Trebuchet MS",Inter,Arial,sans-serif}
 .eyebrow,.news-meta{width:max-content;padding:8px 13px;border:1px solid currentColor;border-radius:999px;font-size:11px}
 .hero h1{max-width:900px;font-family:var(--display);font-size:clamp(48px,6.3vw,108px);font-weight:700;line-height:.9;letter-spacing:-.035em;text-transform:uppercase;text-wrap:balance}
-.hero-line{display:block;hyphens:none;overflow-wrap:normal;word-break:normal}.hero-line-accent{color:var(--coral);font-size:1.15em}.hero-line-shift{margin-left:clamp(0px,3vw,70px);font-size:.72em;line-height:1.08}
+.hero-line{display:block;hyphens:none;overflow-wrap:normal;word-break:normal}.hero-line-primary{font-size:.9em}.hero-line-accent{color:var(--coral);font-size:1.15em}.hero-line-shift{margin-left:clamp(0px,3vw,70px);font-size:.72em;line-height:1.08}
 .visual-words{font-family:var(--display);font-weight:700;letter-spacing:-.025em;text-transform:uppercase}.visual-words span:nth-child(2),.visual-words span:nth-child(4){color:#fff}
 .photo-note strong{max-width:360px;font-family:var(--display);font-size:clamp(30px,3.5vw,58px);font-weight:700;line-height:.94;letter-spacing:-.025em;text-transform:uppercase}
 .ticker{font-family:var(--display);font-size:clamp(16px,1.5vw,23px);font-weight:700;letter-spacing:.03em}.ticker-group{padding:20px 15px}.ticker i{font-size:1.4em;color:var(--coral)}
@@ -400,14 +400,12 @@ p,blockquote,.team-profile-details,.project-dialog-copy{text-wrap:pretty}
 @media(prefers-reduced-motion:reduce){.motion-ready .news-card.reveal{opacity:1;transform:none;transition:none}}
 
 /* Mobile rhythm: compact, readable and free of accidental word breaks. */
-.hero-conjunction{display:inline}
 @media(max-width:720px){
   .hero-copy{min-height:auto;justify-content:flex-start;padding:22px 18px 42px}
   .hero .eyebrow{margin-bottom:18px}
   .hero-lead{margin-top:24px}
   .hero-buttons{margin-top:24px}
-  .hero-conjunction{display:none}
-  .hero-line-shift::before{content:"и\00a0"}
+  .hero-line-primary{font-size:.82em}
   .hero-photo{min-height:clamp(310px,88vw,410px);margin:0 10px 10px}
   .photo-note{right:18px;bottom:18px;left:18px;gap:10px;padding-top:14px}
   .photo-note strong{font-size:clamp(28px,8vw,34px)}
