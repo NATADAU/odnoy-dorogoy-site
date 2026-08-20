@@ -519,7 +519,7 @@ p,blockquote,.team-profile-details,.project-dialog-copy{text-wrap:pretty}
 }
 
 .hero h1{max-width:780px;font-size:var(--type-hero);line-height:.91}
-.hero-line-primary{font-size:.84em}.hero-line-accent{font-size:1.06em}.hero-line-shift{font-size:.55em;line-height:1.08}
+.hero-line-primary{font-size:.84em}.hero-line-accent{font-size:1.06em}.hero-line-shift{font-family:var(--font-body),Arial,sans-serif;font-size:.66em;font-weight:650;line-height:1.04;letter-spacing:-.05em}
 .section h2,.intro-main h2{font-size:var(--type-section);line-height:.95}
 .intro-main h2{max-width:860px}
 
@@ -546,7 +546,7 @@ p,blockquote,.team-profile-details,.project-dialog-copy{text-wrap:pretty}
   :root{--type-hero:clamp(43px,13.4vw,52px);--type-section:clamp(35px,10.8vw,42px);--type-service:clamp(32px,9.8vw,38px);--type-card:clamp(30px,9.5vw,36px)}
   .site{--mobile-section:54px}
 
-  .hero h1{font-size:var(--type-hero);line-height:.93}.hero-line-primary{font-size:.8em}.hero-line-accent{font-size:1.02em}.hero-line-shift{font-size:.54em}
+  .hero h1{font-size:var(--type-hero);line-height:.93}.hero-line-primary{font-size:.8em}.hero-line-accent{font-size:1.02em}.hero-line-shift{font-size:.66em}
   .section h2,.intro-main h2,.team-section .section-heading h2{font-size:var(--type-section);line-height:.98}
 
   .projects-section .section-heading h2{font-family:var(--font-body),Arial,sans-serif;font-size:clamp(31px,9.5vw,36px);font-weight:650;line-height:1.02;letter-spacing:-.035em;color:var(--coral)}
