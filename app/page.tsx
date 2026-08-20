@@ -162,7 +162,7 @@ export default function Home() {
 
       <section className="hero" id="top">
         <div className="hero-copy">
-          <p className="eyebrow">Автономная некоммерческая организация · Коломна</p>
+          <p className="eyebrow">АНО СК «Одной дорогой» · Коломна</p>
           <h1 className="hero-title">{clear ? <><span className="hero-line">Мы идём</span>{" "}<span className="hero-line hero-line-accent">одной дорогой</span></> : <><span className="hero-line hero-line-primary">Активная жизнь.</span>{" "}<span className="hero-line hero-line-accent">Больше</span>{" "}<span className="hero-line hero-line-shift">самостоятельности.</span></>}</h1>
           <p className="hero-lead">{clear ? "Здесь люди с инвалидностью учатся новому, занимаются спортом, творчеством и встречаются с друзьями." : "Сопровождаем людей с инвалидностью и их близких: развиваем самостоятельность, создаём возможности для общения, спорта, творчества и обычной жизни."}</p>
           <div className="hero-buttons"><a className="button button-dark" href="#projects">{clear ? "Посмотреть занятия" : "Наши проекты"} <Arrow /></a><a className="button button-light" href="#feedback">{clear ? "Задать вопрос" : "Связаться с нами"}</a></div>
