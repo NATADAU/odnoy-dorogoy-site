@@ -191,13 +191,13 @@ export default function Home() {
       </section>
 
       <section className="section projects-section" id="projects">
-        <div className="section-heading"><div className="section-label"><span>01</span> Проекты</div><h2>{clear ? "Что мы делаем" : <>Разные маршруты к самостоятель&shy;ности</>}</h2></div>
+        <div className="section-heading"><div className="section-label">Проекты</div><h2>{clear ? "Что мы делаем" : <>Разные маршруты к самостоятель&shy;ности</>}</h2></div>
         <div className="projects-grid">{projects.map((project, index) => <article className={`project-card ${project.tone}`} key={project.title}><div><h3>{project.title}</h3><p>{clear ? project.clear : project.text}</p></div><button type="button" onClick={() => setActiveProject(index)} aria-label={`Узнать подробнее о проекте ${project.title}`}>Подробнее <Arrow /></button></article>)}</div>
       </section>
       {activeProject !== null && <ProjectProfile project={projects[activeProject]} clear={clear} onClose={() => setActiveProject(null)} />}
 
       <section className="section team-section" id="team">
-        <div className="section-heading"><div className="section-label"><span>02</span> Команда</div><h2>{clear ? "Люди, которые работают в клубе" : "Люди, которые идут рядом"}</h2></div>
+        <div className="section-heading"><div className="section-label">Команда</div><h2>{clear ? "Люди, которые работают в клубе" : "Люди, которые идут рядом"}</h2></div>
         <div className="team-rows">
           {Array.from({ length: Math.ceil(team.length / 2) }, (_, rowIndex) => {
             const start = rowIndex * 2;
@@ -240,12 +240,12 @@ export default function Home() {
       <section className="section reviews-section reviews-compact" id="reviews"><div className="section-label section-label-muted">Отзывы</div><div className="review-stage"><blockquote>{clear ? "Скоро здесь будут отзывы участников клуба и их близких." : "Здесь появятся подлинные голоса участников, родителей и партнёров организации."}</blockquote><p>Раздел будет дополнен после согласования публикации отзывов.</p></div></section>
 
       <section className="section feedback-section" id="feedback">
-        <div className="feedback-copy"><div className="section-label"><span>03</span> Обратная связь</div><h2>{clear ? "Напишите нам" : "Давайте обсудим, чем мы можем помочь"}</h2><p>{clear ? "Заполните форму. Мы ответим вам по телефону или электронной почте." : "Задайте вопрос о программах, социальных услугах или сотрудничестве. Мы свяжемся с вами удобным способом."}</p></div>
-        {sent ? <div className="success-message" role="status"><strong>Спасибо!</strong><span>{clear ? "Мы получили ваше сообщение." : "Форма в макете работает. На следующем этапе подключим отправку сообщений."}</span><button className="text-link" onClick={() => setSent(false)}>Отправить ещё одно сообщение</button></div> : <form className="feedback-form" onSubmit={submit}><label>Как к вам обращаться?<input name="name" placeholder="Имя" required /></label><label>Как с вами связаться?<input name="contact" placeholder="Телефон или электронная почта" required /></label><label>Ваш вопрос<textarea name="message" placeholder="Напишите несколько слов" rows={4} required /></label><label className="consent"><input type="checkbox" required /> <span>Я согласен(на) на обработку персональных данных</span></label><button className="button button-dark" type="submit">Отправить <Arrow /></button></form>}
+        <div className="feedback-copy"><div className="section-label">Обратная связь</div><h2>{clear ? "Напишите нам" : "Давайте обсудим, чем мы можем помочь"}</h2><p>{clear ? "Заполните форму. Мы ответим вам по телефону или электронной почте." : "Задайте вопрос о программах, социальных услугах или сотрудничестве. Мы свяжемся с вами удобным способом."}</p></div>
+        {sent ? <div className="success-message" role="status"><strong>Спасибо!</strong><span>{clear ? "Мы получили ваше сообщение." : "Форма в макете работает. На следующем этапе подключим отправку сообщений."}</span><button className="text-link" onClick={() => setSent(false)}>Отправить ещё одно сообщение</button></div> : <form className="feedback-form" onSubmit={submit}><label>Как к вам обращаться?<input name="name" placeholder="Имя" required /></label><label>Как с вами связаться?<input name="contact" placeholder="Телефон или электронная почта" required /></label><label>Ваш вопрос<textarea name="message" placeholder="Напишите несколько слов" rows={3} required /></label><label className="consent"><input type="checkbox" required /> <span>Я согласен(на) на обработку персональных данных</span></label><button className="button button-dark" type="submit">Отправить <Arrow /></button></form>}
       </section>
 
       <section className="section transparency-section" id="registry">
-        <div className="transparency-heading"><div className="section-label"><span>04</span> Документы и открытость</div><h2>{clear ? "Документы организации" : "Открытая информация — компактно и понятно"}</h2><p>{clear ? "Здесь собраны документы и отчёты организации." : "Соцреестр, публичные отчёты и полезные ресурсы собраны в одном сервисном разделе и не отвлекают от главной истории клуба."}</p></div>
+        <div className="transparency-heading"><div className="section-label">Документы и открытость</div><h2>{clear ? "Документы организации" : "Открытая информация — компактно и понятно"}</h2><p>{clear ? "Здесь собраны документы и отчёты организации." : "Соцреестр, публичные отчёты и полезные ресурсы собраны в одном сервисном разделе и не отвлекают от главной истории клуба."}</p></div>
         <div className="transparency-grid">
           <div className="transparency-register">
             <div className="transparency-title"><span>Соцреестр</span><a className="button button-light" href="https://onewaysc.ru/" target="_blank" rel="noreferrer">Открыть полный реестр <Arrow /></a></div>

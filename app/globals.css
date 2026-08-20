@@ -278,3 +278,25 @@ p,blockquote,.team-profile-details,.project-dialog-copy{text-wrap:pretty}
   .team-carousel-status{gap:10px}
 }
 @media(prefers-reduced-motion:reduce){.team-carousel-status>i>b{transition:none}}
+
+/* Обратная связь — компактный сервисный раздел, а не главный цветовой акцент. */
+.feedback-section{gap:clamp(36px,6vw,92px);padding-top:clamp(64px,7vw,104px);padding-bottom:clamp(64px,7vw,104px);border-top:1px solid rgba(23,23,21,.14);border-bottom:1px solid rgba(23,23,21,.14);background:#f1eee7}
+.feedback-copy .section-label{margin-bottom:24px;color:rgba(23,23,21,.62)}
+.feedback-copy h2{font-size:clamp(40px,4.5vw,72px);line-height:.96}
+.feedback-copy p{max-width:540px;margin-top:22px;font-size:16px;line-height:1.55}
+.feedback-form{gap:18px}
+.feedback-form label{gap:7px;font-size:12px}
+.feedback-form input,.feedback-form textarea{padding:11px 0;font-size:18px}
+.feedback-form textarea{min-height:92px}
+.feedback-form .button{min-height:50px}
+.success-message{min-height:260px;padding:30px}
+@media(max-width:720px){
+  .feedback-section{gap:30px;padding-top:54px;padding-bottom:58px}
+  .feedback-copy .section-label{margin-bottom:18px}
+  .feedback-copy h2{font-size:clamp(34px,10.5vw,44px);line-height:1}
+  .feedback-copy p{margin-top:18px;font-size:15px}
+  .feedback-form{gap:16px}
+  .feedback-form input,.feedback-form textarea{padding:10px 0;font-size:17px}
+  .feedback-form textarea{min-height:82px}
+  .feedback-form .consent{font-size:12px;line-height:1.35}
+}
