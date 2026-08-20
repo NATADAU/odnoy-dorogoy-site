@@ -1,6 +1,6 @@
 "use client";
 
-import { cloneElement, FormEvent, isValidElement, ReactElement, ReactNode, useEffect, useState } from "react";
+import { cloneElement, FormEvent, isValidElement, ReactElement, ReactNode, useEffect, useRef, useState } from "react";
 
 function protectShortWords(text: string) {
   const shortWords = /(^|[\s\u00a0])([А-Яа-яЁё]{1,3})\s+(?=[А-Яа-яЁёA-Za-z«“])/g;
@@ -87,6 +87,8 @@ export default function Home() {
   const [sent, setSent] = useState(false);
   const [activePerson, setActivePerson] = useState<number | null>(null);
   const [activeProject, setActiveProject] = useState<number | null>(null);
+  const [teamSlide, setTeamSlide] = useState(0);
+  const teamCarouselRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -131,6 +133,20 @@ export default function Home() {
   }, [activePerson, activeProject]);
   const submit = (event: FormEvent<HTMLFormElement>) => { event.preventDefault(); setSent(true); };
   const closeMenu = () => setMenuOpen(false);
+  const updateTeamSlide = () => {
+    const track = teamCarouselRef.current;
+    if (!track) return;
+    const cards = Array.from(track.querySelectorAll<HTMLElement>(".team-card-wrap"));
+    const closest = cards.reduce((best, card, index) => Math.abs(card.offsetLeft - track.scrollLeft) < Math.abs(cards[best].offsetLeft - track.scrollLeft) ? index : best, 0);
+    setTeamSlide(closest);
+  };
+  const moveTeamSlide = (direction: -1 | 1) => {
+    const next = Math.min(team.length - 1, Math.max(0, teamSlide + direction));
+    const track = teamCarouselRef.current;
+    const card = track?.querySelectorAll<HTMLElement>(".team-card-wrap")[next];
+    if (track && card) track.scrollTo({ left: card.offsetLeft, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+    setTeamSlide(next);
+  };
 
   return typographize(
     <main className={clear ? "site clear-mode" : "site"}>
@@ -196,6 +212,18 @@ export default function Home() {
               {openInRow && activePerson !== null && <TeamProfile person={team[activePerson]} index={activePerson} clear={clear} onClose={() => setActivePerson(null)} variant="desktop" />}
             </div>;
           })}
+        </div>
+        <div className="team-carousel">
+          <div className="team-carousel-track" ref={teamCarouselRef} onScroll={updateTeamSlide} aria-label="Специалисты клуба">
+            {team.map((person, index) => {
+              const isOpen = activePerson === index;
+              return <div className="team-card-wrap" key={person.name}><button className={`team-card ${person.tone} ${isOpen ? "team-card-active" : ""}`} type="button" onClick={() => setActivePerson(isOpen ? null : index)} aria-expanded={isOpen} aria-controls={`team-profile-mobile-${index}`}><div className="team-card-top"><span className="team-card-action">Подробнее <i aria-hidden="true">+</i></span></div><div><p className="team-role">{person.role}</p><h3>{person.name}</h3><p className="team-lead">{clear ? person.clear : person.lead}</p></div></button></div>;
+            })}
+          </div>
+          <div className="team-carousel-footer">
+            <div className="team-carousel-status"><span aria-live="polite">{String(teamSlide + 1).padStart(2, "0")} / {String(team.length).padStart(2, "0")}</span><i><b style={{ width: `${((teamSlide + 1) / team.length) * 100}%` }} /></i></div>
+            <div className="team-carousel-controls"><button type="button" onClick={() => moveTeamSlide(-1)} disabled={teamSlide === 0} aria-label="Предыдущий специалист">←</button><button type="button" onClick={() => moveTeamSlide(1)} disabled={teamSlide === team.length - 1} aria-label="Следующий специалист">→</button></div>
+          </div>
         </div>
       </section>
       {activePerson !== null && <TeamProfile person={team[activePerson]} index={activePerson} clear={clear} onClose={() => setActivePerson(null)} variant="mobile" />}

@@ -248,3 +248,31 @@ p,blockquote,.team-profile-details,.project-dialog-copy{text-wrap:pretty}
   .project-card{min-height:295px;padding:22px;gap:22px}
   .team-card{min-height:228px;padding:21px 22px;gap:18px}
 }
+
+/* Команда: на мобильном — спокойная ручная карусель вместо длинной вертикальной ленты. */
+.team-carousel{display:none}
+@media(max-width:720px){
+  .team-rows{display:none}
+  .team-carousel{display:block;min-width:0}
+  .team-carousel-track{display:grid;grid-auto-flow:column;grid-auto-columns:86%;align-items:stretch;gap:14px;overflow-x:auto;padding:4px 14% 14px 0;scroll-padding-left:0;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .team-carousel-track::-webkit-scrollbar{display:none}
+  .team-carousel .team-card-wrap{height:100%;scroll-snap-align:start;scroll-snap-stop:always}
+  .team-carousel .team-card{height:100%;min-height:270px;padding:24px;gap:22px}
+  .team-carousel .team-card:hover{transform:none;box-shadow:none}
+  .team-carousel .team-card h3{font-size:clamp(28px,8.5vw,36px);line-height:1.02}
+  .team-carousel .team-lead{display:-webkit-box;overflow:hidden;margin-top:15px;font-size:14px;line-height:1.48;-webkit-box-orient:vertical;-webkit-line-clamp:3}
+  .team-carousel-footer{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:14px}
+  .team-carousel-status{display:flex;min-width:0;flex:1;align-items:center;gap:14px;font-size:11px;font-weight:700;letter-spacing:.08em}
+  .team-carousel-status>span{white-space:nowrap}
+  .team-carousel-status>i{position:relative;display:block;width:min(190px,100%);height:2px;overflow:hidden;background:rgba(23,23,21,.18)}
+  .team-carousel-status>i>b{position:absolute;inset:0 auto 0 0;background:var(--ink);transition:width .3s ease}
+  .team-carousel-controls{display:flex;gap:8px}
+  .team-carousel-controls button{display:grid;width:44px;height:44px;place-items:center;border:1px solid rgba(23,23,21,.35);border-radius:50%;background:transparent;color:var(--ink);cursor:pointer;font-size:19px}
+  .team-carousel-controls button:disabled{cursor:default;opacity:.28}
+}
+@media(max-width:420px){
+  .team-carousel-track{grid-auto-columns:88%;padding-right:12%}
+  .team-carousel .team-card{min-height:260px;padding:22px}
+  .team-carousel-status{gap:10px}
+}
+@media(prefers-reduced-motion:reduce){.team-carousel-status>i>b{transition:none}}
