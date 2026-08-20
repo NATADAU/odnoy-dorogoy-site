@@ -401,7 +401,7 @@ p,blockquote,.team-profile-details,.project-dialog-copy{text-wrap:pretty}
 /* Mobile rhythm: compact, readable and free of accidental word breaks. */
 @media(max-width:720px){
   .hero-copy{min-height:auto;justify-content:flex-start;padding:22px 18px 42px}
-  .hero .eyebrow{margin-bottom:18px}
+  .hero .eyebrow{width:auto;max-width:100%;margin-bottom:18px;white-space:normal}
   .hero-lead{margin-top:24px}
   .hero-buttons{margin-top:24px}
   .hero-line-primary{font-size:.82em}
