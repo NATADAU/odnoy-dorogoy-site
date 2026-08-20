@@ -398,3 +398,49 @@ p,blockquote,.team-profile-details,.project-dialog-copy{text-wrap:pretty}
   .news-card{min-height:196px;padding:20px}
 }
 @media(prefers-reduced-motion:reduce){.motion-ready .news-card.reveal{opacity:1;transform:none;transition:none}}
+
+/* Mobile rhythm: compact, readable and free of accidental word breaks. */
+.hero-conjunction{display:inline}
+@media(max-width:720px){
+  .hero-copy{min-height:auto;justify-content:flex-start;padding:22px 18px 42px}
+  .hero .eyebrow{margin-bottom:18px}
+  .hero-lead{margin-top:24px}
+  .hero-buttons{margin-top:24px}
+  .hero-conjunction{display:none}
+  .hero-line-shift::before{content:"и\00a0"}
+  .hero-photo{min-height:clamp(310px,88vw,410px);margin:0 10px 10px}
+  .photo-note{right:18px;bottom:18px;left:18px;gap:10px;padding-top:14px}
+  .photo-note strong{font-size:clamp(28px,8vw,34px)}
+  .ticker-group{padding-top:15px;padding-bottom:15px}
+
+  .intro-compact{row-gap:0;padding-top:40px;padding-bottom:46px}
+  .intro-compact .section-label{margin-bottom:14px}
+  .intro-compact .intro-main{margin-top:0}
+  .intro-compact .intro-main h2{font-size:clamp(34px,10vw,40px);line-height:1;overflow-wrap:normal}
+  .intro-compact .intro-main p{margin:20px 0 22px;font-size:16px;line-height:1.55}
+  .intro-compact .fact-card{width:max-content;max-width:100%;align-self:start;flex-direction:row;align-items:baseline;gap:9px;margin-top:22px;padding:9px 13px;border-radius:999px}
+  .intro-compact .fact-number{font-size:25px;line-height:1;-webkit-text-stroke-width:.9px}
+  .intro-compact .fact-card>span:last-child{font-size:10px;line-height:1.2}
+
+  .projects-section{padding-top:52px;padding-bottom:56px}
+  .projects-section .section-heading{margin-bottom:30px}
+  .projects-section .section-heading h2{font-size:clamp(29px,9vw,38px);line-height:.96;overflow-wrap:normal;word-break:normal;hyphens:none}
+  .projects-section .heading-line{white-space:nowrap}
+  .projects-grid{gap:12px}
+  .project-card{min-height:292px;padding:22px;gap:18px}
+
+  .team-section{padding-top:48px;padding-bottom:52px}
+  .team-section .section-heading{margin-bottom:28px}
+  .news-section{padding-top:46px;padding-bottom:50px}
+  .news-section .section-heading{margin-bottom:24px}
+  .reviews-compact{padding-top:30px;padding-bottom:32px}
+  .transparency-section{padding-top:48px;padding-bottom:52px}
+  .transparency-heading{margin-bottom:28px}
+  .feedback-section{padding-top:46px;padding-bottom:50px}
+  .footer{padding-top:54px}
+  .footer-title{margin-bottom:42px}
+  .footer-grid{padding-top:26px;padding-bottom:54px}
+}
+@media(max-width:420px){
+  .project-card{min-height:278px;padding:20px}
+}
