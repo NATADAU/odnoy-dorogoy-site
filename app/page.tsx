@@ -87,35 +87,6 @@ export default function Home() {
   const teamCarouselRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (reducedMotion.matches) return;
-
-    const elements = document.querySelectorAll(
-      ".section, .team-card, .project-card, .news-card, .documents a, .report-links a, .links-list a"
-    );
-
-    document.documentElement.classList.add("motion-ready");
-    elements.forEach((element) => element.classList.add("reveal"));
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -6% 0px" }
-    );
-
-    elements.forEach((element) => observer.observe(element));
-    return () => {
-      observer.disconnect();
-      document.documentElement.classList.remove("motion-ready");
-    };
-  }, []);
-  useEffect(() => {
     const closeProfile = (event: KeyboardEvent) => { if (event.key === "Escape") { setActivePerson(null); setActiveProject(null); } };
     window.addEventListener("keydown", closeProfile);
     return () => window.removeEventListener("keydown", closeProfile);
@@ -208,8 +179,6 @@ export default function Home() {
           <article className="news-card news-card-community"><span className="news-meta">Сообщество</span><h3>{clear ? "Новости — в нашей группе" : "Жизнь клуба — во ВКонтакте"}</h3><p>{clear ? "Там мы рассказываем о занятиях и встречах." : "Ежедневные события, фотографии и анонсы организации."}</p><a href="https://vk.com/club_oneway" target="_blank" rel="noreferrer">Перейти во ВКонтакте <Arrow /></a></article>
         </div>
       </section>
-
-      <section className="section reviews-section reviews-compact" id="reviews"><div className="section-label section-label-muted">Отзывы</div><div className="review-placeholder"><p>{clear ? "Скоро здесь будут отзывы участников клуба и их близких." : "Отзывы участников, родителей и партнёров появятся после согласования публикации."}</p><span>{clear ? "Мы добавим их позже." : "Раздел подготовлен для подлинных историй, без временных демонстрационных цитат."}</span></div></section>
 
       <section className="section transparency-section" id="registry">
         <div className="transparency-heading"><div className="section-label">Документы и открытость</div><h2>{clear ? "Документы организации" : "Открытая информация — компактно и понятно"}</h2><p>{clear ? "Здесь собраны документы и отчёты организации." : "Соцреестр, публичные отчёты и полезные ресурсы собраны в одном сервисном разделе и не отвлекают от главной истории клуба."}</p></div>
