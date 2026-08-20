@@ -1,6 +1,26 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
+import { cloneElement, FormEvent, isValidElement, ReactElement, ReactNode, useEffect, useState } from "react";
+
+function protectShortWords(text: string) {
+  const shortWords = /(^|[\s\u00a0])([А-Яа-яЁё]{1,3})\s+(?=[А-Яа-яЁёA-Za-z«“])/g;
+  let result = text;
+  let previous = "";
+  while (previous !== result) {
+    previous = result;
+    result = result.replace(shortWords, "$1$2\u00a0");
+  }
+  return result;
+}
+
+function typographize(node: ReactNode): ReactNode {
+  if (typeof node === "string") return protectShortWords(node);
+  if (Array.isArray(node)) return node.map(typographize);
+  if (isValidElement<{ children?: ReactNode }>(node) && node.props.children !== undefined) {
+    return cloneElement(node, undefined, typographize(node.props.children));
+  }
+  return node;
+}
 
 const projects = [
   { number: "01", title: "Дома лучше", text: "Учебное сопровождаемое проживание: взрослые с нарушениями развития учатся самостоятельной жизни в тренировочной квартире.", description: "Программа сопровождаемого проживания в тренировочных квартирах, где взрослые с нарушениями развития при поддержке социальных работников учатся самостоятельной жизни. Сопровождаемое проживание направлено на социальную адаптацию и является альтернативой государственным закрытым учреждениям социальной защиты.", clear: "Мы учимся жить самостоятельно: готовить, убирать, делать покупки и планировать свой день.", clearDescription: "Взрослые люди живут в тренировочной квартире. Рядом есть специалисты. Они помогают учиться готовить, убирать, делать покупки и планировать дела.", points: ["Взрослые с нарушениями развития", "Тренировочная квартира", "Поддержка социальных работников"], tone: "coral" },
@@ -31,7 +51,7 @@ type TeamMember = (typeof team)[number];
 type Project = (typeof projects)[number];
 
 function ProjectProfile({ project, clear, onClose }: { project: Project; clear: boolean; onClose: () => void }) {
-  return (
+  return typographize(
     <div className="project-dialog-backdrop" role="presentation" onClick={onClose}>
       <section className={`project-dialog ${project.tone}`} role="dialog" aria-modal="true" aria-labelledby="project-dialog-title" onClick={(event) => event.stopPropagation()}>
         <div className="project-dialog-top"><span>Проект клуба</span><button type="button" onClick={onClose}>Закрыть <span aria-hidden="true">×</span></button></div>
@@ -41,11 +61,11 @@ function ProjectProfile({ project, clear, onClose }: { project: Project; clear: 
         </div>
       </section>
     </div>
-  );
+  ) as ReactElement;
 }
 
 function TeamProfile({ person, index, clear, onClose, variant }: { person: TeamMember; index: number; clear: boolean; onClose: () => void; variant: "desktop" | "mobile" }) {
-  return (
+  return typographize(
     <div className={`team-profile team-profile-${variant} ${person.tone}`} id={`team-profile-${variant}-${index}`} role={variant === "mobile" ? "dialog" : undefined} aria-modal={variant === "mobile" ? true : undefined} aria-label={`Профиль: ${person.name}`}>
       <div className="team-profile-top"><span>Профиль специалиста</span><button type="button" onClick={onClose}>Закрыть <span aria-hidden="true">×</span></button></div>
       <div className="team-profile-grid">
@@ -56,7 +76,7 @@ function TeamProfile({ person, index, clear, onClose, variant }: { person: TeamM
         </div>
       </div>
     </div>
-  );
+  ) as ReactElement;
 }
 
 function Arrow() { return <span aria-hidden="true">↗</span>; }
@@ -109,27 +129,10 @@ export default function Home() {
     document.body.style.overflow = "hidden";
     return () => { document.body.style.overflow = previousOverflow; };
   }, [activePerson, activeProject]);
-  useEffect(() => {
-    const root = document.querySelector("main");
-    if (!root) return;
-    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
-    const shortWords = /(^|[\s\u00a0])([А-Яа-яЁё]{1,3})\s+(?=[А-Яа-яЁёA-Za-z«“])/g;
-    let node = walker.nextNode();
-    while (node) {
-      if (node.nodeValue) {
-        let previous = "";
-        while (previous !== node.nodeValue) {
-          previous = node.nodeValue;
-          node.nodeValue = node.nodeValue.replace(shortWords, "$1$2\u00a0");
-        }
-      }
-      node = walker.nextNode();
-    }
-  }, [clear, activePerson, activeProject, sent, menuOpen]);
   const submit = (event: FormEvent<HTMLFormElement>) => { event.preventDefault(); setSent(true); };
   const closeMenu = () => setMenuOpen(false);
 
-  return (
+  return typographize(
     <main className={clear ? "site clear-mode" : "site"}>
       <header className="header">
         <a className="brand" href="#top" aria-label="Одной дорогой — на главную"><span className="brand-mark">ОД</span><span>Одной дорогой</span></a>
@@ -231,5 +234,5 @@ export default function Home() {
 
       <footer className="footer" id="contacts"><div className="footer-title"><span className="brand-mark inverse">ОД</span><h2>{clear ? "Мы рядом" : "Нам с вами по пути"}</h2></div><div className="footer-grid"><div><span>Позвонить</span><a href="tel:+79774457314">+7 977 445-73-14</a></div><div><span>Написать</span><a href="mailto:onewaysc@yandex.ru">onewaysc@yandex.ru</a></div><div><span>Прийти</span><p>Коломна, ул. Астахова, д. 2, помещение 19</p></div><div><span>Время работы</span><p>Ежедневно, 10:00—18:00</p></div></div><div className="footer-bottom"><span>© АНО СК «Одной дорогой»</span><a href="#registry">Документы и политика конфиденциальности</a><a href="#top">Наверх ↑</a></div></footer>
     </main>
-  );
+  ) as ReactElement;
 }
