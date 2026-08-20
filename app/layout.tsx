@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Marck_Script, Unbounded } from "next/font/google";
+import { Caveat, Inter, Unbounded } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -14,9 +14,9 @@ const unbounded = Unbounded({
   variable: "--font-display",
 });
 
-const marckScript = Marck_Script({
+const caveat = Caveat({
   subsets: ["latin", "cyrillic"],
-  weight: "400",
+  weight: "variable",
   variable: "--font-script",
 });
 
@@ -27,5 +27,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="ru" className={`${inter.variable} ${unbounded.variable} ${marckScript.variable}`}><body>{children}</body></html>;
+  return <html lang="ru" className={`${inter.variable} ${unbounded.variable} ${caveat.variable}`}><body>{children}</body></html>;
 }

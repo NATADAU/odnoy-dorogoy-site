@@ -186,7 +186,7 @@
 /* Кириллическая типографика и окончательная настройка визуальной иерархии. */
 body{font-family:var(--font-body),Arial,sans-serif;font-kerning:normal;font-feature-settings:"kern" 1,"liga" 1}
 .hero h1,.section h2,.project-card h3,.team-card h3,.news-copy h3,.news-small h3,.review-stage blockquote,.footer-title h2,.photo-note strong,.visual-words{font-family:var(--display);text-transform:none;letter-spacing:-.04em}
-.site:not(.clear-mode) .accent-script{font-family:var(--font-script),cursive;font-weight:400;letter-spacing:-.01em;text-transform:none}.site.clear-mode .accent-script{font-family:var(--font-body),Arial,sans-serif;font-weight:700}
+.site:not(.clear-mode) .accent-script{font-family:var(--font-script),cursive;font-size:clamp(36px,4vw,64px);font-weight:600;line-height:.9;letter-spacing:-.02em;text-transform:none}.site.clear-mode .accent-script{font-family:var(--font-body),Arial,sans-serif;font-weight:700}
 .team-card h3,.team-profile-identity h3{font-family:var(--font-body),Arial,sans-serif}
 .hero h1,.section h2,.project-card h3,.team-card h3,.news-copy h3,.news-small h3,.footer-title h2{text-wrap:balance}
 p,blockquote,.team-profile-details,.project-dialog-copy{text-wrap:pretty}
