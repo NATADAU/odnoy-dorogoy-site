@@ -169,7 +169,7 @@
 .project-dialog-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(42px,7vw,100px);padding-top:48px}.project-dialog-title>span{display:block;margin-bottom:18px;color:rgba(23,23,21,.62);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}.project-dialog-title h3{max-width:700px;margin:0;font-family:var(--display);font-size:clamp(54px,7.4vw,112px);font-weight:700;line-height:.87;letter-spacing:-.035em;text-transform:none}.project-dialog-copy{align-self:end}.project-dialog-copy>p{margin:0;padding-top:18px;border-top:1px solid rgba(23,23,21,.3);font-size:clamp(18px,1.7vw,23px);line-height:1.55}.project-dialog-copy ul{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0;padding:0;list-style:none}.project-dialog-copy li{padding:10px 13px;border:1px solid rgba(23,23,21,.35);border-radius:999px;font-size:13px}.project-dialog-copy .button{width:100%}
 @keyframes project-backdrop-open{from{opacity:0}to{opacity:1}}@keyframes project-dialog-open{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:none}}
 @media(max-width:800px){.project-dialog-backdrop{padding:0}.project-dialog{width:100%;height:100%;max-height:none;border:0;border-radius:0;padding-top:max(24px,env(safe-area-inset-top))}.project-dialog-grid{grid-template-columns:1fr;gap:34px;padding-top:34px}.project-dialog-title h3{font-size:clamp(45px,14vw,76px)}.project-dialog:before{position:fixed;width:76%;right:-30%}}
-@media(max-width:540px){.project-dialog{padding-right:20px;padding-left:20px}.project-dialog-top{align-items:flex-start}.project-dialog-copy>p{font-size:17px}.project-dialog-copy ul{display:grid}.project-dialog-copy li{border-radius:14px}}
+@media(max-width:540px){.project-dialog{overflow-x:hidden;padding-right:20px;padding-left:20px}.project-dialog-grid,.project-dialog-title,.project-dialog-copy{min-width:0}.project-dialog-top{align-items:flex-start}.project-dialog-title h3{font-size:clamp(33px,10.6vw,44px);line-height:.94;overflow-wrap:normal;word-break:normal;hyphens:none}.project-dialog-copy>p{max-width:100%;font-size:17px;overflow-wrap:break-word}.project-dialog-copy ul{display:grid;grid-template-columns:minmax(0,1fr);width:100%}.project-dialog-copy li{min-width:0;max-width:100%;border-radius:14px;overflow-wrap:break-word}.project-dialog-copy .button{min-width:0;gap:16px;padding-right:18px;padding-left:18px}}
 
 /* Информационная иерархия: главные, поддерживающие и сервисные секции. */
 .section-label-muted{color:rgba(23,23,21,.58)}
@@ -307,6 +307,7 @@ p,blockquote,.team-profile-details,.project-dialog-copy{text-wrap:pretty}
 
 .projects-section{padding-top:clamp(92px,9vw,142px);padding-bottom:clamp(92px,9vw,142px)}
 .projects-section .section-heading h2{font-size:clamp(58px,7.2vw,108px);font-weight:720;line-height:.9;letter-spacing:-.045em}
+.projects-section .heading-line:first-child{font-size:.82em}
 .projects-section .heading-line:last-child{font-size:.72em;line-height:1.08}
 .project-card h3,.project-card:nth-child(3n+2) h3{font-weight:650}
 .project-card.coral{background:#ff826f}.project-card.mint{background:#c8ead9}.project-card.yellow{background:#f4d978}.project-card.blue{background:#acd9ef}.project-card.lavender{background:#cec1eb}.project-card.orange{background:#f4b377}
