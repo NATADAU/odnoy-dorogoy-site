@@ -64,15 +64,17 @@ function ProjectProfile({ project, clear, onClose }: { project: Project; clear: 
   ) as ReactElement;
 }
 
-function TeamProfile({ person, index, clear, onClose, variant }: { person: TeamMember; index: number; clear: boolean; onClose: () => void; variant: "desktop" | "mobile" }) {
+function TeamProfile({ person, index, clear, onClose }: { person: TeamMember; index: number; clear: boolean; onClose: () => void }) {
   return typographize(
-    <div className={`team-profile team-profile-${variant} ${person.tone}`} id={`team-profile-${variant}-${index}`} role={variant === "mobile" ? "dialog" : undefined} aria-modal={variant === "mobile" ? true : undefined} aria-label={`Профиль: ${person.name}`}>
-      <div className="team-profile-top"><span>Профиль специалиста</span><button type="button" onClick={onClose}>Закрыть <span aria-hidden="true">×</span></button></div>
-      <div className="team-profile-grid">
-        <div className="team-profile-identity"><p>{person.role}</p><h3>{person.name}</h3><strong>{clear ? person.clear : person.lead}</strong></div>
-        <div className="team-profile-details">
-          {!clear && <div><span>Образование и опыт</span>{person.bio.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>}
-          <div><span>{clear ? "Что делает" : "Направления работы"}</span><ul>{person.areas.map((area) => <li key={area}>{area}</li>)}</ul></div>
+    <div className="team-profile-backdrop" role="presentation" onClick={onClose}>
+      <div className={`team-profile team-profile-dialog ${person.tone}`} id={`team-profile-${index}`} role="dialog" aria-modal="true" aria-label={`Профиль: ${person.name}`} onClick={(event) => event.stopPropagation()}>
+        <div className="team-profile-top"><span>Профиль специалиста</span><button type="button" onClick={onClose}>Закрыть <span aria-hidden="true">×</span></button></div>
+        <div className="team-profile-grid">
+          <div className="team-profile-identity"><p>{person.role}</p><h3>{person.name}</h3><strong>{clear ? person.clear : person.lead}</strong></div>
+          <div className="team-profile-details">
+            {!clear && <div><span>Образование и опыт</span>{person.bio.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>}
+            <div><span>{clear ? "Что делает" : "Направления работы"}</span><ul>{person.areas.map((area) => <li key={area}>{area}</li>)}</ul></div>
+          </div>
         </div>
       </div>
     </div>
@@ -125,8 +127,7 @@ export default function Home() {
     return () => window.removeEventListener("keydown", closeProfile);
   }, []);
   useEffect(() => {
-    const mobileTeamProfileOpen = activePerson !== null && window.matchMedia("(max-width: 720px)").matches;
-    if (activeProject === null && !mobileTeamProfileOpen) return;
+    if (activeProject === null && activePerson === null) return;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => { document.body.style.overflow = previousOverflow; };
@@ -168,19 +169,13 @@ export default function Home() {
       <section className="hero" id="top">
         <div className="hero-copy">
           <p className="eyebrow">Социальный клуб · Коломна</p>
-          <h1 className="hero-title">{clear ? <><span className="hero-line">Мы идём</span><span className="hero-line hero-line-accent">одной дорогой</span></> : <><span className="hero-line hero-line-primary">Активная жизнь.</span><span className="hero-line hero-line-accent">Больше</span><span className="hero-line hero-line-shift">самостоятельности.</span></>}</h1>
+          <h1 className="hero-title">{clear ? <><span className="hero-line">Мы идём</span>{" "}<span className="hero-line hero-line-accent">одной дорогой</span></> : <><span className="hero-line hero-line-primary">Активная жизнь.</span>{" "}<span className="hero-line hero-line-accent">Больше</span>{" "}<span className="hero-line hero-line-shift">самостоятельности.</span></>}</h1>
           <p className="hero-lead">{clear ? "Здесь люди с инвалидностью учатся новому, занимаются спортом, творчеством и встречаются с друзьями." : "Сопровождаем людей с инвалидностью и их близких: развиваем самостоятельность, создаём возможности для общения, спорта, творчества и обычной жизни."}</p>
           <div className="hero-buttons"><a className="button button-dark" href="#projects">{clear ? "Посмотреть занятия" : "Наши проекты"} <Arrow /></a><a className="button button-light" href="#feedback">{clear ? "Задать вопрос" : "Связаться с нами"}</a></div>
         </div>
         <div className="hero-photo" role="img" aria-label="Цветная композиция о равных возможностях">
           <div className="visual-words"><span>сопровождение</span><span>развитие</span><span>реализация</span><span>равные возможности</span></div>
           <div className="photo-note"><strong>Нам с вами по пути</strong><span>{clear ? "Мы рядом и готовы помочь" : "Работаем в городском округе Коломна"}</span></div>
-        </div>
-      </section>
-
-      <section className="ticker" aria-label="Направления работы">
-        <div className="ticker-track">
-          {[0, 1].map((copy) => <div className="ticker-group" aria-hidden={copy === 1} key={copy}><span>сопровождение</span><i>•</i><span>самостоятельность</span><i>•</i><span>спорт</span><i>•</i><span>творчество</span><i>•</i><span>общение</span><i>•</i></div>)}
         </div>
       </section>
 
@@ -198,35 +193,18 @@ export default function Home() {
 
       <section className="section team-section" id="team">
         <div className="section-heading"><div className="section-label">Команда</div><h2>{clear ? "Люди, которые работают в клубе" : "Люди, которые идут рядом"}</h2></div>
-        <div className="team-rows">
-          {Array.from({ length: Math.ceil(team.length / 2) }, (_, rowIndex) => {
-            const start = rowIndex * 2;
-            const pair = team.slice(start, start + 2);
-            const openInRow = activePerson !== null && Math.floor(activePerson / 2) === rowIndex;
-            return <div className="team-row" key={rowIndex}>
-              {pair.map((person, pairIndex) => {
-                const index = start + pairIndex;
-                const isOpen = activePerson === index;
-                return <div className="team-card-wrap" key={person.name}><button className={`team-card ${person.tone} ${isOpen ? "team-card-active" : ""}`} type="button" onClick={() => setActivePerson(isOpen ? null : index)} aria-expanded={isOpen} aria-controls={`team-profile-desktop-${index} team-profile-mobile-${index}`}><div className="team-card-top"><span className="team-card-action">{isOpen ? "Свернуть" : "Подробнее"} <i aria-hidden="true">{isOpen ? "×" : "+"}</i></span></div><div><p className="team-role">{person.role}</p><h3>{person.name}</h3><p className="team-lead">{clear ? person.clear : person.lead}</p></div></button></div>;
-              })}
-              {openInRow && activePerson !== null && <TeamProfile person={team[activePerson]} index={activePerson} clear={clear} onClose={() => setActivePerson(null)} variant="desktop" />}
-            </div>;
+        <div className="team-list" ref={teamCarouselRef} onScroll={updateTeamSlide} aria-label="Специалисты клуба">
+          {team.map((person, index) => {
+            const isOpen = activePerson === index;
+            return <div className="team-card-wrap" key={person.name}><button className={`team-card ${person.tone} ${isOpen ? "team-card-active" : ""}`} type="button" onClick={() => setActivePerson(isOpen ? null : index)} aria-expanded={isOpen} aria-controls={`team-profile-${index}`}><div className="team-card-top"><span className="team-card-action">Подробнее <i aria-hidden="true">+</i></span></div><div><p className="team-role">{person.role}</p><h3>{person.name}</h3><p className="team-lead">{clear ? person.clear : person.lead}</p></div></button></div>;
           })}
         </div>
-        <div className="team-carousel">
-          <div className="team-carousel-track" ref={teamCarouselRef} onScroll={updateTeamSlide} aria-label="Специалисты клуба">
-            {team.map((person, index) => {
-              const isOpen = activePerson === index;
-              return <div className="team-card-wrap" key={person.name}><button className={`team-card ${person.tone} ${isOpen ? "team-card-active" : ""}`} type="button" onClick={() => setActivePerson(isOpen ? null : index)} aria-expanded={isOpen} aria-controls={`team-profile-mobile-${index}`}><div className="team-card-top"><span className="team-card-action">Подробнее <i aria-hidden="true">+</i></span></div><div><p className="team-role">{person.role}</p><h3>{person.name}</h3><p className="team-lead">{clear ? person.clear : person.lead}</p></div></button></div>;
-            })}
-          </div>
-          <div className="team-carousel-footer">
-            <div className="team-carousel-status"><span aria-live="polite">{String(teamSlide + 1).padStart(2, "0")} / {String(team.length).padStart(2, "0")}</span><i><b style={{ width: `${((teamSlide + 1) / team.length) * 100}%` }} /></i></div>
-            <div className="team-carousel-controls"><button type="button" onClick={() => moveTeamSlide(-1)} disabled={teamSlide === 0} aria-label="Предыдущий специалист">←</button><button type="button" onClick={() => moveTeamSlide(1)} disabled={teamSlide === team.length - 1} aria-label="Следующий специалист">→</button></div>
-          </div>
+        <div className="team-carousel-footer">
+          <div className="team-carousel-status"><span aria-live="polite">{String(teamSlide + 1).padStart(2, "0")} / {String(team.length).padStart(2, "0")}</span><i><b style={{ width: `${((teamSlide + 1) / team.length) * 100}%` }} /></i></div>
+          <div className="team-carousel-controls"><button type="button" onClick={() => moveTeamSlide(-1)} disabled={teamSlide === 0} aria-label="Предыдущий специалист">←</button><button type="button" onClick={() => moveTeamSlide(1)} disabled={teamSlide === team.length - 1} aria-label="Следующий специалист">→</button></div>
         </div>
       </section>
-      {activePerson !== null && <TeamProfile person={team[activePerson]} index={activePerson} clear={clear} onClose={() => setActivePerson(null)} variant="mobile" />}
+      {activePerson !== null && <TeamProfile person={team[activePerson]} index={activePerson} clear={clear} onClose={() => setActivePerson(null)} />}
 
       <section className="section news-section" id="news">
         <div className="section-heading inline-heading"><div><div className="section-label section-label-muted">Новости</div><h2>{clear ? "Что нового в клубе" : "Новости клуба"}</h2></div><a className="text-link" href="https://vk.com/club_oneway" target="_blank" rel="noreferrer">Все новости во ВКонтакте <Arrow /></a></div>
