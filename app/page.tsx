@@ -95,7 +95,7 @@ export default function Home() {
     if (reducedMotion.matches) return;
 
     const elements = document.querySelectorAll(
-      ".section, .team-card, .project-card, .news-featured, .news-small, .documents a, .report-links a, .links-list a"
+      ".section, .team-card, .project-card, .news-card, .documents a, .report-links a, .links-list a"
     );
 
     document.documentElement.classList.add("motion-ready");
@@ -191,7 +191,7 @@ export default function Home() {
       </section>
 
       <section className="section projects-section" id="projects">
-        <div className="section-heading"><div className="section-label">Проекты</div><h2>{clear ? "Что мы делаем" : <>Разные маршруты к самостоятель&shy;ности</>}</h2></div>
+        <div className="section-heading"><div className="section-label">Проекты</div><h2>{clear ? "Что мы делаем" : <><span className="heading-line">Разные маршруты</span><span className="heading-line">к самостоятельности</span></>}</h2></div>
         <div className="projects-grid">{projects.map((project, index) => <article className={`project-card ${project.tone}`} key={project.title}><div><h3>{project.title}</h3><p>{clear ? project.clear : project.text}</p></div><button type="button" onClick={() => setActiveProject(index)} aria-label={`Узнать подробнее о проекте ${project.title}`}>Подробнее <Arrow /></button></article>)}</div>
       </section>
       {activeProject !== null && <ProjectProfile project={projects[activeProject]} clear={clear} onClose={() => setActiveProject(null)} />}
@@ -229,15 +229,15 @@ export default function Home() {
       {activePerson !== null && <TeamProfile person={team[activePerson]} index={activePerson} clear={clear} onClose={() => setActivePerson(null)} variant="mobile" />}
 
       <section className="section news-section" id="news">
-        <div className="section-heading inline-heading"><div><div className="section-label section-label-muted">Новости</div><h2>{clear ? "Что нового в клубе" : "События и живые истории"}</h2></div><a className="text-link" href="https://vk.com/club_oneway" target="_blank" rel="noreferrer">Все новости во ВКонтакте <Arrow /></a></div>
-        <div className="news-grid">
-          <article className="news-featured"><div className="news-image"><span>Жизнь клуба</span></div><div className="news-copy"><span className="news-meta">Новая публикация</span><h3>{clear ? "Здесь будет главная новость" : "Здесь появится главная история месяца"}</h3><p>{clear ? "Мы добавим короткий текст и фотографию." : "Блок готов для новостей о занятиях, событиях и достижениях участников."}</p></div></article>
-          <article className="news-small"><span className="news-meta">Анонс</span><h3>{clear ? "Ближайшие занятия" : "Расписание ближайших открытых событий"}</h3><p>{clear ? "Здесь можно узнать дату, время и место." : "Короткий анонс с датой, местом и понятным способом записаться."}</p><a href="#feedback">Узнать первым <Arrow /></a></article>
-          <article className="news-small dark-card"><span className="news-meta">Сообщество</span><h3>{clear ? "Больше новостей — в нашей группе" : "Следите за ежедневной жизнью клуба"}</h3><a href="https://vk.com/club_oneway" target="_blank" rel="noreferrer">Перейти во ВКонтакте <Arrow /></a></article>
+        <div className="section-heading inline-heading"><div><div className="section-label section-label-muted">Новости</div><h2>{clear ? "Что нового в клубе" : "Новости клуба"}</h2></div><a className="text-link" href="https://vk.com/club_oneway" target="_blank" rel="noreferrer">Все новости во ВКонтакте <Arrow /></a></div>
+        <div className="news-grid news-compact-grid">
+          <article className="news-card news-card-featured"><span className="news-meta">Главная публикация</span><h3>{clear ? "Главная новость клуба" : "Главная история месяца"}</h3><p>{clear ? "Здесь будет короткая новость и фотография." : "Место для важной новости о занятиях, событиях или достижениях участников."}</p><a href="https://vk.com/club_oneway" target="_blank" rel="noreferrer">Все публикации <Arrow /></a></article>
+          <article className="news-card"><span className="news-meta">Анонс</span><h3>{clear ? "Ближайшие занятия" : "Расписание открытых событий"}</h3><p>{clear ? "Здесь можно узнать дату, время и место." : "Короткий анонс с датой, местом и понятным способом записаться."}</p><a href="#feedback">Узнать первым <Arrow /></a></article>
+          <article className="news-card news-card-community"><span className="news-meta">Сообщество</span><h3>{clear ? "Новости — в нашей группе" : "Жизнь клуба — во ВКонтакте"}</h3><p>{clear ? "Там мы рассказываем о занятиях и встречах." : "Ежедневные события, фотографии и анонсы организации."}</p><a href="https://vk.com/club_oneway" target="_blank" rel="noreferrer">Перейти во ВКонтакте <Arrow /></a></article>
         </div>
       </section>
 
-      <section className="section reviews-section reviews-compact" id="reviews"><div className="section-label section-label-muted">Отзывы</div><div className="review-stage"><blockquote>{clear ? "Скоро здесь будут отзывы участников клуба и их близких." : "Здесь появятся подлинные голоса участников, родителей и партнёров организации."}</blockquote><p>Раздел будет дополнен после согласования публикации отзывов.</p></div></section>
+      <section className="section reviews-section reviews-compact" id="reviews"><div className="section-label section-label-muted">Отзывы</div><div className="review-placeholder"><p>{clear ? "Скоро здесь будут отзывы участников клуба и их близких." : "Отзывы участников, родителей и партнёров появятся после согласования публикации."}</p><span>{clear ? "Мы добавим их позже." : "Раздел подготовлен для подлинных историй, без временных демонстрационных цитат."}</span></div></section>
 
       <section className="section transparency-section" id="registry">
         <div className="transparency-heading"><div className="section-label">Документы и открытость</div><h2>{clear ? "Документы организации" : "Открытая информация — компактно и понятно"}</h2><p>{clear ? "Здесь собраны документы и отчёты организации." : "Соцреестр, публичные отчёты и полезные ресурсы собраны в одном сервисном разделе и не отвлекают от главной истории клуба."}</p></div>
