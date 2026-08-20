@@ -508,3 +508,67 @@ p,blockquote,.team-profile-details,.project-dialog-copy{text-wrap:pretty}
   .projects-section .section-heading h2{font-size:39px}.projects-section .heading-line:last-child{font-size:.64em}
   .project-card h3,.project-card:nth-child(3n+2) h3{font-size:31px}
 }
+
+
+/* Финальная типографическая редактура: роль элемента определяет размер, а не длина текста. */
+:root{
+  --type-hero:clamp(64px,6.2vw,88px);
+  --type-section:clamp(46px,4.7vw,66px);
+  --type-service:clamp(40px,4vw,56px);
+  --type-card:clamp(32px,3vw,42px);
+}
+
+.hero h1{max-width:780px;font-size:var(--type-hero);line-height:.91}
+.hero-line-primary{font-size:.84em}.hero-line-accent{font-size:1.06em}.hero-line-shift{font-size:.55em;line-height:1.08}
+.section h2,.intro-main h2{font-size:var(--type-section);line-height:.95}
+.intro-main h2{max-width:860px}
+
+.projects-section .section-heading h2{max-width:920px;font-size:var(--type-section);font-weight:680;line-height:.94;color:var(--coral)}
+.projects-section .heading-line:first-child,.projects-section .heading-line:last-child{margin:0;font-size:1em;font-weight:inherit;line-height:inherit;color:inherit;white-space:normal}
+.project-card h3,.project-card:nth-child(3n+2) h3{font-size:var(--type-card);font-weight:650;line-height:.98}
+
+.team-section .section-heading h2{max-width:870px;font-size:var(--type-section);font-weight:620;line-height:.95}
+.team-card h3{font-size:clamp(27px,2.35vw,34px);line-height:1.02}
+.news-section .section-heading h2{font-size:var(--type-service);line-height:.97}
+.news-card h3{font-size:clamp(28px,2.45vw,36px);line-height:1}
+
+.transparency-heading h2{max-width:860px;font-size:var(--type-service);line-height:.97}
+.transparency-panel h3{font-size:clamp(32px,3.2vw,46px);line-height:.98}
+.feedback-copy h2{font-size:var(--type-service);line-height:.98}
+.footer-title h2{font-size:clamp(50px,5.5vw,76px);line-height:.94}
+
+.intro-compact{padding-top:clamp(76px,7vw,106px);padding-bottom:clamp(76px,7vw,106px)}
+.projects-section,.team-section{padding-top:clamp(84px,8vw,118px);padding-bottom:clamp(84px,8vw,118px)}
+.news-section,.transparency-section,.feedback-section{padding-top:clamp(70px,7vw,98px);padding-bottom:clamp(70px,7vw,98px)}
+.section-heading,.transparency-heading{margin-bottom:50px}
+
+@media(max-width:720px){
+  :root{--type-hero:clamp(43px,13.4vw,52px);--type-section:clamp(35px,10.8vw,42px);--type-service:clamp(32px,9.8vw,38px);--type-card:clamp(30px,9.5vw,36px)}
+  .site{--mobile-section:54px}
+
+  .hero h1{font-size:var(--type-hero);line-height:.93}.hero-line-primary{font-size:.8em}.hero-line-accent{font-size:1.02em}.hero-line-shift{font-size:.54em}
+  .section h2,.intro-main h2,.team-section .section-heading h2{font-size:var(--type-section);line-height:.98}
+
+  .projects-section .section-heading h2{font-family:var(--font-body),Arial,sans-serif;font-size:clamp(31px,9.5vw,36px);font-weight:650;line-height:1.02;letter-spacing:-.035em;color:var(--coral)}
+  .projects-section .heading-line:first-child,.projects-section .heading-line:last-child{margin:0;font-size:1em;font-weight:inherit;line-height:inherit;color:inherit;white-space:normal}
+  .projects-section .heading-line:last-child{margin-top:3px}
+  .project-card h3,.project-card:nth-child(3n+2) h3{font-size:var(--type-card);line-height:1}
+
+  .team-list .team-card h3{font-size:clamp(28px,8.8vw,33px)}
+  .news-section .section-heading h2,.transparency-heading h2,.feedback-copy h2{font-size:var(--type-service);line-height:1}
+  .news-card h3{font-size:clamp(27px,8.4vw,32px)}
+  .transparency-panel h3{font-size:clamp(29px,9vw,34px)}
+  .footer-title h2{font-size:clamp(34px,10.5vw,40px)}
+
+  .intro-compact{padding-top:48px;padding-bottom:52px}
+  .projects-section,.team-section{padding-top:56px;padding-bottom:60px}
+  .news-section,.transparency-section,.feedback-section{padding-top:52px;padding-bottom:56px}
+  .section-heading,.transparency-heading{margin-bottom:34px}
+
+  .project-dialog-title h3,.team-profile-dialog .team-profile-identity h3{font-size:clamp(32px,10vw,39px);line-height:1}
+}
+
+@media(max-width:340px){
+  .projects-section .section-heading h2{font-size:30px}
+  .project-card h3,.project-card:nth-child(3n+2) h3{font-size:29px}
+}
