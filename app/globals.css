@@ -549,7 +549,7 @@ p,blockquote,.team-profile-details,.project-dialog-copy{text-wrap:pretty}
   .hero h1{font-size:var(--type-hero);line-height:.93}.hero-line-primary{font-size:.8em}.hero-line-accent{font-size:1.02em}.hero-line-shift{font-size:.66em}
   .section h2,.intro-main h2,.team-section .section-heading h2{font-size:var(--type-section);line-height:.98}
 
-  .projects-section .section-heading h2{font-family:var(--font-body),Arial,sans-serif;font-size:clamp(31px,9.5vw,36px);font-weight:650;line-height:1.02;letter-spacing:-.035em;color:var(--coral)}
+  .projects-section .section-heading h2{font-family:var(--display);font-size:var(--type-section);font-weight:650;line-height:.98;letter-spacing:-.035em;color:var(--coral)}
   .projects-section .heading-line:first-child,.projects-section .heading-line:last-child{margin:0;font-size:1em;font-weight:inherit;line-height:inherit;color:inherit;white-space:normal}
   .projects-section .heading-line:last-child{margin-top:3px}
   .project-card h3,.project-card:nth-child(3n+2) h3{font-size:var(--type-card);line-height:1}
@@ -569,6 +569,6 @@ p,blockquote,.team-profile-details,.project-dialog-copy{text-wrap:pretty}
 }
 
 @media(max-width:340px){
-  .projects-section .section-heading h2{font-size:30px}
+  .projects-section .section-heading h2{font-size:var(--type-section)}
   .project-card h3,.project-card:nth-child(3n+2) h3{font-size:29px}
 }
