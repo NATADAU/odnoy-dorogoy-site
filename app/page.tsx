@@ -151,7 +151,7 @@ export default function Home() {
       </section>
 
       <section className="section projects-section" id="projects">
-        <div className="section-heading"><div className="section-label">Проекты</div><h2>{clear ? "Что мы делаем" : <><span className="heading-line">Разные маршруты</span><span className="heading-line">к самостоятельности</span></>}</h2></div>
+        <div className="section-heading"><div className="section-label">Проекты</div><h2>{clear ? "Что мы делаем" : "Чтобы в жизни было больше возможностей"}</h2></div>
         <div className="projects-grid">{projects.map((project, index) => <article className={`project-card ${project.tone}`} key={project.title}><div><h3>{project.title}</h3><p>{clear ? project.clear : project.text}</p></div><button type="button" onClick={() => setActiveProject(index)} aria-label={`Узнать подробнее о проекте ${project.title}`}>Подробнее <Arrow /></button></article>)}</div>
       </section>
       {activeProject !== null && <ProjectProfile project={projects[activeProject]} clear={clear} onClose={() => setActiveProject(null)} />}
