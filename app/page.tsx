@@ -151,7 +151,7 @@ export default function Home() {
   return typographize(
     <main className={clear ? "site clear-mode" : "site"}>
       <header className="header">
-        <a className="brand" href="#top" aria-label="Одной дорогой — на главную"><span className="brand-mark">ОД</span><span>Одной дорогой</span></a>
+        <a className="brand" href="#top" aria-label="Одной дорогой — на главную"><img className="brand-logo" src="./logo-oneway.png" alt="" /><span>Одной дорогой</span></a>
         <nav className={menuOpen ? "nav nav-open" : "nav"} aria-label="Основная навигация">
           <a href="#about" onClick={closeMenu}>О нас</a><a href="#projects" onClick={closeMenu}>Проекты</a><a href="#team" onClick={closeMenu}>Команда</a>
           <a href="#news" onClick={closeMenu}>Новости</a><a href="#registry" onClick={closeMenu}>Документы</a><a href="#contacts" onClick={closeMenu}>Контакты</a>
@@ -260,7 +260,7 @@ export default function Home() {
         {sent ? <div className="success-message" role="status"><strong>Спасибо!</strong><span>{clear ? "Мы получили ваше сообщение." : "Форма в макете работает. На следующем этапе подключим отправку сообщений."}</span><button className="text-link" onClick={() => setSent(false)}>Отправить ещё одно сообщение</button></div> : <form className="feedback-form" onSubmit={submit}><label>Как к вам обращаться?<input name="name" placeholder="Имя" required /></label><label>Как с вами связаться?<input name="contact" placeholder="Телефон или электронная почта" required /></label><label>Ваш вопрос<textarea name="message" placeholder="Напишите несколько слов" rows={3} required /></label><label className="consent"><input type="checkbox" required /> <span>Я согласен(на) на обработку персональных данных</span></label><button className="button button-dark" type="submit">Отправить <Arrow /></button></form>}
       </section>
 
-      <footer className="footer" id="contacts"><div className="footer-title"><span className="brand-mark inverse">ОД</span><h2>{clear ? "Мы рядом" : "Нам с вами по пути"}</h2></div><div className="footer-grid"><div><span>Позвонить</span><a href="tel:+79774457314">+7 977 445-73-14</a></div><div><span>Написать</span><a href="mailto:onewaysc@yandex.ru">onewaysc@yandex.ru</a></div><div><span>Прийти</span><p>Коломна, ул. Астахова, д. 2, помещение 19</p></div><div><span>Время работы</span><p>Ежедневно, 10:00—18:00</p></div></div><div className="footer-bottom"><span>© АНО СК «Одной дорогой»</span><a href="#registry">Документы и политика конфиденциальности</a><a href="#top">Наверх ↑</a></div></footer>
+      <footer className="footer" id="contacts"><div className="footer-title"><img className="footer-logo" src="./logo-oneway.png" alt="Логотип социального клуба «Одной дорогой»" /><h2>{clear ? "Мы рядом" : "Нам с вами по пути"}</h2></div><div className="footer-grid"><div><span>Позвонить</span><a href="tel:+79774457314">+7 977 445-73-14</a></div><div><span>Написать</span><a href="mailto:onewaysc@yandex.ru">onewaysc@yandex.ru</a></div><div><span>Прийти</span><p>Коломна, ул. Астахова, д. 2, помещение 19</p></div><div><span>Время работы</span><p>Ежедневно, 10:00—18:00</p></div></div><div className="footer-bottom"><span>© АНО СК «Одной дорогой»</span><a href="#registry">Документы и политика конфиденциальности</a><a href="#top">Наверх ↑</a></div></footer>
     </main>
   ) as ReactElement;
 }
