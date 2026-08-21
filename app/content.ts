@@ -1,3 +1,9 @@
+import type { StaticImageData } from "next/image";
+import fiorovantiLogo from "../public/partners/fiorovanti.svg";
+import labIndustriesLogo from "../public/partners/lab-industries.jpg";
+import presidentialGrantsLogo from "../public/partners/presidential-grants.png";
+import rostelecomLogo from "../public/partners/rostelecom.png";
+
 export type Tone = "coral" | "mint" | "yellow" | "blue" | "lavender" | "orange";
 
 export type Project = {
@@ -171,12 +177,18 @@ export const team: TeamMember[] = [
   },
 ];
 
-export const partners = [
-  { name: "Фонд президентских грантов", href: "https://xn--80afcdbalict6afooklqi5o.xn--p1ai/" },
-  { name: "Ростелеком", href: "https://rt.ru/" },
-  { name: "LAB Industries", href: "https://lab-industries.ru/" },
-  { name: "Fiorovanti Engineers", href: "https://www.fiorovanti.com/" },
-  { name: "КГОО РДИ «Глазами Матери»", href: "https://glazamimateri.ru/" },
+export type Partner = {
+  name: string;
+  logo?: StaticImageData;
+  dark?: boolean;
+};
+
+export const partners: Partner[] = [
+  { name: "Фонд президентских грантов", logo: presidentialGrantsLogo },
+  { name: "Ростелеком", logo: rostelecomLogo },
+  { name: "LAB Industries", logo: labIndustriesLogo },
+  { name: "Fiorovanti Engineers", logo: fiorovantiLogo, dark: true },
+  { name: "КГОО РДИ «Глазами Матери»" },
 ];
 
 export const registryDocuments = [
