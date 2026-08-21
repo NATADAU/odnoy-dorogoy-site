@@ -88,4 +88,25 @@ img,svg,video{max-width:100%;height:auto}
 
 @media(max-width:340px){.header{grid-template-columns:minmax(0,1fr) 36px;padding-right:9px;padding-left:9px}.brand{gap:5px}.brand .logo-mark{width:31px;height:31px}.brand-copy strong{font-size:10.5px}.header-actions{width:36px}.menu-button{width:36px;height:36px}.hero-copy,.section,.page-hero{padding-right:14px;padding-left:14px}.hero h1{font-size:38px}.hero h1 span:last-child{font-size:.61em}.page-hero h1{font-size:37px}.button{font-size:12px}}
 
+/* Unified mobile typography: natural Russian word wrapping and one shared scale. */
+@media(max-width:760px){
+  :root{--mobile-gutter:18px;--mobile-display-xl:clamp(32px,10.5vw,50px);--mobile-display-lg:clamp(23px,7.2vw,36px);--mobile-display-md:clamp(25px,7.6vw,36px)}
+  .hero h1,.section h2,.page-hero h1,.support-banner h2,.archive-teaser h2,.payment-note h2,.contact-ending h2,.project-card h3,.team-card h3,.team-card strong,.openness-card h2,.community-card h3,.dialog-grid h3,.registry-block h2,.help-card h2,.address-list h3,.nav a,.quiet-link,.partner-list strong,.document-list strong,.resource-list strong{word-break:normal;overflow-wrap:normal;hyphens:none}
+  .hero h1,.section h2,.page-hero h1,.support-banner h2,.archive-teaser h2,.payment-note h2,.contact-ending h2,.project-card h3,.team-card h3,.openness-card h2,.community-card h3,.dialog-grid h3,.registry-block h2,.help-card h2,.address-list h3{text-wrap:balance}
+
+  .hero-copy{padding:58px var(--mobile-gutter) 50px}.section{padding-right:var(--mobile-gutter);padding-left:var(--mobile-gutter)}.page-hero{padding-right:var(--mobile-gutter);padding-left:var(--mobile-gutter)}.support-banner,.archive-teaser,.simple-cta,.payment-note,.contact-ending{padding-right:var(--mobile-gutter);padding-left:var(--mobile-gutter)}.footer{padding-right:var(--mobile-gutter);padding-left:var(--mobile-gutter)}.project-dialog,.team-dialog{padding-right:var(--mobile-gutter);padding-left:var(--mobile-gutter)}
+
+  .hero h1{font-size:var(--mobile-display-xl);line-height:.96}.hero h1 span:last-child{line-height:1.12;letter-spacing:-.055em}.hero-lead{line-height:1.58}.section h2{font-size:var(--mobile-display-lg);line-height:1.04;letter-spacing:-.035em}.section-heading{gap:20px}.section-heading>div:last-child>p{margin-top:18px;line-height:1.62}.about-copy p{font-size:16px;line-height:1.62}
+
+  .project-card h3{font-size:var(--mobile-display-md);line-height:1.04;letter-spacing:-.03em}.project-card p{line-height:1.58}.outcomes-intro h2{font-size:var(--mobile-display-lg);line-height:1.04}.team-card h3{font-size:clamp(27px,8vw,35px);line-height:1.04}.team-card strong{line-height:1.52}.openness-card h2,.community-card h3{font-size:var(--mobile-display-lg);line-height:1.04}.openness-card p,.community-card p{line-height:1.58}.partner-list strong{font-size:18px;line-height:1.3}
+
+  .support-banner h2,.footer-lead h2,.page-hero h1{font-size:var(--mobile-display-xl);line-height:.98}.support-banner p,.page-hero>p{line-height:1.6}.archive-teaser h2,.payment-note h2,.contact-ending h2{font-size:var(--mobile-display-lg);line-height:1.04}.simple-cta p{font-size:22px;line-height:1.4}
+
+  .dialog-grid{grid-template-columns:minmax(0,1fr);gap:29px}.dialog-grid h3{font-size:clamp(30px,9vw,43px);line-height:1}.team-dialog .dialog-grid h3{font-size:clamp(28px,8.2vw,38px);line-height:1.06}.dialog-lead{line-height:1.48}.dialog-copy>p,.bio{line-height:1.62}.dialog-copy li{line-height:1.35}
+
+  .registry-layout,.registry-block,.report-grid,.help-grid,.contact-cards,.address-list{grid-template-columns:minmax(0,1fr)}.registry-block h2,.help-card h2{font-size:var(--mobile-display-md);line-height:1.08}.registry-block div>p,.help-card p{line-height:1.62}.registry-facts>div{min-width:0}.document-list strong,.resource-list strong{line-height:1.45}.address-list h3{font-size:clamp(23px,7vw,31px);line-height:1.14}
+
+  .button{max-width:100%;min-width:0;min-height:50px;gap:16px;padding:13px 16px;border-radius:18px;line-height:1.3;text-align:left}.button>span,.button>b{flex:0 0 auto}.contact-card strong{word-break:normal;overflow-wrap:normal;font-size:clamp(22px,6.8vw,31px);line-height:1.18}.contact-inline a{min-width:0;overflow-wrap:normal}.contact-card[href^="mailto:"] strong,.contact-inline a[href^="mailto:"]{overflow-wrap:anywhere}.nav{padding-right:var(--mobile-gutter);padding-left:var(--mobile-gutter)}
+}
+
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.project-card,.team-card,.button,.round-link,.community-card{transition:none}.swipe-hint b,.poster-orbit{animation:none}}
