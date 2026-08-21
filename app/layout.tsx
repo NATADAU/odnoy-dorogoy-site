@@ -23,9 +23,12 @@ const caveat = Caveat({
 export const metadata: Metadata = {
   title: "Одной дорогой — социальный клуб в Коломне",
   description: "Сопровождение, развитие, реализация и равные возможности для людей с инвалидностью и их близких.",
-  other: { "codex-preview": "development" },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="ru" className={`${inter.variable} ${unbounded.variable} ${caveat.variable}`}><body>{children}</body></html>;
+  return (
+    <html lang="ru" className={`${inter.variable} ${unbounded.variable} ${caveat.variable}`}>
+      <body>{children}</body>
+    </html>
+  );
 }
