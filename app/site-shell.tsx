@@ -22,6 +22,20 @@ function Header() {
   const { clear, setClear } = useClearLanguage();
   const [open, setOpen] = useState(false);
 
+  useEffect(() => {
+    if (!open) return;
+    const overflow = document.body.style.overflow;
+    const close = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", close);
+    return () => {
+      document.body.style.overflow = overflow;
+      window.removeEventListener("keydown", close);
+    };
+  }, [open]);
+
   const links = [
     { href: "/#about", label: "О нас" },
     { href: "/projects/", label: "Проекты" },
@@ -43,7 +57,7 @@ function Header() {
       <div className="header-actions">
         <div className="language-switch" role="group" aria-label="Версия текста">
           <button type="button" className={!clear ? "active" : ""} aria-pressed={!clear} onClick={() => setClear(false)}>Обычный</button>
-          <button type="button" className={clear ? "active" : ""} aria-pressed={clear} onClick={() => setClear(true)}>Ясный язык</button>
+          <button type="button" className={clear ? "active" : ""} aria-label="Ясный язык" aria-pressed={clear} onClick={() => setClear(true)}><span className="language-long">Ясный язык</span><span className="language-short">Ясный</span></button>
         </div>
         <Link className="header-support" href="/help/">Поддержать</Link>
         <button className="menu-button" type="button" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="main-navigation" aria-label={open ? "Закрыть меню" : "Открыть меню"}><span /><span /></button>

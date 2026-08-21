@@ -30,6 +30,7 @@ export function TeamCards({ people }: { people: TeamMember[] }) {
           </button>
         ))}
       </div>
+      <div className="swipe-hint" aria-hidden="true"><span>Листайте карточки</span><b>→</b></div>
       {active && (
         <div className="dialog-backdrop" role="presentation" onClick={() => setActive(null)}>
           <section className={`team-dialog tone-${active.tone}`} role="dialog" aria-modal="true" aria-label={`Профиль: ${active.name}`} onClick={(event) => event.stopPropagation()}>
