@@ -37,6 +37,10 @@ function Header() {
         <span className="brand-copy"><strong>Одной дорогой</strong><small>АНО социальный клуб</small></span>
       </Link>
       <nav id="main-navigation" className={open ? "nav nav-open" : "nav"} aria-label="Основная навигация">
+        <div className="nav-language-switch" role="group" aria-label="Версия текста">
+          <button type="button" className={!clear ? "active" : ""} aria-pressed={!clear} onClick={() => setClear(false)}>Обычный текст</button>
+          <button type="button" className={clear ? "active" : ""} aria-pressed={clear} onClick={() => setClear(true)}>Ясный язык</button>
+        </div>
         {links.map((link) => <Link href={link.href} key={link.href} onClick={() => setOpen(false)}>{link.label}</Link>)}
         <Link className="nav-support" href="/help/" onClick={() => setOpen(false)}>Как помочь</Link>
       </nav>
