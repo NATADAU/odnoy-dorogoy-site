@@ -24,9 +24,9 @@ export function ProjectCards({ projects, compact = false, archived = false }: { 
   return (
     <>
       <div className={`project-grid ${compact ? "project-grid-compact" : ""} ${archived ? "project-grid-archive" : ""}`}>
-        {projects.map((project, index) => (
+        {projects.map((project) => (
           <article className={`project-card tone-${project.tone}`} id={project.slug} key={project.slug}>
-            <div className="project-card-meta"><span>{String(index + 1).padStart(2, "0")}</span><i>{archived ? "Завершён" : "Действующий проект"}</i></div>
+            <div className="project-card-meta"><i>{archived ? "Завершён" : "Действующий проект"}</i></div>
             <div><h3>{project.title}</h3><p>{clear ? project.clearSummary : project.summary}</p></div>
             <button type="button" onClick={() => setActive(project)}>Подробнее <span aria-hidden="true">↗</span></button>
           </article>
