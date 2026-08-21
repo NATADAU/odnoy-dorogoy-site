@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { activeProjects, partners, team } from "./content";
 import { ProjectCards } from "./project-cards";
 import { TeamCards } from "./team-cards";
@@ -68,7 +69,20 @@ export default function Home() {
 
       <section className="section partners-section">
         <div className="section-heading partners-heading"><div className="section-label">Партнёры</div><div><h2>{clear ? "Те, кто помогает клубу" : "Поддержка превращает идеи в возможности"}</h2></div></div>
-        <div className="partner-list">{partners.map((partner, index) => <a href={partner.href} target="_blank" rel="noreferrer" key={partner.name}><span>{String(index + 1).padStart(2, "0")}</span><strong>{partner.name}</strong><b>↗</b></a>)}</div>
+        <ul className="partner-list">
+          {partners.map((partner) => (
+            <li className={partner.dark ? "partner-item partner-item-dark" : "partner-item"} key={partner.name}>
+              {partner.logo ? (
+                <div className="partner-logo" aria-hidden="true">
+                  <Image src={partner.logo} alt="" fill sizes="(max-width: 760px) 70vw, (max-width: 1180px) 35vw, 18vw" />
+                </div>
+              ) : (
+                <span className="partner-text-mark">Общественная организация</span>
+              )}
+              <strong>{partner.name}</strong>
+            </li>
+          ))}
+        </ul>
       </section>
 
       <section className="support-banner">
