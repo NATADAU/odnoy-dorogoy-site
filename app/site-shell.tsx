@@ -22,20 +22,6 @@ function Header() {
   const { clear, setClear } = useClearLanguage();
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    if (!open) return;
-    const overflow = document.body.style.overflow;
-    const close = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
-    };
-    document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", close);
-    return () => {
-      document.body.style.overflow = overflow;
-      window.removeEventListener("keydown", close);
-    };
-  }, [open]);
-
   const links = [
     { href: "/#about", label: "О нас" },
     { href: "/projects/", label: "Проекты" },
