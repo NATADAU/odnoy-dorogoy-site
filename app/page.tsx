@@ -20,9 +20,8 @@ export default function Home() {
         </div>
         <div className="hero-poster" aria-label="Сопровождение, развитие, реализация и равные возможности">
           <div className="poster-orbit orbit-one" /><div className="poster-orbit orbit-two" />
-          <div className="poster-words"><span>сопровождение</span><span>развитие</span><span>реализация</span></div>
-          <div className="poster-center"><strong>рядом</strong><small>с 2019 года</small></div>
-          <div className="poster-note"><b>{clear ? "Мы помогаем учиться самостоятельности" : "Поддержка, которая остаётся рядом"}</b><span>городской округ Коломна</span></div>
+          <div className="poster-words"><span>сопровождение</span><span>развитие</span><span>реализация</span><span>равные возможности</span></div>
+          <div className="poster-note"><b className="accent-script">{clear ? "Мы рядом" : "Нам с вами по пути"}</b><span>{clear ? "Мы готовы помочь" : "Работаем в городском округе Коломна"}</span></div>
         </div>
       </section>
 
@@ -37,7 +36,7 @@ export default function Home() {
 
       <section className="section projects-section">
         <div className="section-heading"><div className="section-label">Проекты</div><div><h2>{clear ? "Что мы делаем" : "Чтобы в жизни было больше возможностей"}</h2><p>{clear ? "Занятия помогают учиться, общаться, заниматься спортом и творчеством." : "Действующие программы соединяют повседневные навыки, движение, творчество, общение и опыт самостоятельного выбора."}</p></div></div>
-        <ProjectCards projects={activeProjects.slice(0, 3)} compact />
+        <ProjectCards projects={activeProjects} compact />
         <div className="section-end"><Link className="button button-light" href="/projects/">Все действующие проекты <span>↗</span></Link><Link className="quiet-link" href="/projects/archive/">Архив проектов →</Link></div>
       </section>
 
