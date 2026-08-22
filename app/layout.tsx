@@ -22,8 +22,8 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "Одной дорогой — социальный клуб в Коломне",
-  description: "Сопровождение, развитие, реализация и равные возможности для людей с инвалидностью и их близких.",
+  title: "Одной дорогой — социальный клуб в Коломне",
+  description: "Сопровождение, развитие, реализация и равные возможности для людей с инвалидностью и их близких.",
   metadataBase: new URL("https://natadau.github.io/odnoy-dorogoy-site/"),
 };
 

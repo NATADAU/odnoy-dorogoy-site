@@ -23,7 +23,7 @@ function Header() {
   const [open, setOpen] = useState(false);
 
   const links = [
-    { href: "/#about", label: "О нас" },
+    { href: "/#about", label: "О нас" },
     { href: "/projects/", label: "Проекты" },
     { href: "/registry/", label: "Соцреестр" },
     { href: "/#team", label: "Команда" },
@@ -32,7 +32,7 @@ function Header() {
 
   return (
     <header className="header">
-      <Link className="brand" href="/" aria-label="АНО социальный клуб «Одной дорогой» — на главную">
+      <Link className="brand" href="/" aria-label="АНО социальный клуб «Одной дорогой» — на главную">
         <LogoMark />
         <span className="brand-copy"><strong>Одной дорогой</strong><small>АНО социальный клуб</small></span>
       </Link>
@@ -62,8 +62,8 @@ function Footer() {
     <footer className="footer">
       <div className="footer-lead">
         <div className="footer-mark"><LogoMark /></div>
-        <h2>{clear ? "Мы рядом" : "Нам с вами по пути"}</h2>
-        <Link className="round-link" href="/contacts/" aria-label="Перейти к контактам">↗</Link>
+        <h2>{clear ? "Мы рядом" : "Нам с вами по пути"}</h2>
+        <Link className="round-link" href="/contacts/" aria-label="Перейти к контактам">↗</Link>
       </div>
       <div className="footer-grid">
         <div><span>Позвонить</span><a href="tel:+79774457314">+7 977 445-73-14</a></div>
@@ -73,8 +73,8 @@ function Footer() {
       </div>
       <div className="footer-bottom">
         <span>© АНО СК «Одной дорогой»</span>
-        <Link href="/registry/">Документы и открытость</Link>
-        <Link href="/contacts/">Все адреса и контакты</Link>
+        <Link href="/registry/">Документы и открытость</Link>
+        <Link href="/contacts/">Все адреса и контакты</Link>
         <Link href="#top">Наверх ↑</Link>
       </div>
     </footer>
