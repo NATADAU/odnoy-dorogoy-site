@@ -37,11 +37,11 @@ export function ProjectCards({ projects, compact = false, archived = false }: { 
           <section className={`project-dialog tone-${active.tone}`} role="dialog" aria-modal="true" aria-labelledby="project-dialog-title" onClick={(event) => event.stopPropagation()}>
             <div className="dialog-top"><span>{archived ? "Архив проектов" : "Проект клуба"}</span><button type="button" onClick={() => setActive(null)}>Закрыть <b aria-hidden="true">×</b></button></div>
             <div className="dialog-grid">
-              <div><p className="dialog-kicker">{archived ? "Завершённый проект" : "Подробнее о проекте"}</p><h3 id="project-dialog-title">{active.title}</h3></div>
+              <div><p className="dialog-kicker">{archived ? "Завершённый проект" : "Подробнее о проекте"}</p><h3 id="project-dialog-title">{active.title}</h3></div>
               <div className="dialog-copy">
                 <p>{clear ? active.clearDescription : active.description}</p>
                 <ul>{active.points.map((point) => <li key={point}>{point}</li>)}</ul>
-                {!archived && <Link className="button button-dark" href="/contacts/" onClick={() => setActive(null)}>{clear ? "Спросить об участии" : "Узнать об участии"} <span>↗</span></Link>}
+                {!archived && <Link className="button button-dark" href="/contacts/" onClick={() => setActive(null)}>{clear ? "Спросить об участии" : "Узнать об участии"} <span>↗</span></Link>}
               </div>
             </div>
           </section>
