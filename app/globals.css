@@ -119,4 +119,37 @@ img,svg,video{max-width:100%;height:auto}
 
 @media(max-width:760px){.page-home-link{top:18px;left:var(--mobile-gutter);padding:8px 11px;font-size:10.5px}}
 
+/* Mobile layout system: one rhythm, safe widths and natural Russian wrapping. */
+@media(max-width:760px){
+  :root{--mobile-gutter:clamp(18px,5.2vw,22px);--mobile-space-section:clamp(50px,14vw,60px);--mobile-space-block:clamp(42px,12vw,52px)}
+
+  .site main,.hero,.hero-copy,.section,.section-heading,.start-heading,.start-grid,.about-section,.project-grid,.outcomes-section,.team-grid,.openness-section,.partner-list,.support-banner,.footer,.footer-grid,.page-hero,.archive-teaser,.simple-cta,.registry-layout,.registry-content,.registry-block,.help-grid,.payment-note,.contact-cards,.address-list,.contact-ending,.dialog-grid{width:100%;max-width:100%;min-width:0}
+  .hero-poster{width:auto;max-width:calc(100% - 16px);min-width:0}
+  .start-grid>*,.project-grid>*,.outcome-list>*,.team-grid>*,.openness-section>*,.partner-list>*,.footer-grid>*,.registry-content>*,.registry-block>*,.help-grid>*,.contact-cards>*,.address-list>*{max-width:100%;min-width:0}
+  .hero h1,.hero-lead,.section h2,.section p,.page-hero h1,.page-hero>p,.support-banner h2,.support-banner p,.archive-teaser h2,.archive-teaser p,.payment-note h2,.payment-note p,.contact-ending h2,.project-card h3,.project-card p,.team-card h3,.team-card strong,.openness-card h2,.openness-card p,.community-card h3,.community-card p,.dialog-grid h3,.dialog-copy,.registry-block h2,.registry-block p,.help-card h2,.help-card p,.address-list h3,.address-list p{max-width:100%;min-width:0;word-break:normal;overflow-wrap:normal;hyphens:none}
+
+  .hero-copy{padding:48px var(--mobile-gutter) 42px}.section{padding:var(--mobile-space-section) var(--mobile-gutter)}
+  .section-heading,.start-heading{gap:18px;margin-bottom:28px}.section-heading>div:last-child>p,.start-heading>div:last-child>p{margin-top:16px}.about-section{gap:22px}.about-copy p{margin-top:20px}.about-fact{padding:16px}
+
+  .start-card{min-height:176px;padding:18px}.start-card p{margin-top:16px}.start-card strong{padding-top:16px}
+  .project-card,.project-index .project-card{min-height:280px;padding:18px}.project-card button{margin-top:20px}.section-end{margin-top:26px}
+  .outcomes-section{gap:32px}.outcomes-intro h2{margin-top:20px}.outcome-list article{padding:20px 0}
+  .team-card{min-height:258px;padding:20px}.openness-card,.community-card{min-height:330px;padding:20px}.openness-card p{margin:20px 0 24px}.community-card h3{margin-bottom:20px}.community-card b{margin-top:24px}
+  .partner-item{min-height:145px;padding:17px}.partner-logo{height:64px}
+
+  .support-banner{padding:var(--mobile-space-section) var(--mobile-gutter);gap:28px}.support-banner h2,.support-banner p{margin-top:22px}.round-link-large{width:78px}
+  .footer{padding:var(--mobile-space-section) var(--mobile-gutter) calc(96px + env(safe-area-inset-bottom))}.footer-lead{margin-bottom:40px}.footer-grid{gap:22px;padding:26px 0 44px}
+
+  .page-hero{padding:68px var(--mobile-gutter) 58px}.page-home-link{top:16px;left:var(--mobile-gutter)}
+  .page-hero .section-label{margin-bottom:22px}.page-hero>p{margin-top:22px}
+  .archive-teaser,.simple-cta,.payment-note,.contact-ending{gap:24px;padding:var(--mobile-space-block) var(--mobile-gutter)}
+
+  .registry-layout{gap:28px}.registry-block{gap:9px;padding:32px 0}.registry-block div>p{margin-top:18px}.registry-facts{margin-top:22px}.registry-facts>div{min-height:116px;padding:14px}.tag-list{margin-top:20px}.document-list,.resource-list{margin-top:26px}.document-list a,.resource-list a{min-width:0}.document-list a{min-height:74px}.report-grid{margin-top:24px}.report-grid a{min-height:110px;padding:18px}.contact-inline{margin-top:24px}
+  .help-card,.help-card:last-child{min-height:330px;padding:20px}.help-card p{margin:18px 0 24px}
+  .contact-card{min-height:190px;padding:20px}.address-list article{min-height:195px;padding:20px}.address-list h3{margin:36px 0 16px}
+
+  .dialog-grid{gap:24px;padding-top:24px}.dialog-lead{margin-top:18px}.dialog-copy ul{margin:20px 0}.dialog-copy li{min-width:0;max-width:100%}
+  .button,.quiet-link,.nav a,.contact-inline a,.document-list a,.resource-list a{max-width:100%;min-width:0}.contact-card[href^="mailto:"] strong,.contact-inline a[href^="mailto:"],.footer-grid a[href^="mailto:"]{overflow-wrap:anywhere;word-break:normal}
+}
+
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.project-card,.team-card,.button,.round-link,.community-card,.page-home-link{transition:none}.swipe-hint b,.poster-orbit{animation:none}}
