@@ -50,13 +50,17 @@ function Header() {
       overflow: bodyStyle.overflow,
     };
     const previousScrollBehavior = rootStyle.scrollBehavior;
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
+      || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
 
-    bodyStyle.position = "fixed";
-    bodyStyle.top = `-${scrollY}px`;
-    bodyStyle.left = "0";
-    bodyStyle.right = "0";
-    bodyStyle.width = "100%";
     bodyStyle.overflow = "hidden";
+    if (isIOS) {
+      bodyStyle.position = "fixed";
+      bodyStyle.top = `-${scrollY}px`;
+      bodyStyle.left = "0";
+      bodyStyle.right = "0";
+      bodyStyle.width = "100%";
+    }
 
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") setOpen(false);
@@ -71,9 +75,11 @@ function Header() {
       bodyStyle.right = previousBodyStyles.right;
       bodyStyle.width = previousBodyStyles.width;
       bodyStyle.overflow = previousBodyStyles.overflow;
-      rootStyle.scrollBehavior = "auto";
-      window.scrollTo(0, scrollY);
-      rootStyle.scrollBehavior = previousScrollBehavior;
+      if (isIOS) {
+        rootStyle.scrollBehavior = "auto";
+        window.scrollTo(0, scrollY);
+        rootStyle.scrollBehavior = previousScrollBehavior;
+      }
     };
   }, [open]);
 
