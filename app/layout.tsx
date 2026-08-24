@@ -61,7 +61,7 @@ const organizationJsonLd = {
     addressCountry: "RU",
   },
   areaServed: "Городской округ Коломна",
-  sameAs: ["https://vk.com/club_oneway"],
+  sameAs: ["https://vk.ru/onewaykolomna"],
   contactPoint: {
     "@type": "ContactPoint",
     telephone: "+7-977-445-73-14",
