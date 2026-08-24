@@ -47,7 +47,7 @@ export default function Home() {
           <p className="eyebrow">АНО СК «Одной дорогой» · Коломна</p>
           <h1><span>Социальный</span><span>клуб для людей</span><span>с инвалидностью</span><span className="accent">в Коломне</span></h1>
           <p className="hero-lead">{clear ? "Здесь дети и взрослые с инвалидностью учатся новому, общаются, занимаются спортом и творчеством. Мы поможем выбрать занятия." : "Помогаем детям и взрослым с инвалидностью осваивать повседневные навыки, общаться, заниматься спортом и творчеством. Подскажем, какой проект подойдёт."}</p>
-          <div className="button-row"><Link className="button button-dark" href="/projects/">{clear ? "Выбрать занятия" : "Посмотреть проекты"} <span>↗</span></Link><Link className="button button-light" href="/contacts/#write">{clear ? "Написать нам" : "Задать вопрос"}</Link></div>
+          <div className="button-row"><Link className="button button-dark hero-projects-button" href="/projects/">{clear ? "Выбрать занятия" : "Посмотреть проекты"} <span>↗</span></Link><Link className="button button-light" href="/contacts/#write">{clear ? "Написать нам" : "Задать вопрос"}</Link></div>
         </div>
         <div className="hero-poster" aria-label="Навыки для жизни, общение, спорт и творчество">
           <div className="poster-orbit orbit-one" /><div className="poster-orbit orbit-two" />
