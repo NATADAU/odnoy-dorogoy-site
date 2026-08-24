@@ -108,7 +108,7 @@ export default function Home() {
           <p>{clear ? "На отдельной странице есть документы и сведения о социальных услугах." : "Сведения для получателей социальных услуг, документы и отчётность собраны на отдельной странице соцреестра."}</p>
           <Link className="button button-dark" href="/registry/">Перейти в соцреестр <span>↗</span></Link>
         </div>
-        <a className="community-card" id="news" href="https://vk.com/club_oneway" target="_blank" rel="noreferrer">
+        <a className="community-card" id="news" href="https://vk.ru/onewaykolomna" target="_blank" rel="noreferrer">
           <span className="section-label">Новости и события</span><h3>{clear ? "Что нового в клубе" : "Новости и ближайшие события"}</h3><p>{clear ? "Там мы рассказываем о занятиях, встречах и новых событиях." : "Актуальные новости, фотографии, анонсы и информация о ближайших событиях публикуются в сообществе организации."}</p><b>Перейти в сообщество ↗</b>
         </a>
       </section>

@@ -12,6 +12,10 @@ export function useClearLanguage() {
   return useContext(ClearContext);
 }
 
+export function PageHomeLink() {
+  return <Link className="page-home-link" href="/"><span aria-hidden="true">←</span> На главную</Link>;
+}
+
 export function LogoMark({ className = "" }: { className?: string }) {
   const style = {
     "--logo-mask": `url(${logo.src})`,

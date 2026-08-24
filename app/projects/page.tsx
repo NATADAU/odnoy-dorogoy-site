@@ -3,13 +3,14 @@
 import Link from "next/link";
 import { activeProjects } from "../content";
 import { ProjectCards } from "../project-cards";
-import { useClearLanguage } from "../site-shell";
+import { PageHomeLink, useClearLanguage } from "../site-shell";
 
 export default function ProjectsPage() {
   const { clear } = useClearLanguage();
   return (
     <>
       <section className="page-hero page-hero-projects" id="top">
+        <PageHomeLink />
         <div className="section-label">Действующие проекты</div>
         <h1>{clear ? "Занятия и проекты клуба" : "Разные возможности для активной жизни"}</h1>
         <p>{clear ? "Здесь можно узнать, чем занимаются участники клуба." : "Каждый проект даёт собственный маршрут к общению, самостоятельности, движению и творчеству."}</p>

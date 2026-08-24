@@ -1,12 +1,13 @@
 "use client";
 
-import { useClearLanguage } from "../site-shell";
+import { PageHomeLink, useClearLanguage } from "../site-shell";
 
 export default function ContactsPage() {
   const { clear } = useClearLanguage();
   return (
     <>
       <section className="page-hero page-hero-contacts" id="top">
+        <PageHomeLink />
         <div className="section-label">Контакты</div>
         <h1>{clear ? "Как с нами связаться" : "Позвонить, написать или прийти"}</h1>
         <p>{clear ? "Мы работаем в городском округе Коломна." : "Контакты и адреса организации собраны на одной странице, чтобы нужную информацию было легко найти."}</p>
@@ -25,7 +26,7 @@ export default function ContactsPage() {
           <article className="legal-address"><span>Юридический адрес</span><h3>с. Федосьино, ул. Производственная, зд. 3, комната 11</h3><p>140471, Московская область, городской округ Коломна</p></article>
         </div>
       </section>
-      <section className="contact-ending"><div><span className="section-label">Сообщество</span><h2>{clear ? "Новости клуба" : "Следить за жизнью клуба"}</h2></div><a className="button button-light" href="https://vk.com/club_oneway" target="_blank" rel="noreferrer">Открыть ВКонтакте <span>↗</span></a></section>
+      <section className="contact-ending"><div><span className="section-label">Сообщество</span><h2>{clear ? "Новости клуба" : "Следить за жизнью клуба"}</h2></div><a className="button button-light" href="https://vk.ru/onewaykolomna" target="_blank" rel="noreferrer">Открыть ВКонтакте <span>↗</span></a></section>
     </>
   );
 }
