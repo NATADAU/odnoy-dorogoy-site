@@ -37,20 +37,48 @@ function Header() {
 
   useEffect(() => {
     if (!open) return;
+
+    const scrollY = window.scrollY;
+    const bodyStyle = document.body.style;
+    const rootStyle = document.documentElement.style;
+    const previousBodyStyles = {
+      position: bodyStyle.position,
+      top: bodyStyle.top,
+      left: bodyStyle.left,
+      right: bodyStyle.right,
+      width: bodyStyle.width,
+      overflow: bodyStyle.overflow,
+    };
+    const previousScrollBehavior = rootStyle.scrollBehavior;
+
+    bodyStyle.position = "fixed";
+    bodyStyle.top = `-${scrollY}px`;
+    bodyStyle.left = "0";
+    bodyStyle.right = "0";
+    bodyStyle.width = "100%";
+    bodyStyle.overflow = "hidden";
+
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") setOpen(false);
     };
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
     window.addEventListener("keydown", closeOnEscape);
+
     return () => {
-      document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", closeOnEscape);
+      bodyStyle.position = previousBodyStyles.position;
+      bodyStyle.top = previousBodyStyles.top;
+      bodyStyle.left = previousBodyStyles.left;
+      bodyStyle.right = previousBodyStyles.right;
+      bodyStyle.width = previousBodyStyles.width;
+      bodyStyle.overflow = previousBodyStyles.overflow;
+      rootStyle.scrollBehavior = "auto";
+      window.scrollTo(0, scrollY);
+      rootStyle.scrollBehavior = previousScrollBehavior;
     };
   }, [open]);
 
   return (
-    <header className="header">
+    <header className={open ? "header header-menu-open" : "header"}>
       <Link className="brand" href="/" aria-label="АНО социальный клуб «Одной дорогой» — на главную" onClick={() => setOpen(false)}>
         <LogoMark />
         <span className="brand-copy"><strong>Одной дорогой</strong><small>АНО социальный клуб</small></span>
