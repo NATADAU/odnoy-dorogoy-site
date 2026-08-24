@@ -92,11 +92,11 @@ img,svg,video{max-width:100%;height:auto}
 
 @media(max-width:390px){.header{grid-template-columns:minmax(0,1fr) 38px}.brand-copy strong{font-size:11.5px}.header-actions{width:38px}.menu-button{width:38px;height:38px}.project-card{min-height:295px}.team-grid{grid-auto-columns:90%;padding-right:10%}.contact-card strong{font-size:7.2vw}}
 
-@media(max-width:340px){.header{grid-template-columns:minmax(0,1fr) 36px;padding-right:9px;padding-left:9px}.brand{gap:5px}.brand .logo-mark{width:31px;height:31px}.brand-copy strong{font-size:10.5px}.header-actions{width:36px}.menu-button{width:36px;height:36px}.hero-copy,.section,.page-hero{padding-right:14px;padding-left:14px}.hero h1{font-size:36px}.hero h1 span:last-child{font-size:.82em}.page-hero h1{font-size:37px}.button{font-size:12px}}
+@media(max-width:340px){.header{grid-template-columns:minmax(0,1fr) 36px;padding-right:9px;padding-left:9px}.brand{gap:5px}.brand .logo-mark{width:31px;height:31px}.brand-copy strong{font-size:10.5px}.header-actions{width:36px}.menu-button{width:36px;height:36px}.hero-copy,.section,.page-hero{padding-right:14px;padding-left:14px}.hero h1 span:last-child{font-size:.82em}.button{font-size:12px}}
 
-/* Unified mobile typography: natural Russian word wrapping and one shared scale. */
+/* Mobile typography system: a coherent hierarchy that stays safe at 320px. */
 @media(max-width:760px){
-  :root{--mobile-gutter:18px;--mobile-display-xl:clamp(32px,10.5vw,50px);--mobile-display-lg:clamp(23px,7.2vw,36px);--mobile-display-md:clamp(25px,7.6vw,36px)}
+  :root{--mobile-gutter:clamp(18px,5.2vw,22px);--mobile-space-section:clamp(50px,14vw,60px);--mobile-space-block:clamp(42px,12vw,52px);--mobile-display-xl:clamp(24px,7.6vw,50px);--mobile-display-lg:clamp(22px,6.6vw,36px);--mobile-display-md:clamp(21px,6.2vw,34px);--mobile-person-name:clamp(24px,7vw,34px)}
   .hero h1,.section h2,.page-hero h1,.support-banner h2,.archive-teaser h2,.payment-note h2,.contact-ending h2,.project-card h3,.team-card h3,.team-card strong,.openness-card h2,.community-card h3,.dialog-grid h3,.registry-block h2,.help-card h2,.address-list h3,.nav a,.quiet-link,.partner-list strong,.document-list strong,.resource-list strong,.start-card>span,.start-card strong{word-break:normal;overflow-wrap:normal;hyphens:none}
   .hero h1,.section h2,.page-hero h1,.support-banner h2,.archive-teaser h2,.payment-note h2,.contact-ending h2,.project-card h3,.team-card h3,.openness-card h2,.community-card h3,.dialog-grid h3,.registry-block h2,.help-card h2,.address-list h3{text-wrap:balance}
 
@@ -104,7 +104,7 @@ img,svg,video{max-width:100%;height:auto}
 
   .hero h1{font-size:var(--mobile-display-xl);line-height:.96}.hero h1 span:last-child{line-height:1.12;letter-spacing:-.045em}.hero-lead{line-height:1.58}.section h2{font-size:var(--mobile-display-lg);line-height:1.04;letter-spacing:-.035em}.section-heading,.start-heading{gap:20px}.section-heading>div:last-child>p,.start-heading>div:last-child>p{margin-top:18px;line-height:1.62}.about-copy p{font-size:16px;line-height:1.62}
 
-  .project-card h3{font-size:var(--mobile-display-md);line-height:1.04;letter-spacing:-.03em}.project-card p{line-height:1.58}.outcomes-intro h2{font-size:var(--mobile-display-lg);line-height:1.04}.team-card h3{font-size:clamp(27px,8vw,35px);line-height:1.04}.team-card strong{line-height:1.52}.openness-card h2,.community-card h3{font-size:var(--mobile-display-lg);line-height:1.04}.openness-card p,.community-card p{line-height:1.58}.partner-list strong{font-size:18px;line-height:1.3}
+  .start-card>span,.project-card h3{font-size:var(--mobile-display-md);line-height:1.04;letter-spacing:-.03em}.project-card p{line-height:1.58}.outcomes-intro h2{font-size:var(--mobile-display-lg);line-height:1.04}.team-card h3{font-size:var(--mobile-person-name);line-height:1.04}.team-card strong{line-height:1.52}.openness-card h2,.community-card h3{font-size:var(--mobile-display-lg);line-height:1.04}.openness-card p,.community-card p{line-height:1.58}.partner-list strong{font-size:18px;line-height:1.3}
 
   .support-banner h2,.footer-lead h2,.page-hero h1{font-size:var(--mobile-display-xl);line-height:.98}.support-banner p,.page-hero>p{line-height:1.6}.archive-teaser h2,.payment-note h2,.contact-ending h2{font-size:var(--mobile-display-lg);line-height:1.04}.simple-cta p{font-size:22px;line-height:1.4}
 
@@ -121,8 +121,6 @@ img,svg,video{max-width:100%;height:auto}
 
 /* Mobile layout system: one rhythm, safe widths and natural Russian wrapping. */
 @media(max-width:760px){
-  :root{--mobile-gutter:clamp(18px,5.2vw,22px);--mobile-space-section:clamp(50px,14vw,60px);--mobile-space-block:clamp(42px,12vw,52px)}
-
   .site main,.hero,.hero-copy,.section,.section-heading,.start-heading,.start-grid,.about-section,.project-grid,.outcomes-section,.team-grid,.openness-section,.partner-list,.support-banner,.footer,.footer-grid,.page-hero,.archive-teaser,.simple-cta,.registry-layout,.registry-content,.registry-block,.help-grid,.payment-note,.contact-cards,.address-list,.contact-ending,.dialog-grid{width:100%;max-width:100%;min-width:0}
   .hero-poster{width:auto;max-width:calc(100% - 16px);min-width:0}
   .start-grid>*,.project-grid>*,.outcome-list>*,.team-grid>*,.openness-section>*,.partner-list>*,.footer-grid>*,.registry-content>*,.registry-block>*,.help-grid>*,.contact-cards>*,.address-list>*{max-width:100%;min-width:0}
