@@ -64,7 +64,7 @@ function Header() {
           <button type="button" className={!clear ? "active" : ""} aria-pressed={!clear} onClick={() => setClear(false)}>Обычный</button>
           <button type="button" className={clear ? "active" : ""} aria-label="Ясный язык" aria-pressed={clear} onClick={() => setClear(true)}><span className="language-long">Ясный язык</span><span className="language-short">Ясный</span></button>
         </div>
-        <Link className="header-support" href="/help/">Поддержать</Link>
+        <Link className="header-support" href="/help/">Как помочь</Link>
         <button className="menu-button" type="button" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="main-navigation" aria-label={open ? "Закрыть меню" : "Открыть меню"}><span /><span /></button>
       </div>
     </header>

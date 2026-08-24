@@ -9,20 +9,66 @@ import { useClearLanguage } from "./site-shell";
 
 export default function Home() {
   const { clear } = useClearLanguage();
+  const startPaths = [
+    {
+      href: "/projects/",
+      title: clear ? "Посмотреть занятия" : "Найти занятия",
+      description: clear ? "Посмотрите, какие занятия есть в клубе." : "Действующие проекты для детей и взрослых: повседневные навыки, спорт, творчество и общение.",
+      action: clear ? "Открыть занятия" : "Посмотреть проекты",
+      tone: "coral",
+    },
+    {
+      href: "/contacts/#write",
+      title: "Задать вопрос",
+      description: clear ? "Напишите или позвоните. Мы поможем выбрать." : "Если вы не знаете, с чего начать, команда клуба поможет сориентироваться.",
+      action: clear ? "Написать нам" : "Перейти к контактам",
+      tone: "mint",
+    },
+    {
+      href: "/help/",
+      title: "Помочь клубу",
+      description: clear ? "Можно стать волонтёром или предложить помощь." : "Стать волонтёром, предложить партнёрство или другой полезный формат поддержки.",
+      action: "Узнать, как помочь",
+      tone: "yellow",
+    },
+    {
+      href: "/registry/",
+      title: "Найти документы",
+      description: clear ? "Здесь есть документы и отчёты организации." : "Соцреестр, обязательные сведения, отчёты и полезные ссылки собраны отдельно.",
+      action: "Открыть документы",
+      tone: "lavender",
+    },
+  ];
 
   return (
     <>
       <section className="hero" id="top">
         <div className="hero-copy">
           <p className="eyebrow">АНО СК «Одной дорогой» · Коломна</p>
-          <h1>{clear ? <><span>Вместе</span><span className="accent">проще</span><span>жить самостоятельно</span></> : <><span>Активная жизнь.</span><span className="accent">Больше</span><span>самостоятельности.</span></>}</h1>
-          <p className="hero-lead">{clear ? "Здесь люди с инвалидностью учатся новому, занимаются спортом и творчеством, встречаются с друзьями." : "Сопровождаем людей с инвалидностью и их близких. Создаём возможности для общения, спорта, творчества и обычной жизни."}</p>
-          <div className="button-row"><Link className="button button-dark" href="/projects/">{clear ? "Посмотреть занятия" : "Наши проекты"} <span>↗</span></Link><Link className="button button-light" href="/contacts/">{clear ? "Задать вопрос" : "Связаться с нами"}</Link></div>
+          <h1><span>Социальный</span><span>клуб для людей</span><span>с инвалидностью</span><span className="accent">в Коломне</span></h1>
+          <p className="hero-lead">{clear ? "Здесь дети и взрослые с инвалидностью учатся новому, общаются, занимаются спортом и творчеством. Мы поможем выбрать занятия." : "Помогаем детям и взрослым с инвалидностью осваивать повседневные навыки, общаться, заниматься спортом и творчеством. Подскажем, какой проект подойдёт."}</p>
+          <div className="button-row"><Link className="button button-dark" href="/projects/">{clear ? "Выбрать занятия" : "Посмотреть проекты"} <span>↗</span></Link><Link className="button button-light" href="/contacts/#write">{clear ? "Написать нам" : "Задать вопрос"}</Link></div>
         </div>
-        <div className="hero-poster" aria-label="Сопровождение, развитие, реализация и равные возможности">
+        <div className="hero-poster" aria-label="Навыки для жизни, общение, спорт и творчество">
           <div className="poster-orbit orbit-one" /><div className="poster-orbit orbit-two" />
-          <div className="poster-words"><span>сопровождение</span><span>развитие</span><span>реализация</span><span>равные возможности</span></div>
+          <div className="poster-words"><span>навыки для жизни</span><span>общение</span><span>спорт и движение</span><span>творчество</span></div>
           <div className="poster-note"><b className="accent-script">{clear ? "Мы рядом" : "Нам с вами по пути"}</b><span>{clear ? "Мы готовы помочь" : "Работаем в городском округе Коломна"}</span></div>
+        </div>
+      </section>
+
+      <section className="section start-section" id="start">
+        <div className="start-heading">
+          <div className="section-label">С чего начать</div>
+          <div><h2>{clear ? "Что вы хотите сделать?" : "Выберите, что вам нужно сейчас"}</h2><p>{clear ? "Нажмите на подходящий вариант." : "Необязательно разбираться в структуре организации. Начните со своей задачи — мы покажем следующий шаг."}</p></div>
+        </div>
+        <div className="start-grid">
+          {startPaths.map((path) => (
+            <Link className={`start-card start-card-${path.tone}`} href={path.href} key={path.href}>
+              <span>{path.title}</span>
+              <p>{path.description}</p>
+              <strong>{path.action} <b aria-hidden="true">→</b></strong>
+            </Link>
+          ))}
         </div>
       </section>
 
