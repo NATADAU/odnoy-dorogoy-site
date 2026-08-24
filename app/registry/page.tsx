@@ -1,7 +1,7 @@
 "use client";
 
 import { registryDocuments } from "../content";
-import { useClearLanguage } from "../site-shell";
+import { PageHomeLink, useClearLanguage } from "../site-shell";
 
 const oldSite = "https://onewaysc.ru/";
 
@@ -10,6 +10,7 @@ export default function RegistryPage() {
   return (
     <>
       <section className="page-hero page-hero-registry" id="top">
+        <PageHomeLink />
         <div className="section-label">Соцреестр и открытость</div>
         <h1>{clear ? "Информация о социальных услугах" : "Обязательная информация — в отдельном разделе"}</h1>
         <p>{clear ? "Здесь собраны документы организации и сведения о социальных услугах." : "Документы, формы обслуживания, сведения о работе и отчётность собраны отдельно от основной истории клуба."}</p>
@@ -26,7 +27,7 @@ export default function RegistryPage() {
 
           <section className="registry-block" id="quality"><span className="block-number">04</span><div><h2>{clear ? "Вопросы и жалобы" : "Качество услуг и обратная связь"}</h2><p>{clear ? "Можно задать вопрос по телефону или электронной почте." : "Вопросы о качестве социальных услуг и обращения можно направить организации по телефону или электронной почте."}</p><div className="contact-inline"><a href="tel:+79774457314">+7 977 445-73-14</a><a href="mailto:onewaysc@yandex.ru">onewaysc@yandex.ru</a></div></div></section>
 
-          <section className="registry-block" id="resources"><span className="block-number">05</span><div><h2>{clear ? "Полезные сайты" : "Полезные ссылки"}</h2><p>{clear ? "Здесь можно узнать больше о поддержке и социальных услугах." : "Официальные и партнёрские ресурсы, связанные с поддержкой некоммерческих организаций и социальным обслуживанием."}</p><div className="resource-list"><a href="https://xn--80afcdbalict6afooklqi5o.xn--p1ai/" target="_blank" rel="noreferrer"><strong>Фонд президентских грантов</strong><b>↗</b></a><a href="https://msr.mosreg.ru/" target="_blank" rel="noreferrer"><strong>Министерство социального развития Московской области</strong><b>↗</b></a><a href="https://vk.com/club_oneway" target="_blank" rel="noreferrer"><strong>Сообщество «Одной дорогой»</strong><b>↗</b></a></div></div></section>
+          <section className="registry-block" id="resources"><span className="block-number">05</span><div><h2>{clear ? "Полезные сайты" : "Полезные ссылки"}</h2><p>{clear ? "Здесь можно узнать больше о поддержке и социальных услугах." : "Официальные и партнёрские ресурсы, связанные с поддержкой некоммерческих организаций и социальным обслуживанием."}</p><div className="resource-list"><a href="https://xn--80afcdbalict6afooklqi5o.xn--p1ai/" target="_blank" rel="noreferrer"><strong>Фонд президентских грантов</strong><b>↗</b></a><a href="https://msr.mosreg.ru/" target="_blank" rel="noreferrer"><strong>Министерство социального развития Московской области</strong><b>↗</b></a><a href="https://vk.ru/onewaykolomna" target="_blank" rel="noreferrer"><strong>Сообщество «Одной дорогой»</strong><b>↗</b></a></div></div></section>
         </div>
       </section>
     </>
