@@ -62,13 +62,13 @@ export default function Home() {
           <p>{clear ? "На отдельной странице есть документы и сведения о социальных услугах." : "Сведения для получателей социальных услуг, документы и отчётность собраны на отдельной странице соцреестра."}</p>
           <Link className="button button-dark" href="/registry/">Перейти в соцреестр <span>↗</span></Link>
         </div>
-        <a className="community-card" href="https://vk.com/club_oneway" target="_blank" rel="noreferrer">
-          <span className="section-label">Новости</span><h3>{clear ? "Что нового в клубе" : "Жизнь клуба — во ВКонтакте"}</h3><p>{clear ? "Там мы рассказываем о занятиях и встречах." : "Актуальные события, фотографии и анонсы публикуем в сообществе организации."}</p><b>Перейти в сообщество ↗</b>
+        <a className="community-card" id="news" href="https://vk.com/club_oneway" target="_blank" rel="noreferrer">
+          <span className="section-label">Новости и события</span><h3>{clear ? "Что нового в клубе" : "Новости и ближайшие события"}</h3><p>{clear ? "Там мы рассказываем о занятиях, встречах и новых событиях." : "Актуальные новости, фотографии, анонсы и информация о ближайших событиях публикуются в сообществе организации."}</p><b>Перейти в сообщество ↗</b>
         </a>
       </section>
 
       <section className="section partners-section">
-        <div className="section-heading partners-heading"><div className="section-label">Партнёры</div><div><h2>{clear ? "Те, кто помогает клубу" : "Поддержка превращает идеи в возможности"}</h2></div></div>
+        <div className="section-heading partners-heading"><div className="section-label">Нам доверяют</div><div><h2>{clear ? "Партнёры клуба" : "Поддержка превращает идеи в возможности"}</h2></div></div>
         <ul className="partner-list">
           {partners.map((partner) => (
             <li className={partner.dark ? "partner-item partner-item-dark" : "partner-item"} key={partner.name}>

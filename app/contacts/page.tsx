@@ -13,7 +13,7 @@ export default function ContactsPage() {
       </section>
       <section className="section contact-cards">
         <a className="contact-card contact-card-primary" href="tel:+79774457314"><span>Телефон</span><strong>+7 977 445-73-14</strong><b>Позвонить ↗</b></a>
-        <a className="contact-card" href="mailto:onewaysc@yandex.ru"><span>Основная почта</span><strong>onewaysc@yandex.ru</strong><b>Написать ↗</b></a>
+        <a className="contact-card" id="write" href="mailto:onewaysc@yandex.ru"><span>Основная почта</span><strong>onewaysc@yandex.ru</strong><b>Написать ↗</b></a>
         <div className="contact-card"><span>График работы</span><strong>{clear ? "Каждый день" : "Понедельник — воскресенье"}<br />10:00—18:00</strong></div>
       </section>
       <section className="section addresses-section">
