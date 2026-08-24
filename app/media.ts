@@ -6,7 +6,7 @@ import tvorcheskayaStudiya from "../public/photos/projects/tvorcheskaya-studiya.
 import raceWheels from "../public/photos/projects/race-wheels.jpg";
 import buitpushka from "../public/photos/projects/buitpushka.jpg";
 import team01 from "../public/photos/team/sergey-matveev.png";
-import team02 from "../public/photos/team/irina-sukharnikova.png";
+import team02 from "../public/photos/team/irina-sukharnikova.jpg";
 import team03 from "../public/photos/team/kseniya-matveeva.png";
 import team04 from "../public/photos/team/egor-kabaylov.jpg";
 import team05 from "../public/photos/team/aleksandra-osipova.jpg";
