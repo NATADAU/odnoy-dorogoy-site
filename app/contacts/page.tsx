@@ -26,7 +26,14 @@ export default function ContactsPage() {
           <article className="legal-address"><span>Юридический адрес</span><h3>с. Федосьино, ул. Производственная, зд. 3, комната 11</h3><p>140471, Московская область, городской округ Коломна</p></article>
         </div>
       </section>
-      <section className="contact-ending"><div><span className="section-label">Сообщество</span><h2>{clear ? "Новости клуба" : "Следить за жизнью клуба"}</h2></div><a className="button button-light" href="https://vk.ru/onewaykolomna" target="_blank" rel="noreferrer">Открыть ВКонтакте <span>↗</span></a></section>
+      <section className="contact-ending">
+        <div><span className="section-label">Онлайн</span><h2>{clear ? "Клуб в интернете" : "Следить за жизнью клуба"}</h2></div>
+        <div className="contact-links">
+          <a className="button button-light" href="https://t.me/onewaykolomna" target="_blank" rel="noreferrer">Telegram · @onewaykolomna <span>↗</span></a>
+          <a className="button button-light" href="https://vk.ru/onewaykolomna" target="_blank" rel="noreferrer">ВКонтакте <span>↗</span></a>
+          <a className="button button-light" href="https://onewaysc.ru/" target="_blank" rel="noreferrer">onewaysc.ru <span>↗</span></a>
+        </div>
+      </section>
     </>
   );
 }
