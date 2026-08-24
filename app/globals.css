@@ -66,6 +66,14 @@ img,svg,video{max-width:100%;height:auto}
 
 .clear-mode p{line-height:1.7}.clear-mode .hero h1,.clear-mode .section h2,.clear-mode .page-hero h1{letter-spacing:-.035em}.clear-mode .hero-lead,.clear-mode .section-heading>div:last-child>p,.clear-mode .start-heading>div:last-child>p{max-width:720px}
 
+/* Column-aware typography: display text scales from its own container, not the viewport. */
+.outcomes-intro,.openness-card,.community-card,.project-card,.help-card,.contact-card{container-type:inline-size}
+.outcomes-intro h2{font-size:clamp(34px,2.8vw,64px);font-size:clamp(34px,7cqi,64px)}
+.openness-card h2,.community-card h3{font-size:clamp(34px,3.2vw,68px);font-size:clamp(34px,9.5cqi,68px)}
+.project-card h3{font-size:clamp(30px,2.8vw,50px);font-size:clamp(30px,11cqi,50px)}
+.help-card h2{font-size:clamp(30px,2.6vw,50px);font-size:clamp(30px,9.5cqi,50px)}
+.contact-card strong{font-size:clamp(24px,2.3vw,38px);font-size:clamp(24px,8.5cqi,38px)}
+
 @media(max-width:1180px){
   .header{grid-template-columns:1fr auto}.nav{position:absolute;z-index:79;top:78px;right:0;left:0;display:none;flex-direction:column;align-items:flex-start;padding:28px clamp(20px,4vw,64px);border-bottom:1px solid rgba(24,24,23,.14);background:var(--paper)}.nav-open{display:flex}.nav-support{display:block}.menu-button{display:block}.header-support{display:none}
   .hero{grid-template-columns:1fr}.hero-copy{min-height:700px}.hero-poster{min-height:76vw;margin:0 20px 20px}.start-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.start-card{min-height:235px}.about-section{grid-template-columns:.4fr 1.25fr .35fr}.project-grid,.team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.outcomes-section{grid-template-columns:1fr}.openness-section{grid-template-columns:1fr}.openness-card,.community-card{min-height:440px}.partner-list{grid-template-columns:repeat(2,minmax(0,1fr))}.help-grid{grid-template-columns:1fr 1fr}.help-card:last-child{grid-column:1/3;min-height:430px}.footer-grid{grid-template-columns:repeat(2,1fr)}
