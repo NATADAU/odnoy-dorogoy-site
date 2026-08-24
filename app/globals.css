@@ -159,3 +159,33 @@ img,svg,video{max-width:100%;height:auto}
 }
 
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.project-card,.team-card,.button,.round-link,.community-card,.page-home-link{transition:none}.swipe-hint b,.poster-orbit{animation:none}}
+
+/* Фотографии со старого сайта: единое кадрирование для карточек и диалогов. */
+.project-card{justify-content:flex-start;min-height:570px}
+.project-card>div,.project-card>button{position:relative;z-index:1}
+.project-photo{width:100%;margin:18px 0 24px;aspect-ratio:16/10;overflow:hidden;border:1px solid rgba(24,24,23,.18);border-radius:17px;background:rgba(255,255,255,.38)}
+.project-photo img,.dialog-project-photo img,.team-photo img,.dialog-team-photo img{object-fit:cover}
+.project-card>div:nth-last-of-type(1){margin-bottom:24px}
+.project-card button{margin-top:auto}
+.dialog-project-photo{position:relative;width:100%;margin-top:28px;aspect-ratio:4/3;overflow:hidden;border-radius:20px;background:rgba(255,255,255,.38)}
+
+.team-card{justify-content:flex-start;min-height:405px}
+.team-card>div{margin-top:auto}
+.team-photo{position:relative;z-index:1;display:block;width:112px;margin:10px 0 22px;aspect-ratio:1;overflow:hidden;border:3px solid var(--tone);border-radius:50%;background:var(--paper)}
+.team-photo img,.dialog-team-photo img{object-position:center 24%}
+.dialog-team-photo{position:relative;width:180px;margin-bottom:26px;aspect-ratio:1;overflow:hidden;border:4px solid var(--tone);border-radius:50%;background:var(--paper)}
+
+@media(max-width:720px){
+  .project-card,.project-index .project-card{min-height:500px}
+  .project-photo{margin:16px 0 21px;aspect-ratio:16/9}
+  .dialog-project-photo{margin-top:22px;aspect-ratio:16/11}
+  .team-card{min-height:390px}
+  .team-photo{width:104px;margin-bottom:20px}
+  .dialog-team-photo{width:148px;margin-bottom:22px}
+}
+
+@media(max-width:390px){
+  .project-card,.project-index .project-card{min-height:475px}
+  .team-card{min-height:375px}
+  .team-photo{width:94px}
+}
