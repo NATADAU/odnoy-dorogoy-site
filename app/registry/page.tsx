@@ -13,7 +13,7 @@ export default function RegistryPage() {
         <PageHomeLink />
         <div className="section-label">Соцреестр и открытость</div>
         <h1>{clear ? "Информация о социальных услугах" : "Обязательная информация — в отдельном разделе"}</h1>
-        <p>{clear ? "Здесь собраны документы организации и сведения о социальных услугах." : "Документы, формы обслуживания, сведения о работе и отчётность собраны отдельно от основной истории клуба."}</p>
+        <p>{clear ? "Здесь собраны документы организации и сведения о социальных услугах." : "Здесь собраны документы организации, сведения о социальных услугах и публичная отчётность."}</p>
       </section>
 
       <section className="section registry-layout">
@@ -21,7 +21,7 @@ export default function RegistryPage() {
         <div className="registry-content">
           <section className="registry-block registry-lead" id="services"><span className="block-number">01</span><div><h2>{clear ? "Как клуб оказывает услуги" : "Формы социального обслуживания"}</h2><p>{clear ? "Организация оказывает услуги на дому и в полустационарной форме." : "АНО СК «Одной дорогой» предоставляет социальные услуги на дому и в полустационарной форме. Сведения об объёмах, количестве мест и тарифах собраны в документах организации."}</p><div className="registry-facts"><div><strong>6</strong><span>{clear ? "мест для помощи на дому" : "мест надомного обслуживания"}</span></div><div><strong>2</strong><span>{clear ? "формы помощи" : "формы социального обслуживания"}</span></div></div><div className="tag-list"><span>На дому</span><span>Полустационарно</span></div></div></section>
 
-          <section className="registry-block" id="documents"><span className="block-number">02</span><div><h2>{clear ? "Документы организации" : "Учредительные и обязательные документы"}</h2><p>{clear ? "Нажмите на название документа. Он откроется в новом окне." : "Документы опубликованы в действующем реестровом разделе организации и открываются в новом окне."}</p><div className="document-list">{registryDocuments.map((document, index) => <a href={oldSite} target="_blank" rel="noreferrer" key={document}><span>{String(index + 1).padStart(2, "0")}</span><strong>{document}</strong><b>↗</b></a>)}</div></div></section>
+          <section className="registry-block" id="documents"><span className="block-number">02</span><div><h2>{clear ? "Документы организации" : "Учредительные и обязательные документы"}</h2><p>{clear ? "Нажмите на название документа. Он откроется в новом окне." : "Документы размещены на действующем сайте организации и откроются в новом окне."}</p><div className="document-list">{registryDocuments.map((document, index) => <a href={oldSite} target="_blank" rel="noreferrer" key={document}><span>{String(index + 1).padStart(2, "0")}</span><strong>{document}</strong><b>↗</b></a>)}</div></div></section>
 
           <section className="registry-block" id="reports"><span className="block-number">03</span><div><h2>{clear ? "Отчёты" : "Публичная и обязательная отчётность"}</h2><p>{clear ? "В отчётах написано, что организация сделала за год." : "Публичные отчёты и отчёты в Минюст собраны отдельно от учредительных документов."}</p><div className="report-grid"><a href={oldSite} target="_blank" rel="noreferrer"><span>Публичный отчёт</span><strong>2024</strong><b>↗</b></a><a href={oldSite} target="_blank" rel="noreferrer"><span>Публичный отчёт</span><strong>2023</strong><b>↗</b></a><a href={oldSite} target="_blank" rel="noreferrer"><span>Отчёты в Минюст</span><strong>2020—2024</strong><b>↗</b></a></div></div></section>
 

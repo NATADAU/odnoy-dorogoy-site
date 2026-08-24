@@ -13,7 +13,7 @@ export default function ProjectsPage() {
         <PageHomeLink />
         <div className="section-label">Действующие проекты</div>
         <h1>{clear ? "Занятия и проекты клуба" : "Разные возможности для активной жизни"}</h1>
-        <p>{clear ? "Здесь можно узнать, чем занимаются участники клуба." : "Каждый проект даёт собственный маршрут к общению, самостоятельности, движению и творчеству."}</p>
+        <p>{clear ? "Здесь можно узнать, чем занимаются участники клуба." : "В проектах можно общаться, осваивать повседневные навыки, заниматься спортом и творчеством."}</p>
       </section>
       <section className="section project-index"><ProjectCards projects={activeProjects} /></section>
       <section className="archive-teaser"><div><span className="section-label">История клуба</span><h2>{clear ? "Завершённые проекты" : "Сохраняем опыт, на котором выросли"}</h2><p>{clear ? "В архиве есть проекты, которые уже закончились." : "Завершённые программы остаются частью истории организации и помогают видеть пройденный путь."}</p></div><Link className="button button-light" href="/projects/archive/">Открыть архив <span>↗</span></Link></section>

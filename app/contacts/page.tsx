@@ -10,7 +10,7 @@ export default function ContactsPage() {
         <PageHomeLink />
         <div className="section-label">Контакты</div>
         <h1>{clear ? "Как с нами связаться" : "Позвонить, написать или прийти"}</h1>
-        <p>{clear ? "Мы работаем в городском округе Коломна." : "Контакты и адреса организации собраны на одной странице, чтобы нужную информацию было легко найти."}</p>
+        <p>{clear ? "Мы работаем в городском округе Коломна." : "Здесь можно найти телефон, электронную почту, график работы и адреса всех площадок клуба."}</p>
       </section>
       <section className="section contact-cards">
         <a className="contact-card contact-card-primary" href="tel:+79774457314"><span>Телефон</span><strong>+7 977 445-73-14</strong><b>Позвонить ↗</b></a>

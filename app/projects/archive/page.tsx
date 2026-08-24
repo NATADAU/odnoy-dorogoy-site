@@ -13,10 +13,10 @@ export default function ArchivePage() {
         <PageHomeLink />
         <div className="section-label">Архив проектов</div>
         <h1>{clear ? "Проекты, которые завершились" : "Завершённые проекты остаются частью пути"}</h1>
-        <p>{clear ? "Здесь мы сохраняем историю работы клуба." : "Архив отделён от действующих программ: он сохраняет результаты и опыт, но не создаёт впечатления, что запись ещё открыта."}</p>
+        <p>{clear ? "Здесь мы сохраняем историю работы клуба." : "Здесь собраны завершённые программы, их результаты и опыт, который важен для дальнейшей работы клуба."}</p>
       </section>
       <section className="section project-index archive-index"><ProjectCards projects={archivedProjects} archived /></section>
-      <section className="simple-cta"><p>{clear ? "Посмотрите проекты, которые работают сейчас." : "Вернуться к актуальным возможностям клуба."}</p><Link className="button button-dark" href="/projects/">Действующие проекты <span>↗</span></Link></section>
+      <section className="simple-cta"><p>Посмотрите проекты, которые работают сейчас.</p><Link className="button button-dark" href="/projects/">Действующие проекты <span>↗</span></Link></section>
     </>
   );
 }
