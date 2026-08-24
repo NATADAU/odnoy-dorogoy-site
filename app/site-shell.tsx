@@ -126,20 +126,25 @@ function MobileContactBar() {
 
 function Footer() {
   const { clear } = useClearLanguage();
+  const pathname = usePathname();
+  const onContactsPage = pathname.endsWith("/contacts") || pathname.endsWith("/contacts/");
+
   return (
-    <footer className="footer">
+    <footer className={onContactsPage ? "footer footer-compact" : "footer"}>
       <div className="footer-lead">
         <div className="footer-mark"><LogoMark /></div>
         <h2>{clear ? "Мы рядом" : "Нам с вами по пути"}</h2>
-        <Link className="round-link" href="/contacts/" aria-label="Перейти к контактам">↗</Link>
+        {!onContactsPage && <Link className="round-link" href="/contacts/" aria-label="Перейти к контактам">↗</Link>}
       </div>
-      <div className="footer-grid">
-        <div><span>Позвонить</span><a href="tel:+79774457314">+7 977 445-73-14</a></div>
-        <div><span>Написать</span><a href="mailto:onewaysc@yandex.ru">onewaysc@yandex.ru</a></div>
-        <div><span>Основная площадка</span><p>Коломна, ул. Астахова, д. 2, помещение 19</p></div>
-        <div><span>Время работы</span><p>Ежедневно, 10:00—18:00</p></div>
-        <div><span>Онлайн</span><a href="https://t.me/onewaykolomna" target="_blank" rel="noreferrer">Telegram</a><a href="https://vk.ru/onewaykolomna" target="_blank" rel="noreferrer">ВКонтакте</a><a href="https://onewaysc.ru/" target="_blank" rel="noreferrer">onewaysc.ru</a></div>
-      </div>
+      {!onContactsPage && (
+        <div className="footer-grid">
+          <div><span>Позвонить</span><a href="tel:+79774457314">+7 977 445-73-14</a></div>
+          <div><span>Написать</span><a href="mailto:onewaysc@yandex.ru">onewaysc@yandex.ru</a></div>
+          <div><span>Основная площадка</span><p>Коломна, ул. Астахова, д. 2, помещение 19</p></div>
+          <div><span>Время работы</span><p>Ежедневно, 10:00—18:00</p></div>
+          <div><span>Онлайн</span><a href="https://t.me/onewaykolomna" target="_blank" rel="noreferrer">Telegram</a><a href="https://vk.ru/onewaykolomna" target="_blank" rel="noreferrer">ВКонтакте</a><a href="https://onewaysc.ru/" target="_blank" rel="noreferrer">onewaysc.ru</a></div>
+        </div>
+      )}
       <div className="footer-bottom">
         <span>© АНО СК «Одной дорогой»</span>
         <Link href="/registry/">Документы и открытость</Link>
