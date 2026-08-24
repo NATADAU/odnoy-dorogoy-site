@@ -50,7 +50,7 @@ img,svg,video{max-width:100%;height:auto}
 
 .support-banner{display:flex;align-items:end;justify-content:space-between;gap:40px;padding:clamp(70px,8vw,120px) clamp(22px,5vw,80px);background:var(--coral)}.support-banner h2{max-width:980px;margin-top:28px;font-size:clamp(52px,7vw,112px);line-height:.9}.support-banner p{max-width:700px;margin-top:28px;font-size:18px;line-height:1.55}.round-link{display:grid;width:72px;aspect-ratio:1;flex:0 0 auto;place-items:center;border:1px solid currentColor;border-radius:50%;font-size:30px;transition:transform .25s ease,background .25s ease,color .25s ease}.round-link:hover{background:var(--ink);color:var(--white);transform:rotate(10deg)}.round-link-large{width:clamp(100px,12vw,170px);font-size:44px}
 
-.footer{padding:clamp(70px,8vw,115px) clamp(22px,5vw,80px) 28px;background:var(--ink);color:var(--white)}.footer-lead{display:flex;align-items:center;gap:22px;margin-bottom:80px}.footer-mark{display:grid;width:74px;height:74px;flex:0 0 auto;place-items:center;border:1px solid rgba(255,255,255,.32);border-radius:22px}.footer-mark .logo-mark{width:49px;height:49px}.footer-lead h2{margin:0;font-family:var(--display);font-size:clamp(48px,7vw,108px);font-weight:700;line-height:.9;letter-spacing:-.05em}.footer-lead .round-link{margin-left:auto}.footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:30px 0 72px;border-top:1px solid rgba(255,255,255,.25)}.footer-grid>div{display:flex;flex-direction:column;gap:12px}.footer-grid span{color:rgba(255,255,255,.52);font-size:9px;font-weight:800;letter-spacing:.09em;text-transform:uppercase}.footer-grid a,.footer-grid p{max-width:300px;font-size:14px;line-height:1.5}.footer-bottom{display:flex;justify-content:space-between;gap:24px;padding-top:23px;border-top:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.57);font-size:10px}
+.footer{padding:clamp(70px,8vw,115px) clamp(22px,5vw,80px) 28px;background:var(--ink);color:var(--white)}.footer-lead{display:flex;align-items:center;gap:22px;margin-bottom:80px}.footer-mark{display:grid;width:74px;height:74px;flex:0 0 auto;place-items:center;border:1px solid rgba(255,255,255,.32);border-radius:22px}.footer-mark .logo-mark{width:49px;height:49px}.footer-lead h2{margin:0;font-family:var(--display);font-size:clamp(48px,7vw,108px);font-weight:700;line-height:.9;letter-spacing:-.05em}.footer-lead .round-link{margin-left:auto}.footer-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px;padding:30px 0 72px;border-top:1px solid rgba(255,255,255,.25)}.footer-grid>div{display:flex;flex-direction:column;gap:12px}.footer-grid span{color:rgba(255,255,255,.62);font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}.footer-grid a,.footer-grid p{max-width:300px;font-size:14px;line-height:1.5}.footer-bottom{display:flex;justify-content:space-between;gap:24px;padding-top:23px;border-top:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.67);font-size:12px}
 
 .mobile-contact-bar{display:none}
 .site:has(.nav-open) .poster-orbit,.site:has(.nav-open) .swipe-hint b{animation-play-state:paused}
@@ -66,6 +66,11 @@ img,svg,video{max-width:100%;height:auto}
 .contact-cards{display:grid;grid-template-columns:1.1fr 1.1fr .8fr;gap:14px;background:var(--white)}.contact-card{display:flex;min-height:300px;flex-direction:column;align-items:start;padding:28px;border:1px solid rgba(24,24,23,.2);border-radius:25px;background:var(--paper)}.contact-card-primary{background:var(--coral)}.contact-card>span{font-size:9px;font-weight:800;letter-spacing:.09em;text-transform:uppercase}.contact-card strong{max-width:100%;margin:auto 0;font-size:clamp(25px,2.7vw,42px);line-height:1.12;letter-spacing:-.035em;overflow-wrap:anywhere}.contact-card b{font-size:11px}.addresses-section{background:var(--paper)}.address-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.address-list article{min-height:270px;padding:26px;border:1px solid rgba(24,24,23,.2);border-radius:24px;background:var(--white)}.address-list span{font-size:9px;font-weight:800;letter-spacing:.09em;text-transform:uppercase}.address-list h3{max-width:650px;margin:70px 0 18px;font-size:clamp(25px,2.7vw,41px);line-height:1.07;letter-spacing:-.035em}.address-list p{font-size:13px;line-height:1.5}.address-list .legal-address{background:var(--muted)}.contact-ending{background:var(--blue)}.contact-links{display:grid;min-width:min(100%,390px);gap:8px}.contact-links .button{width:100%}
 
 .clear-mode p{line-height:1.7}.clear-mode .hero h1,.clear-mode .section h2,.clear-mode .page-hero h1{letter-spacing:-.035em}.clear-mode .hero-lead,.clear-mode .section-heading>div:last-child>p,.clear-mode .start-heading>div:last-child>p{max-width:720px}
+
+/* Readable small type: no meaningful interface text below 12px. */
+.brand-copy small,.language-switch button,.eyebrow,.section-label,.project-card-meta i,.outcome-list article>span,.team-action,.team-card p,.partner-text-mark,.dialog-top,.dialog-top button,.dialog-kicker,.list-title,.registry-nav span,.block-number,.document-list span,.report-grid span,.help-card>span,.contact-card>span,.address-list span{font-size:12px}
+.poster-note span,.project-card button,.start-card strong,.community-card b,.contact-card b{font-size:13px}
+.page-home-link{font-size:12px}
 
 /* Column-aware typography: display text scales from its own container, not the viewport. */
 .outcomes-intro,.openness-card,.community-card,.project-card,.help-card,.contact-card{container-type:inline-size}
@@ -194,3 +199,12 @@ img,svg,video{max-width:100%;height:auto}
   .team-card{min-height:375px}
   .team-photo{width:94px}
 }
+
+/* Final accessibility floor after all responsive overrides. */
+.page-home-link{font-size:12px}
+.eyebrow,.section-label,.project-card-meta i,.team-action,.team-card p,.partner-text-mark,.dialog-top,.dialog-top button,.dialog-kicker,.list-title,.registry-nav span,.contact-card>span,.address-list span{letter-spacing:.06em}
+@media(max-width:760px){
+  .eyebrow,.section-label,.nav-language-switch button,.swipe-hint,.page-home-link{font-size:12px}
+  .poster-note span{font-size:13px}
+}
+@media(max-width:390px){.brand-copy strong{font-size:12px}}
