@@ -30,6 +30,11 @@ export const metadata: Metadata = {
   },
   description: "Проекты для детей и взрослых с инвалидностью в Коломне: повседневные навыки, сопровождаемое проживание, спорт, туризм, творчество и общение.",
   applicationName: "Одной дорогой",
+  category: "Некоммерческая организация",
+  authors: [{ name: "АНО СК «Одной дорогой»", url: SITE_URL }],
+  creator: "АНО СК «Одной дорогой»",
+  publisher: "АНО СК «Одной дорогой»",
+  formatDetection: { telephone: false, address: false, email: false },
   alternates: { canonical: SITE_URL },
   robots: { index: true, follow: true },
   openGraph: {
@@ -40,42 +45,71 @@ export const metadata: Metadata = {
     description: "Помогаем детям и взрослым осваивать повседневные навыки, общаться, заниматься спортом и творчеством.",
     url: SITE_URL,
   },
+  twitter: {
+    card: "summary",
+    title: "Социальный клуб для людей с инвалидностью в Коломне",
+    description: "Проекты, занятия, контакты и способы поддержать социальный клуб «Одной дорогой».",
+  },
 };
 
-const organizationJsonLd = {
+const structuredData = {
   "@context": "https://schema.org",
-  "@type": "NGO",
-  name: "АНО СК «Одной дорогой»",
-  alternateName: "Социальный клуб «Одной дорогой»",
-  url: SITE_URL,
-  logo: absoluteUrl("logo-oneway.png"),
-  foundingDate: "2019",
-  email: "onewaysc@yandex.ru",
-  telephone: "+7-977-445-73-14",
-  address: {
-    "@type": "PostalAddress",
-    postalCode: "140404",
-    addressRegion: "Московская область",
-    addressLocality: "городской округ Коломна",
-    streetAddress: "ул. Астахова, д. 2, помещение 19",
-    addressCountry: "RU",
-  },
-  areaServed: "Городской округ Коломна",
-  sameAs: ["https://vk.ru/onewaykolomna"],
-  contactPoint: {
-    "@type": "ContactPoint",
-    telephone: "+7-977-445-73-14",
-    email: "onewaysc@yandex.ru",
-    contactType: "общие вопросы",
-    availableLanguage: "Russian",
-  },
+  "@graph": [
+    {
+      "@type": "NGO",
+      "@id": absoluteUrl("#organization"),
+      name: "АНО СК «Одной дорогой»",
+      legalName: "Автономная некоммерческая организация Социальный клуб «Одной дорогой»",
+      alternateName: "Социальный клуб «Одной дорогой»",
+      description: "Социальный клуб в Коломне для детей и взрослых с инвалидностью: повседневные навыки, сопровождаемое проживание, спорт, туризм, творчество и общение.",
+      url: SITE_URL,
+      logo: absoluteUrl("logo-oneway.png"),
+      foundingDate: "2019",
+      email: "onewaysc@yandex.ru",
+      telephone: "+7-977-445-73-14",
+      address: {
+        "@type": "PostalAddress",
+        postalCode: "140404",
+        addressRegion: "Московская область",
+        addressLocality: "Коломна",
+        streetAddress: "ул. Астахова, д. 2, помещение 19",
+        addressCountry: "RU",
+      },
+      areaServed: {
+        "@type": "AdministrativeArea",
+        name: "Городской округ Коломна",
+      },
+      sameAs: [
+        "https://vk.ru/onewaykolomna",
+        "https://t.me/onewaykolomna",
+        "https://onewaysc.ru/",
+      ],
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+7-977-445-73-14",
+        email: "onewaysc@yandex.ru",
+        contactType: "общие вопросы и участие в проектах",
+        areaServed: "RU-MOS",
+        availableLanguage: "ru",
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": absoluteUrl("#website"),
+      url: SITE_URL,
+      name: "Социальный клуб «Одной дорогой»",
+      description: "Официальный сайт социального клуба «Одной дорогой» в Коломне.",
+      inLanguage: "ru-RU",
+      publisher: { "@id": absoluteUrl("#organization") },
+    },
+  ],
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="ru" className={`${inter.variable} ${unbounded.variable} ${caveat.variable}`}>
       <body>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd).replace(/</g, "\\u003c") }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} />
         <SiteFrame>{children}</SiteFrame>
       </body>
     </html>
