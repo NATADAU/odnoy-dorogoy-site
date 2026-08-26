@@ -60,7 +60,7 @@ const structuredData = {
         postalCode: "140404",
         addressRegion: "Московская область",
         addressLocality: "Коломна",
-        streetAddress: "ул. Астахова, д. 2, помещение 19",
+        streetAddress: "ул. Астахова, д. 2, помещение 119",
         addressCountry: "RU",
       },
       areaServed: {
