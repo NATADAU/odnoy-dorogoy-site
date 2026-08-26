@@ -281,7 +281,7 @@ body{font-weight:400;line-height:1.6}
 
 /* Desktop reading scale: generous body text for a social-service audience. */
 @media(min-width:761px){
-  .hero-lead,.page-hero>p,.about-copy p,.dialog-lead{font-size:clamp(21px,1.55vw,24px)}
+  .hero-lead,.page-hero>p,.about-copy p,.dialog-lead{font-size:clamp(23px,1.7vw,26px)}
 
   .section-heading>div:last-child>p,
   .start-heading>div:last-child>p,
@@ -301,11 +301,14 @@ body{font-weight:400;line-height:1.6}
   .registry-block .funding-facts p,
   .registry-block .disclosure-list p,
   .registry-block .facility-grid p,
-  .registry-block .facility-note{font-size:20px;line-height:1.62}
+  .registry-block .facility-note{font-size:22px;line-height:1.62}
 
-  .start-card p,.team-card strong,.document-list strong,.resource-list strong{font-size:18px;line-height:1.55}
-  .registry-nav a,.footer-grid a,.footer-grid p{font-size:17px;line-height:1.55}
-  .about-fact span,.contact-card b{font-size:16px;line-height:1.5}
+  .start-card p,.team-card strong,.document-list strong,.resource-list strong{font-size:20px;line-height:1.55}
+  .registry-nav a,.footer-grid a,.footer-grid p{font-size:19px;line-height:1.55}
+  .about-fact span,.contact-card b{font-size:18px;line-height:1.5}
 
   .start-card,.outcome-list article,.openness-card,.community-card,.team-card,.address-list article,.help-card{height:auto}
 }
+
+/* A softer visual anchor than black, shared with the established blue palette. */
+.footer{background:#31466f}
