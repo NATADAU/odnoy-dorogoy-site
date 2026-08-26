@@ -1,25 +1,13 @@
 import type { Metadata } from "next";
-import { Caveat, Inter, Unbounded } from "next/font/google";
+import { Onest } from "next/font/google";
 import "./globals.css";
 import { SiteFrame } from "./site-shell";
 import { absoluteUrl, SITE_URL } from "./site-config";
 
-const inter = Inter({
+const onest = Onest({
   subsets: ["latin", "cyrillic"],
   weight: "variable",
-  variable: "--font-body",
-});
-
-const unbounded = Unbounded({
-  subsets: ["latin", "cyrillic"],
-  weight: "variable",
-  variable: "--font-display",
-});
-
-const caveat = Caveat({
-  subsets: ["latin", "cyrillic"],
-  weight: "variable",
-  variable: "--font-script",
+  variable: "--font-onest",
 });
 
 export const metadata: Metadata = {
@@ -107,7 +95,7 @@ const structuredData = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ru" className={`${inter.variable} ${unbounded.variable} ${caveat.variable}`}>
+    <html lang="ru" className={onest.variable}>
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} />
         <SiteFrame>{children}</SiteFrame>

@@ -52,7 +52,7 @@ export default function Home() {
         <div className="hero-poster" aria-label="Навыки для жизни, общение, спорт и творчество">
           <div className="poster-orbit orbit-one" /><div className="poster-orbit orbit-two" />
           <div className="poster-words"><span>навыки для жизни</span><span>общение</span><span>спорт и движение</span><span>творчество</span></div>
-          <div className="poster-note"><b className="accent-script">{clear ? "Мы рядом" : "Нам с вами по пути"}</b><span>{clear ? "Мы готовы помочь" : "Работаем в городском округе Коломна"}</span></div>
+          <div className="poster-note"><b className="poster-statement">{clear ? "Мы рядом" : "Нам с вами по пути"}</b><span>{clear ? "Мы готовы помочь" : "Работаем в городском округе Коломна"}</span></div>
         </div>
       </section>
 
