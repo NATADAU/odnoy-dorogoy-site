@@ -128,9 +128,19 @@ function Footer() {
   const { clear } = useClearLanguage();
   const pathname = usePathname();
   const onContactsPage = pathname.endsWith("/contacts") || pathname.endsWith("/contacts/");
+  const onHelpPage = pathname.endsWith("/help") || pathname.endsWith("/help/");
 
   return (
     <footer className={onContactsPage ? "footer footer-compact" : "footer"}>
+      {!onContactsPage && !onHelpPage && (
+        <div className="footer-support-card">
+          <div><span className="section-label">Как помочь</span><h2>{clear ? "Вы можете помочь клубу" : "Давайте делать больше вместе"}</h2><p>{clear ? "Можно стать волонтёром или предложить поддержку." : "Присоединяйтесь как волонтёр или предложите партнёрство — вместе мы сможем сделать больше."}</p></div>
+          <div className="footer-support-actions">
+            <Link className="button button-dark" href="/help/#volunteer">Стать волонтёром <b>↗</b></Link>
+            <Link className="button button-light" href="/help/#partner">Предложить партнёрство <b>↗</b></Link>
+          </div>
+        </div>
+      )}
       <div className="footer-lead">
         <div className="footer-mark"><LogoMark /></div>
         <h2>{clear ? "Мы рядом" : "Нам с вами по пути"}</h2>
@@ -158,11 +168,46 @@ function Footer() {
 
 export function SiteFrame({ children }: { children: ReactNode }) {
   const [clear, setClearState] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const timer = window.setTimeout(() => setClearState(window.localStorage.getItem("clear-language") === "true"), 0);
     return () => window.clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    const selector = [
+      ".hero h1 span", ".hero-lead", ".hero .button-row", ".poster-words span",
+      ".start-card", ".section-heading", ".about-copy", ".about-stats>div",
+      ".project-card", ".outcome-list article", ".team-card", ".openness-card",
+      ".community-card", ".partner-item", ".footer-support-card", ".page-hero>*",
+      ".useful-links-list>a",
+    ].join(",");
+    const elements = Array.from(document.querySelectorAll<HTMLElement>(selector));
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    document.documentElement.classList.add("motion-ready");
+    elements.forEach((element, index) => {
+      element.classList.add("reveal-item");
+      element.style.setProperty("--reveal-delay", `${(index % 5) * 70}ms`);
+    });
+
+    if (reducedMotion) {
+      elements.forEach((element) => element.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -6%" });
+
+    elements.forEach((element) => observer.observe(element));
+    return () => observer.disconnect();
+  }, [pathname]);
 
   const setClear = (value: boolean) => {
     setClearState(value);

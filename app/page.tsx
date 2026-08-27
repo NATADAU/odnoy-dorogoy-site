@@ -89,7 +89,7 @@ export default function Home() {
 
       <section className="section projects-section">
         <div className="section-heading"><div className="section-label">Проекты</div><div><h2>{clear ? "Что мы делаем" : "Чтобы в жизни было больше возможностей"}</h2><p>{clear ? "Занятия помогают учиться, общаться, заниматься спортом и творчеством." : "В проектах участники осваивают повседневные навыки, занимаются спортом и творчеством, общаются и учатся делать собственный выбор."}</p></div></div>
-        <ProjectCards projects={activeProjects} compact />
+        <ProjectCards projects={activeProjects.slice(0, 3)} compact />
         <div className="section-end"><Link className="button button-light" href="/projects/">Все действующие проекты <span>↗</span></Link><Link className="quiet-link" href="/projects/archive/">Архив проектов →</Link></div>
       </section>
 
@@ -137,10 +137,6 @@ export default function Home() {
         </ul>
       </section>
 
-      <section className="support-banner">
-        <div><span className="section-label">Как помочь</span><h2>{clear ? "Вы можете быть рядом" : "Давайте делать больше вместе"}</h2><p>{clear ? "Можно стать волонтёром или предложить помощь клубу." : "Расскажите о проектах, предложите партнёрство или присоединитесь как волонтёр."}</p></div>
-        <Link className="round-link round-link-large" href="/help/" aria-label="Узнать, как помочь">↗</Link>
-      </section>
     </>
   );
 }
