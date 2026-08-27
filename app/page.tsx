@@ -6,6 +6,7 @@ import { activeProjects, partners, team } from "./content";
 import { ProjectCards } from "./project-cards";
 import { TeamCards } from "./team-cards";
 import { useClearLanguage } from "./site-shell";
+import { usefulLinks } from "./useful-links/useful-links-content";
 
 export default function Home() {
   const { clear } = useClearLanguage();
@@ -135,6 +136,14 @@ export default function Home() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section className="section useful-links-preview">
+        <div className="section-heading"><div className="section-label">Полезное</div><div><h2>{clear ? "Сайты, которые могут помочь" : "Полезные ссылки — всегда под рукой"}</h2><p>{clear ? "Государственные сайты и организации для людей и семей." : "Государственные сервисы, правозащитные ресурсы и профессиональные организации."}</p></div></div>
+        <div className="useful-links-preview-list">
+          {usefulLinks.map((item) => <a href={item.href} target="_blank" rel="noreferrer" key={item.href}><span>{clear ? item.clearTitle : item.title}</span><b aria-hidden="true">↗</b></a>)}
+        </div>
+        <div className="section-end"><Link className="quiet-link" href="/useful-links/">Все полезные ссылки и описания →</Link></div>
       </section>
 
     </>

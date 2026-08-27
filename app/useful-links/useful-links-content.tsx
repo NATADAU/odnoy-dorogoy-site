@@ -2,7 +2,7 @@
 
 import { PageHomeLink, useClearLanguage } from "../site-shell";
 
-const usefulLinks = [
+export const usefulLinks = [
   {
     title: "Министерство социального развития Московской области",
     clearTitle: "Министерство социального развития Московской области",
@@ -75,13 +75,13 @@ export function UsefulLinksContent() {
       <section className="section useful-links-section" aria-label="Список полезных ресурсов">
         <div className="useful-links-list">
           {usefulLinks.map((item, index) => (
-            <a href={item.href} target="_blank" rel="noreferrer" key={item.href} aria-label={`${clear ? item.clearTitle : item.title} — перейти на сайт`}>
+            <a href={item.href} target="_blank" rel="noreferrer" key={item.href}>
               <span>{String(index + 1).padStart(2, "0")}</span>
               <div>
                 <h2>{clear ? item.clearTitle : item.title}</h2>
                 <p>{clear ? item.clearDescription : item.description}</p>
               </div>
-              <b aria-hidden="true">Перейти на сайт <i>↗</i></b>
+              <b aria-hidden="true">↗</b>
             </a>
           ))}
         </div>

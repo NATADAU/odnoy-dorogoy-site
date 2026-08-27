@@ -4,6 +4,7 @@ import { createContext, CSSProperties, ReactNode, useContext, useEffect, useStat
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import logo from "../public/logo-oneway.png";
+import { SiteSearch } from "./site-search";
 
 type ClearContextValue = { clear: boolean; setClear: (value: boolean) => void };
 const ClearContext = createContext<ClearContextValue>({ clear: false, setClear: () => undefined });
@@ -26,12 +27,14 @@ export function LogoMark({ className = "" }: { className?: string }) {
 function Header() {
   const { clear, setClear } = useClearLanguage();
   const [open, setOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   const links = [
     { href: "/#about", label: "О клубе", clearLabel: "О клубе" },
     { href: "/projects/", label: "Проекты", clearLabel: "Проекты" },
     { href: "/#news", label: "Новости и события", clearLabel: "Новости" },
     { href: "/registry/", label: "Соцреестр", clearLabel: "Документы" },
+    { href: "/useful-links/", label: "Полезное", clearLabel: "Полезные ссылки" },
     { href: "/contacts/", label: "Контакты", clearLabel: "Контакты" },
   ];
 
@@ -95,9 +98,11 @@ function Header() {
           <button type="button" className={clear ? "active" : ""} aria-pressed={clear} onClick={() => setClear(true)}>Ясный язык</button>
         </div>
         {links.map((link) => <Link href={link.href} key={link.href} onClick={() => setOpen(false)}>{clear ? link.clearLabel : link.label}</Link>)}
+        <SiteSearch open={searchOpen} onOpen={() => { setOpen(false); setSearchOpen(true); }} onClose={() => setSearchOpen(false)} renderDialog={false} />
         <Link className="nav-support" href="/help/" onClick={() => setOpen(false)}>Как помочь</Link>
       </nav>
       <div className="header-actions">
+        <SiteSearch open={searchOpen} onOpen={() => setSearchOpen(true)} onClose={() => setSearchOpen(false)} />
         <div className="language-switch" role="group" aria-label="Версия текста">
           <button type="button" className={!clear ? "active" : ""} aria-pressed={!clear} onClick={() => setClear(false)}>Обычный</button>
           <button type="button" className={clear ? "active" : ""} aria-label="Ясный язык" aria-pressed={clear} onClick={() => setClear(true)}><span className="language-long">Ясный язык</span><span className="language-short">Ясный</span></button>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Onest } from "next/font/google";
 import "./globals.css";
+import "./refinements.css";
 import { SiteFrame } from "./site-shell";
 import { absoluteUrl, SITE_URL } from "./site-config";
 
