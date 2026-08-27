@@ -577,3 +577,36 @@ body{font-weight:400;line-height:1.6}
   .useful-links-list p{font-size:18px}
   .useful-links-list b{font-size:24px}
 }
+
+/* Clearly actionable resources and one compact row for people and links. */
+.useful-links-list{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(240px,1fr);gap:10px;overflow-x:auto;padding:0 0 12px;border-top:0;overscroll-behavior-inline:contain;scroll-snap-type:x proximity;scrollbar-color:rgba(24,24,23,.35) transparent}
+.useful-links-list>a{display:flex;min-height:260px;flex-direction:column;align-items:stretch;gap:14px;padding:18px;border:1px solid rgba(24,24,23,.22);border-radius:20px;background:var(--paper);scroll-snap-align:start;transition:transform .2s ease,background .2s ease,box-shadow .2s ease}
+.useful-links-list>a:nth-child(4n+2){background:var(--lavender)}
+.useful-links-list>a:nth-child(4n+3){background:var(--yellow)}
+.useful-links-list>a:nth-child(4n+4){background:var(--mint)}
+.useful-links-list>a:hover{padding:18px;background:var(--white);box-shadow:0 15px 34px rgba(24,24,23,.1);transform:translateY(-4px)}
+.useful-links-list>a>span{align-self:flex-start;padding:6px 8px;border:1px solid rgba(24,24,23,.3);border-radius:999px}
+.useful-links-list h2{font-size:clamp(20px,1.55vw,26px)}
+.useful-links-list p{margin-top:10px;font-size:16px;line-height:1.48}
+.useful-links-list b{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:14px;border-top:1px solid rgba(24,24,23,.3);font-size:13px;font-style:normal;font-weight:650}
+.useful-links-list b i{font-size:22px;font-style:normal;font-weight:450}
+
+@media(min-width:1181px){
+  .team-grid{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .team-card{min-height:245px;padding:15px}
+  .team-card h3{font-size:clamp(22px,1.65vw,28px)}
+  .team-card strong{font-size:16px}
+}
+
+@media(min-width:761px) and (max-width:1180px){
+  .team-grid{grid-auto-flow:column;grid-auto-columns:minmax(230px,30%);grid-template-columns:none;overflow-x:auto;padding-bottom:12px;overscroll-behavior-inline:contain;scroll-snap-type:x proximity}
+  .team-card{scroll-snap-align:start}
+}
+
+@media(max-width:760px){
+  .useful-links-list{grid-auto-columns:82%;padding-bottom:10px}
+  .useful-links-list>a,.useful-links-list>a:hover{min-height:245px;padding:17px;transform:none}
+  .useful-links-list h2{font-size:22px}
+  .useful-links-list p{font-size:16px}
+  .useful-links-list b{font-size:13px}
+}
