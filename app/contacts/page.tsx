@@ -18,7 +18,7 @@ export default function ContactsPage() {
         <div className="contact-card"><span>График работы</span><strong>{clear ? "Каждый день" : "Понедельник — воскресенье"}<br />10:00—18:00</strong></div>
       </section>
       <section className="section addresses-section">
-        <div className="section-heading"><div className="section-label">Адреса</div><div><h2>{clear ? "Где мы работаем" : "Площадки организации"}</h2><p>{clear ? "Перед первым посещением позвоните нам." : "Перед визитом рекомендуем связаться с организацией и уточнить, на какой площадке проходит нужная программа."}</p></div></div>
+        <div className="section-heading"><div className="section-label">Адреса</div><div><h2>{clear ? "Где мы работаем" : "Площадки организации"}</h2><p>{clear ? "Перед первым посещением позвоните нам: " : "Перед визитом позвоните нам и уточните, на какой площадке проходит нужная программа: "}<a className="inline-phone-link" href="tel:+79774457314">+7 977 445-73-14</a></p></div></div>
         <div className="address-list">
           <article><span>Основная площадка</span><h3>ул. Астахова, д. 2, помещение 119</h3><p>Московская область, городской округ Коломна</p></article>
           <article><span>Помещение для групповых занятий</span><h3>ул. Астахова, д. 2, помещение 118</h3><p>Московская область, городской округ Коломна</p></article>

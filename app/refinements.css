@@ -36,6 +36,10 @@
 .useful-links-preview-list a:hover{background:var(--yellow);transform:translateY(-3px)}
 .useful-links-preview-list b{align-self:flex-end;font-size:22px;font-weight:450}
 
+.inline-phone-link{display:inline-block;color:inherit;font-weight:700;line-height:1.2;white-space:nowrap;border-bottom:2px solid var(--coral);transition:color .2s ease,border-color .2s ease}
+.inline-phone-link:hover{color:#b83d2d;border-color:currentColor}
+.inline-phone-link:focus-visible{outline:3px solid var(--yellow);outline-offset:4px;border-radius:2px}
+
 @media(min-width:1181px){
   .partner-list{grid-auto-flow:row;grid-auto-columns:auto;grid-template-columns:repeat(6,minmax(0,1fr));overflow:visible;padding-bottom:0}
   .partner-item{min-height:128px}
@@ -60,4 +64,4 @@
   .useful-links-preview-list{grid-auto-columns:72%}
 }
 
-@media(prefers-reduced-motion:reduce){.search-results>a,.useful-links-preview-list a{transition:none}}
+@media(prefers-reduced-motion:reduce){.search-results>a,.useful-links-preview-list a,.inline-phone-link{transition:none}}
