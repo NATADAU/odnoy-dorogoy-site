@@ -220,6 +220,8 @@ export const partners: Partner[] = [
   { name: "Ростелеком", logo: rostelecomLogo },
   { name: "LAB Industries", logo: labIndustriesLogo },
   { name: "Fiorovanti Engineers", logo: fiorovantiLogo, dark: true },
+  { name: "РБОО «Центр лечебной педагогики»" },
+  { name: "РОО РДИ «Дорогою добра» Кировской области" },
 ];
 
 export type RegistryServiceGroup = {

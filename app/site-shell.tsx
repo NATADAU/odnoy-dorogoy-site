@@ -148,6 +148,7 @@ function Footer() {
       <div className="footer-bottom">
         <span>© АНО СК «Одной дорогой»</span>
         <Link href="/registry/">Документы и открытость</Link>
+        <Link href="/useful-links/">Полезные ссылки</Link>
         <Link href="/contacts/">Все адреса и контакты</Link>
         <Link href="#top">Наверх ↑</Link>
       </div>

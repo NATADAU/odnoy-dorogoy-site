@@ -11,5 +11,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: absoluteUrl("help/"), changeFrequency: "monthly", priority: 0.8 },
     { url: absoluteUrl("contacts/"), changeFrequency: "monthly", priority: 0.8 },
     { url: absoluteUrl("registry/"), changeFrequency: "monthly", priority: 0.7 },
+    { url: absoluteUrl("useful-links/"), changeFrequency: "yearly", priority: 0.6 },
   ];
 }
