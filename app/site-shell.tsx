@@ -34,7 +34,7 @@ function Header() {
     { href: "/projects/", label: "Проекты", clearLabel: "Проекты" },
     { href: "/#news", label: "Новости и события", clearLabel: "Новости" },
     { href: "/registry/", label: "Соцреестр", clearLabel: "Документы" },
-    { href: "/useful-links/", label: "Полезное", clearLabel: "Полезные ссылки" },
+    { href: "/useful-links/", label: "Полезные ссылки", clearLabel: "Полезные ссылки" },
     { href: "/contacts/", label: "Контакты", clearLabel: "Контакты" },
   ];
 
@@ -98,11 +98,11 @@ function Header() {
           <button type="button" className={clear ? "active" : ""} aria-pressed={clear} onClick={() => setClear(true)}>Ясный язык</button>
         </div>
         {links.map((link) => <Link href={link.href} key={link.href} onClick={() => setOpen(false)}>{clear ? link.clearLabel : link.label}</Link>)}
-        <SiteSearch open={searchOpen} onOpen={() => { setOpen(false); setSearchOpen(true); }} onClose={() => setSearchOpen(false)} renderDialog={false} />
+        <SiteSearch open={searchOpen} onOpen={() => { setOpen(false); setSearchOpen(true); }} onClose={() => setSearchOpen(false)} clear={clear} variant="menu" renderDialog={false} />
         <Link className="nav-support" href="/help/" onClick={() => setOpen(false)}>Как помочь</Link>
       </nav>
       <div className="header-actions">
-        <SiteSearch open={searchOpen} onOpen={() => setSearchOpen(true)} onClose={() => setSearchOpen(false)} />
+        <SiteSearch open={searchOpen} onOpen={() => setSearchOpen(true)} onClose={() => setSearchOpen(false)} clear={clear} variant="desktop" />
         <div className="language-switch" role="group" aria-label="Версия текста">
           <button type="button" className={!clear ? "active" : ""} aria-pressed={!clear} onClick={() => setClear(false)}>Обычный</button>
           <button type="button" className={clear ? "active" : ""} aria-label="Ясный язык" aria-pressed={clear} onClick={() => setClear(true)}><span className="language-long">Ясный язык</span><span className="language-short">Ясный</span></button>
