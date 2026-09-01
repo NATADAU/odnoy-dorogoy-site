@@ -1,10 +1,10 @@
 import type { StaticImageData } from "next/image";
 import domaLuchshe from "../public/photos/projects/doma-luchshe.jpg";
-import turizm from "../public/photos/projects/turizm-ya-s-vami.jpg";
+import turizm from "../public/photos/projects/turizm-ya-s-vami.webp";
 import smeloeReshenie from "../public/photos/projects/smeloe-reshenie.jpg";
-import tvorcheskayaStudiya from "../public/photos/projects/tvorcheskaya-studiya.jpg";
+import tvorcheskayaStudiya from "../public/photos/projects/tvorcheskaya-studiya.webp";
 import raceWheels from "../public/photos/projects/race-wheels.jpg";
-import buitpushka from "../public/photos/projects/buitpushka.jpg";
+import buitpushka from "../public/photos/projects/buitpushka.webp";
 import dayuSlovo from "../public/photos/projects/dayu-slovo.jpg";
 import team01 from "../public/photos/team/sergey-matveev.png";
 import team02 from "../public/photos/team/irina-sukharnikova.jpg";
