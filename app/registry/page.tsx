@@ -1,10 +1,51 @@
 "use client";
 
 import Link from "next/link";
-import { registryDocuments, registryServiceGroups } from "../content";
+import { registryServiceGroups } from "../content";
 import { PageHomeLink, useClearLanguage } from "../site-shell";
 
 const oldSite = "https://onewaysc.ru/";
+
+const documentBase = "../documents/social-registry/";
+
+const documentGroups = [
+  {
+    title: "Учредительные и регистрационные документы",
+    clearTitle: "Документы об организации",
+    items: [
+      { title: "Устав организации (новая редакция)", pdf: "charter-2026.pdf" },
+      { title: "Свидетельство о государственной регистрации в Минюсте", pdf: "minjust-registration.pdf" },
+      { title: "Свидетельство о постановке на учёт в налоговом органе", pdf: "tax-registration-certificate.pdf" },
+      { title: "Лист записи ЕГРЮЛ от 9 июня 2026 года", pdf: "egrul-record-2026-redacted.pdf" },
+      { title: "Приказ о назначении генерального директора", pdf: "director-appointment-order.pdf" },
+    ],
+  },
+  {
+    title: "Социальное обслуживание",
+    clearTitle: "Документы о социальных услугах",
+    items: [
+      { title: "Порядок предоставления социальных услуг в Московской области", pdf: "poryadok-social-services-mo.pdf" },
+      { title: "Тарифы на социальные услуги на 2026 год", pdf: "social-services-tariffs-2026.pdf" },
+      { title: "Договор о предоставлении социальных услуг", pdf: "social-services-agreement.pdf", docx: "social-services-agreement.docx" },
+      { title: "Правила внутреннего распорядка для получателей социальных услуг", pdf: "rules-for-social-service-recipients.pdf", docx: "rules-for-social-service-recipients.docx" },
+    ],
+  },
+  {
+    title: "Персональные данные",
+    clearTitle: "Как организация работает с личными данными",
+    items: [
+      { title: "Политика обработки персональных данных", pdf: "personal-data-policy.pdf", docx: "personal-data-policy.docx" },
+      { title: "Согласие на обработку персональных данных", pdf: "personal-data-consent.pdf", docx: "personal-data-consent.docx" },
+    ],
+  },
+  {
+    title: "Локальные документы",
+    clearTitle: "Внутренние документы",
+    items: [
+      { title: "Правила внутреннего трудового распорядка для работников", pdf: "internal-work-rules.pdf", docx: "internal-work-rules.docx" },
+    ],
+  },
+];
 
 export default function RegistryPage() {
   const { clear } = useClearLanguage();
@@ -97,8 +138,26 @@ export default function RegistryPage() {
             <span className="block-number">05</span>
             <div>
               <h2>{clear ? "Документы организации" : "Учредительные и обязательные документы"}</h2>
-              <p>{clear ? "Сейчас документы открываются на прежнем сайте. Новые файлы появятся здесь после обновления." : "До загрузки новых сканов документы открываются на действующем сайте организации. После получения актуальных PDF ссылки будут заменены на прямые."}</p>
-              <div className="document-list">{registryDocuments.map((document, index) => <a href={oldSite} target="_blank" rel="noreferrer" key={document}><span>{String(index + 1).padStart(2, "0")}</span><strong>{document}</strong><b>↗</b></a>)}</div>
+              <p>{clear ? "Документы можно открыть в браузере. Формы также можно скачать в формате Word." : "Документы сгруппированы по назначению. PDF открывается для просмотра, а редактируемые формы дополнительно доступны в формате Word."}</p>
+              <div className="document-groups">
+                {documentGroups.map((group) => (
+                  <section className="document-group" key={group.title}>
+                    <h3>{clear ? group.clearTitle : group.title}</h3>
+                    <div className="document-list">
+                      {group.items.map((document, index) => (
+                        <article className="document-item" key={document.title}>
+                          <span>{String(index + 1).padStart(2, "0")}</span>
+                          <strong>{document.title}</strong>
+                          <div className="document-actions">
+                            <a href={`${documentBase}${document.pdf}`} target="_blank" rel="noreferrer">Открыть PDF <b aria-hidden="true">↗</b></a>
+                            {document.docx && <a href={`${documentBase}${document.docx}`} download>Скачать Word <b aria-hidden="true">↓</b></a>}
+                          </div>
+                        </article>
+                      ))}
+                    </div>
+                  </section>
+                ))}
+              </div>
             </div>
           </section>
 
