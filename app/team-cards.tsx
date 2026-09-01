@@ -5,6 +5,7 @@ import Image from "next/image";
 import type { TeamMember } from "./content";
 import { teamImages } from "./media";
 import { useClearLanguage } from "./site-shell";
+import { useModalFocusTrap } from "./use-modal-focus-trap";
 
 export function TeamCards({ people }: { people: TeamMember[] }) {
   const { clear } = useClearLanguage();
@@ -29,17 +30,7 @@ export function TeamCards({ people }: { people: TeamMember[] }) {
     return () => window.removeEventListener("hashchange", openFromHash);
   }, [people]);
 
-  useEffect(() => {
-    if (!active) return;
-    const close = (event: KeyboardEvent) => { if (event.key === "Escape") closeActive(); };
-    const overflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", close);
-    return () => {
-      window.removeEventListener("keydown", close);
-      document.body.style.overflow = overflow;
-    };
-  }, [active, closeActive]);
+  const dialogRef = useModalFocusTrap(Boolean(active), closeActive);
 
   return (
     <>
@@ -55,7 +46,7 @@ export function TeamCards({ people }: { people: TeamMember[] }) {
       <div className="swipe-hint" aria-hidden="true"><span>Листайте карточки</span><b>→</b></div>
       {active && (
         <div className="dialog-backdrop" role="presentation" onClick={closeActive}>
-          <section className={`team-dialog tone-${active.tone}`} role="dialog" aria-modal="true" aria-label={`Профиль: ${active.name}`} onClick={(event) => event.stopPropagation()}>
+          <section ref={dialogRef} className={`team-dialog tone-${active.tone}`} role="dialog" aria-modal="true" aria-label={`Профиль: ${active.name}`} tabIndex={-1} onClick={(event) => event.stopPropagation()}>
             <div className="dialog-top"><span>Профиль специалиста</span><button type="button" onClick={closeActive}>Закрыть <b aria-hidden="true">×</b></button></div>
             <div className="dialog-grid">
               <div><div className="dialog-team-photo"><Image src={teamImages[people.indexOf(active)]} alt={`Фотография: ${active.name}`} fill sizes="(max-width: 720px) 46vw, 210px" /></div><p className="dialog-kicker">{active.role}</p><h3>{active.name}</h3><strong className="dialog-lead">{clear ? active.clear : active.lead}</strong></div>

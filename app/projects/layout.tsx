@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { absoluteUrl } from "../site-config";
+import { absoluteUrl, SOCIAL_IMAGE } from "../site-config";
 
 export const metadata: Metadata = {
   title: "Проекты для детей и взрослых с инвалидностью",
@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     title: "Проекты социального клуба «Одной дорогой»",
     description: "Занятия и проекты для детей и взрослых с инвалидностью в Коломне.",
     url: absoluteUrl("projects/"),
+    images: [SOCIAL_IMAGE],
   },
 };
 

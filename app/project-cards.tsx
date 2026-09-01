@@ -6,6 +6,7 @@ import Link from "next/link";
 import type { Project } from "./content";
 import { projectImages } from "./media";
 import { useClearLanguage } from "./site-shell";
+import { useModalFocusTrap } from "./use-modal-focus-trap";
 
 export function ProjectCards({ projects, compact = false, archived = false }: { projects: Project[]; compact?: boolean; archived?: boolean }) {
   const { clear } = useClearLanguage();
@@ -30,17 +31,7 @@ export function ProjectCards({ projects, compact = false, archived = false }: { 
     return () => window.removeEventListener("hashchange", openFromHash);
   }, [projects]);
 
-  useEffect(() => {
-    if (!active) return;
-    const close = (event: KeyboardEvent) => { if (event.key === "Escape") closeActive(); };
-    const overflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", close);
-    return () => {
-      window.removeEventListener("keydown", close);
-      document.body.style.overflow = overflow;
-    };
-  }, [active, closeActive]);
+  const dialogRef = useModalFocusTrap(Boolean(active), closeActive);
 
   return (
     <>
@@ -63,7 +54,7 @@ export function ProjectCards({ projects, compact = false, archived = false }: { 
       </div>
       {active && (
         <div className="dialog-backdrop" role="presentation" onClick={closeActive}>
-          <section className={`project-dialog tone-${active.tone}`} role="dialog" aria-modal="true" aria-labelledby="project-dialog-title" onClick={(event) => event.stopPropagation()}>
+          <section ref={dialogRef} className={`project-dialog tone-${active.tone}`} role="dialog" aria-modal="true" aria-labelledby="project-dialog-title" tabIndex={-1} onClick={(event) => event.stopPropagation()}>
             <div className="dialog-top"><span>{archived ? "Архив проектов" : "Проект клуба"}</span><button type="button" onClick={closeActive}>Закрыть <b aria-hidden="true">×</b></button></div>
             <div className="dialog-grid">
               <div><p className="dialog-kicker">{archived ? "Завершённый проект" : active.status ?? "Подробнее о проекте"}</p><h3 id="project-dialog-title">{active.title}</h3>{projectImages[active.slug] ? <div className="dialog-project-photo"><Image src={projectImages[active.slug]!} alt="" fill sizes="(max-width: 720px) 100vw, 48vw" /></div> : <div className="dialog-project-photo project-photo-placeholder" aria-hidden="true"><span>{active.title}</span></div>}</div>

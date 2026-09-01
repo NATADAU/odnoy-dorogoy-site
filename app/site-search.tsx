@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { activeProjects, team } from "./content";
+import { useModalFocusTrap } from "./use-modal-focus-trap";
 
 type SearchItem = {
   title: string;
@@ -52,20 +53,7 @@ function normalize(value: string) {
 export function SiteSearch({ open, onOpen, onClose, clear, variant, renderDialog = true }: { open: boolean; onOpen: () => void; onClose: () => void; clear: boolean; variant: "desktop" | "menu"; renderDialog?: boolean }) {
   const [query, setQuery] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    if (!open || !renderDialog) return;
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    const timer = window.setTimeout(() => inputRef.current?.focus(), 30);
-    const closeOnEscape = (event: KeyboardEvent) => { if (event.key === "Escape") onClose(); };
-    window.addEventListener("keydown", closeOnEscape);
-    return () => {
-      window.clearTimeout(timer);
-      window.removeEventListener("keydown", closeOnEscape);
-      document.body.style.overflow = previousOverflow;
-    };
-  }, [open, onClose, renderDialog]);
+  const dialogRef = useModalFocusTrap(open && renderDialog, onClose, inputRef);
 
   const results = useMemo(() => {
     const needle = normalize(query.trim());
@@ -78,7 +66,7 @@ export function SiteSearch({ open, onOpen, onClose, clear, variant, renderDialog
       {variant === "desktop" ? <button className="site-search-trigger" type="button" onClick={onOpen} aria-label="Открыть поиск"><span aria-hidden="true">⌕</span><b>Поиск</b></button> : <button className="nav-search-trigger" type="button" onClick={onOpen}><span aria-hidden="true">⌕</span> Поиск по сайту</button>}
       {open && renderDialog && (
         <div className="search-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) onClose(); }}>
-          <section className="search-dialog" role="dialog" aria-modal="true" aria-labelledby="search-title">
+          <section ref={dialogRef} className="search-dialog" role="dialog" aria-modal="true" aria-labelledby="search-title" tabIndex={-1}>
             <div className="search-top"><span id="search-title">Поиск по сайту</span><button type="button" onClick={onClose}>Закрыть <b aria-hidden="true">×</b></button></div>
             <label className="search-field">
               <span className="sr-only">Что найти</span>

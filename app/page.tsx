@@ -108,14 +108,14 @@ export default function Home() {
         <TeamCards people={team} />
       </section>
 
-      <section className="section openness-section">
+      <section className="section openness-section" id="news">
         <div className="openness-card">
           <span className="section-label">Открытость</span>
           <h2>{clear ? "Документы организации" : "Важная информация — отдельно и понятно"}</h2>
           <p>{clear ? "На отдельной странице есть документы и сведения о социальных услугах." : "Сведения для получателей социальных услуг, документы и отчётность собраны на отдельной странице соцреестра."}</p>
           <Link className="button button-dark" href="/registry/">Перейти в соцреестр <span>↗</span></Link>
         </div>
-        <a className="community-card" id="news" href="https://vk.ru/onewaykolomna" target="_blank" rel="noreferrer">
+        <a className="community-card" href="https://vk.ru/onewaykolomna" target="_blank" rel="noreferrer">
           <span className="section-label">Новости и события</span><h3>{clear ? "Что нового в клубе" : "Новости и ближайшие события"}</h3><p>{clear ? "В сообществе мы рассказываем о занятиях, встречах и событиях клуба." : "В сообществе клуба мы публикуем фотографии, анонсы и рассказываем о ближайших событиях."}</p><b>Перейти в сообщество ↗</b>
         </a>
       </section>

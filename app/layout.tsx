@@ -3,7 +3,7 @@ import { Onest } from "next/font/google";
 import "./globals.css";
 import "./refinements.css";
 import { SiteFrame } from "./site-shell";
-import { absoluteUrl, SITE_URL } from "./site-config";
+import { absoluteUrl, SITE_URL, SOCIAL_IMAGE } from "./site-config";
 
 const onest = Onest({
   subsets: ["latin", "cyrillic"],
@@ -24,6 +24,7 @@ export const metadata: Metadata = {
   creator: "АНО СК «Одной дорогой»",
   publisher: "АНО СК «Одной дорогой»",
   formatDetection: { telephone: false, address: false, email: false },
+  icons: { icon: "/odnoy-dorogoy-site/favicon.svg" },
   alternates: { canonical: SITE_URL },
   robots: { index: true, follow: true },
   openGraph: {
@@ -33,11 +34,13 @@ export const metadata: Metadata = {
     title: "Социальный клуб для людей с инвалидностью и их близких",
     description: "Помогаем людям с инвалидностью, их семьям и близким: повседневные навыки, общение, спорт, творчество и поддержка.",
     url: SITE_URL,
+    images: [SOCIAL_IMAGE],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Социальный клуб для людей с инвалидностью и их близких",
     description: "Проекты, занятия, контакты и способы поддержать социальный клуб «Одной дорогой».",
+    images: [absoluteUrl("og-image.png")],
   },
 };
 

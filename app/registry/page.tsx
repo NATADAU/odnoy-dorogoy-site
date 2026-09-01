@@ -4,8 +4,6 @@ import Link from "next/link";
 import { registryServiceGroups } from "../content";
 import { PageHomeLink, useClearLanguage } from "../site-shell";
 
-const oldSite = "https://onewaysc.ru/";
-
 const documentBase = "../documents/social-registry/";
 
 const documentGroups = [
@@ -166,7 +164,10 @@ export default function RegistryPage() {
             <div>
               <h2>{clear ? "Отчёты" : "Публичная и обязательная отчётность"}</h2>
               <p>{clear ? "В отчётах написано, что организация сделала за год." : "Публичные отчёты и отчёты в Минюст собраны отдельно от учредительных документов."}</p>
-              <div className="report-grid"><a href={oldSite} target="_blank" rel="noreferrer"><span>Публичный отчёт</span><strong>2024</strong><b>↗</b></a><a href={oldSite} target="_blank" rel="noreferrer"><span>Публичный отчёт</span><strong>2023</strong><b>↗</b></a><a href={oldSite} target="_blank" rel="noreferrer"><span>Отчёты в Минюст</span><strong>2020—2024</strong><b>↗</b></a></div>
+              <div className="report-pending" role="status">
+                <strong>{clear ? "Отчёты готовятся к публикации" : "Файлы отчётности готовятся к публикации"}</strong>
+                <p>{clear ? "Когда документы будут готовы, здесь появятся ссылки на них." : "После получения актуальных документов здесь появятся публичные отчёты и отчёты, представленные в Минюст."}</p>
+              </div>
             </div>
           </section>
 

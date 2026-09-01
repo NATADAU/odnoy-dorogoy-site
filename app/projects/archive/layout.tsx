@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { absoluteUrl } from "../../site-config";
+import { absoluteUrl, SOCIAL_IMAGE } from "../../site-config";
 
 export const metadata: Metadata = {
   title: { absolute: "Архив проектов | «Одной дорогой»" },
@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     title: "Архив проектов социального клуба «Одной дорогой»",
     description: "Завершённые программы остаются частью истории и опыта клуба.",
     url: absoluteUrl("projects/archive/"),
+    images: [SOCIAL_IMAGE],
   },
 };
 
