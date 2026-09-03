@@ -5,6 +5,7 @@ import { registryServiceGroups } from "../content";
 import { PageHomeLink, useClearLanguage } from "../site-shell";
 
 const documentBase = "../documents/social-registry/";
+const reportBase = "../documents/reports/";
 
 const documentGroups = [
   {
@@ -41,6 +42,35 @@ const documentGroups = [
     clearTitle: "Внутренние документы",
     items: [
       { title: "Правила внутреннего трудового распорядка для работников", pdf: "internal-work-rules.pdf", docx: "internal-work-rules.docx" },
+    ],
+  },
+];
+
+const reportGroups = [
+  {
+    title: "Налоговая отчётность",
+    clearTitle: "Налоговые отчёты",
+    items: [
+      { title: "Налоговая декларация по УСН за 2023 год", file: "usn-2023.pdf", format: "PDF" },
+      { title: "Налоговая декларация по УСН за 2024 год", file: "usn-2024.pdf", format: "PDF" },
+      { title: "Налоговая декларация по УСН за 2025 год", file: "usn-2025.pdf", format: "PDF" },
+    ],
+  },
+  {
+    title: "Бухгалтерская (финансовая) отчётность",
+    clearTitle: "Бухгалтерские отчёты",
+    items: [
+      { title: "Бухгалтерская (финансовая) отчётность за 2023 год", file: "financial-statements-2023.pdf", format: "PDF" },
+      { title: "Бухгалтерская (финансовая) отчётность за 2024 год", file: "financial-statements-2024.pdf", format: "PDF" },
+      { title: "Бухгалтерская (финансовая) отчётность за 2025 год", file: "financial-statements-2025.pdf", format: "PDF" },
+    ],
+  },
+  {
+    title: "Сведения о социальных услугах",
+    clearTitle: "Отчёты о социальных услугах",
+    items: [
+      { title: "Сведения об объёме социальных услуг за 2024 год", file: "social-services-2024.docx", format: "Word" },
+      { title: "Сведения об объёме социальных услуг за 2025 год", file: "social-services-2025.docx", format: "Word" },
     ],
   },
 ];
@@ -126,7 +156,7 @@ export default function RegistryPage() {
               <div className="facility-grid">
                 <article><span>Спортивный клуб · 72 м²</span><h3>ул. Астахова, д. 2, помещение 119</h3><p>Скалодром, спортивный инвентарь и тренажёры.</p></article>
                 <article><span>Групповые занятия · 42 м²</span><h3>ул. Астахова, д. 2, помещение 118</h3><p>Пространство для развивающих, творческих и групповых занятий.</p></article>
-                <article><span>Тренировочная квартира</span><h3>ул. Уманская, д. 5, кв. 2</h3><p>Площадка учебного сопровождаемого проживания.</p></article>
+                <article><span>Тренировочная квартира</span><h3>ул. Уманская, д. 5</h3><p>Площадка учебного сопровождаемого проживания.</p></article>
               </div>
               <p className="facility-note">Помещения оборудованы для комфортного проведения занятий и удобства участников программ с инвалидностью. Есть доступ к интернету, места для отдыха, питьевая вода и возможность организовать приём пищи.</p>
             </div>
@@ -164,9 +194,30 @@ export default function RegistryPage() {
             <div>
               <h2>{clear ? "Отчёты" : "Публичная и обязательная отчётность"}</h2>
               <p>{clear ? "В отчётах написано, что организация сделала за год." : "Публичные отчёты и отчёты в Минюст собраны отдельно от учредительных документов."}</p>
-              <div className="report-pending" role="status">
-                <strong>{clear ? "Отчёты готовятся к публикации" : "Файлы отчётности готовятся к публикации"}</strong>
-                <p>{clear ? "Когда документы будут готовы, здесь появятся ссылки на них." : "После получения актуальных документов здесь появятся публичные отчёты и отчёты, представленные в Минюст."}</p>
+              <div className="document-groups">
+                {reportGroups.map((group) => (
+                  <section className="document-group" key={group.title}>
+                    <h3>{clear ? group.clearTitle : group.title}</h3>
+                    <div className="document-list">
+                      {group.items.map((report, index) => (
+                        <article className="document-item" key={report.file}>
+                          <span>{String(index + 1).padStart(2, "0")}</span>
+                          <strong>{report.title}</strong>
+                          <div className="document-actions">
+                            <a
+                              href={`${reportBase}${report.file}`}
+                              target={report.format === "PDF" ? "_blank" : undefined}
+                              rel={report.format === "PDF" ? "noreferrer" : undefined}
+                              download={report.format === "Word" ? true : undefined}
+                            >
+                              {report.format === "PDF" ? "Открыть PDF" : "Скачать Word"} <b aria-hidden="true">{report.format === "PDF" ? "↗" : "↓"}</b>
+                            </a>
+                          </div>
+                        </article>
+                      ))}
+                    </div>
+                  </section>
+                ))}
               </div>
             </div>
           </section>
