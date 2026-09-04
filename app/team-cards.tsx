@@ -39,7 +39,7 @@ export function TeamCards({ people }: { people: TeamMember[] }) {
           <button className={`team-card tone-${person.tone}`} id={`team-${index}`} type="button" key={person.name} onClick={() => setActive(person)}>
             <span className="team-action">Подробнее <i aria-hidden="true">+</i></span>
             <span className="team-photo"><Image src={teamImages[index]} alt="" fill sizes="(max-width: 720px) 36vw, 140px" /></span>
-            <div><p>{person.role}</p><h3>{person.name}</h3><strong>{clear ? person.clear : person.lead}</strong></div>
+            <div><p>{person.role}</p><h3>{person.name === "Александра Олеговна Осипова" ? <>Александра Олеговна<br />Осипова</> : person.name}</h3><strong>{clear ? person.clear : person.lead}</strong></div>
           </button>
         ))}
       </div>

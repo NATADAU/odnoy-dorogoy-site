@@ -195,6 +195,10 @@ img,svg,video{max-width:100%;height:auto}
 .disclosure-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:30px}.disclosure-list article{display:flex;min-height:245px;flex-direction:column;padding:22px;border:1px solid rgba(24,24,23,.2);border-radius:20px;background:var(--paper)}.disclosure-list article:first-child{grid-column:1/-1;min-height:220px;background:var(--lavender)}.disclosure-list h3{max-width:650px;margin:0;font-size:clamp(21px,2vw,30px);line-height:1.12;letter-spacing:-.025em}.registry-block .disclosure-list p{margin:20px 0 0;font-size:14px;line-height:1.55}.disclosure-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:24px}.disclosure-links a,.registry-inline-link{width:max-content;max-width:100%;padding:9px 12px;border:1px solid rgba(24,24,23,.35);border-radius:999px;font-size:12px;font-weight:700}.registry-inline-link{margin-top:auto}
 .facility-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:30px}.facility-grid article{display:flex;min-height:270px;flex-direction:column;padding:20px;border:1px solid rgba(24,24,23,.2);border-radius:20px;background:var(--paper)}.facility-grid article:nth-child(1){background:var(--blue)}.facility-grid article:nth-child(2){background:var(--yellow)}.facility-grid article:nth-child(3){background:var(--mint)}.facility-grid span{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}.facility-grid h3{margin:auto 0 18px;font-size:clamp(20px,2vw,29px);line-height:1.12;letter-spacing:-.025em}.registry-block .facility-grid p{margin:0;font-size:13px;line-height:1.5}.registry-block .facility-note{max-width:none;margin-top:12px;padding:20px;border:1px solid rgba(24,24,23,.2);border-radius:18px;background:var(--white);font-size:14px}
 
+@media(min-width:721px){
+  .facility-grid h3{min-height:2.24em;margin:28px 0 18px}
+}
+
 .team-card{justify-content:flex-start;min-height:405px}
 .team-card>div{margin-top:auto}
 .team-photo{position:relative;z-index:1;display:block;width:112px;margin:10px 0 22px;aspect-ratio:1;overflow:hidden;border:3px solid var(--tone);border-radius:50%;background:var(--paper)}
