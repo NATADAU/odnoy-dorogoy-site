@@ -32,6 +32,9 @@ jobs:
 
       - name: Build static site
         run: npm run build
+        env:
+          CUSTOM_DOMAIN: "true"
+          NEXT_PUBLIC_SITE_URL: "https://onewaysc.ru/"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   creator: "АНО СК «Одной дорогой»",
   publisher: "АНО СК «Одной дорогой»",
   formatDetection: { telephone: false, address: false, email: false },
-  icons: { icon: "/odnoy-dorogoy-site/favicon.svg" },
+  icons: { icon: absoluteUrl("favicon.svg") },
   alternates: { canonical: SITE_URL },
   robots: { index: true, follow: true },
   openGraph: {
