@@ -111,8 +111,8 @@ export default function RegistryPage() {
                 <div><strong>6</strong><span>свободных мест</span></div>
               </div>
               <div className="funding-facts">
-                <p><strong>За счёт бюджетных ассигнований Московской области:</strong> 6 мест.</p>
-                <p><strong>За счёт средств физических и юридических лиц:</strong> 0 мест.</p>
+                <p><strong>За счёт бюджетных ассигнований Московской области:</strong> 2 места.</p>
+                <p><strong>За счёт средств физических и юридических лиц:</strong> 4 места.</p>
               </div>
             </div>
           </section>
